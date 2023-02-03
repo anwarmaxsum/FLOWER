@@ -1,0 +1,671 @@
+Path already exists. Rename it to /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug_archived_20221110_135123
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-10 13:51:23,200 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-10 13:51:23,200 INFO: 
+  name: 1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug
+  model_type: ICaRLModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  details: True
+  transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+  transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+  datasets:[
+    train:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 8
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+    val:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+    test:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/test
+      aug: False
+      pre_load: True
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet20_cifar_small
+    num_classes: 60
+    adopt_classifier: False
+    flatten: True
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+    base_model_cf: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug
+    training_states: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/training_states
+    log: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug
+    models: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models
+    prototypes: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.1
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    random: False
+    Embed_dim: 64
+    fine_tune: True
+    buffer_size: 0
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 60
+    tasks: 9
+    shots: 1
+    num_test: 5
+  ]
+  val:[
+    val_freq: 1000
+    test_type: NCM
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 1
+    use_tb_logger: True
+    wandb:[
+      project: FIL-Noise-Cifar-Incremental-Results
+      resume_id: None
+    ]
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-10 13:51:23,200 INFO: Random seed: 1997
+2022-11-10 13:51:24,761 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 13:51:24,780 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:51:24,834 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:51:24,846 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:51:38,501 INFO: Test_acc of task 0 on test 0 is 	 0.71717
+
+2022-11-10 13:52:01,644 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth.
+2022-11-10 13:52:01,663 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:52:01,665 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:52:01,671 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:52:01,683 INFO: Dataset NormalDataset - cifar-100 is created.
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth
+Successfully saving the model of test 0 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth
+2022-11-10 13:52:32,489 INFO: Test_acc of task 1 on test 0 is 	 0.01538
+
+2022-11-10 13:52:32,518 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth.
+2022-11-10 13:52:32,538 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:52:32,540 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:52:32,546 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:52:32,559 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth
+Successfully saving the model of test 0 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth
+2022-11-10 13:53:04,086 INFO: Test_acc of task 2 on test 0 is 	 0.01429
+
+2022-11-10 13:53:04,114 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth.
+2022-11-10 13:53:04,135 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:53:04,138 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:53:04,144 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:53:04,159 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth
+Successfully saving the model of test 0 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth
+2022-11-10 13:53:35,014 INFO: Test_acc of task 3 on test 0 is 	 0.01333
+
+2022-11-10 13:53:35,039 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth.
+2022-11-10 13:53:35,058 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:53:35,060 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:53:35,066 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:53:35,081 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth
+Successfully saving the model of test 0 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth
+2022-11-10 13:54:04,882 INFO: Test_acc of task 4 on test 0 is 	 0.01250
+
+2022-11-10 13:54:04,906 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth.
+2022-11-10 13:54:04,925 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:54:04,927 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:54:04,932 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:54:04,948 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth
+Successfully saving the model of test 0 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth
+2022-11-10 13:54:35,420 INFO: Test_acc of task 5 on test 0 is 	 0.01176
+
+2022-11-10 13:54:35,444 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth.
+2022-11-10 13:54:35,463 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:54:35,465 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:54:35,471 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:54:35,487 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth
+Successfully saving the model of test 0 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth
+2022-11-10 13:55:09,954 INFO: Test_acc of task 6 on test 0 is 	 0.01111
+
+2022-11-10 13:55:09,979 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth.
+2022-11-10 13:55:10,002 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:55:10,005 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:55:10,011 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:55:10,028 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth
+Successfully saving the model of test 0 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth
+2022-11-10 13:55:46,886 INFO: Test_acc of task 7 on test 0 is 	 0.01053
+
+2022-11-10 13:55:46,913 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth.
+2022-11-10 13:55:47,058 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:55:47,061 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:55:47,068 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:55:47,091 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth
+Successfully saving the model of test 0 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth
+2022-11-10 13:56:22,516 INFO: Test_acc of task 8 on test 0 is 	 0.01000
+
+2022-11-10 13:56:22,545 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 13:56:22,563 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:56:22,617 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:56:22,628 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:56:35,488 INFO: Test_acc of task 0 on test 1 is 	 0.71717
+
+2022-11-10 13:56:59,833 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth.
+2022-11-10 13:56:59,853 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:56:59,855 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:56:59,861 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:56:59,875 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_8.pth
+Successfully saving the model of test 0 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth
+Successfully saving the model of test 1 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth
+2022-11-10 13:57:32,735 INFO: Test_acc of task 1 on test 1 is 	 0.01538
+
+2022-11-10 13:57:32,764 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth.
+2022-11-10 13:57:32,787 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:57:32,790 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:57:32,796 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:57:32,809 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth
+Successfully saving the model of test 1 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth
+2022-11-10 13:58:05,948 INFO: Test_acc of task 2 on test 1 is 	 0.01429
+
+2022-11-10 13:58:05,976 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth.
+2022-11-10 13:58:05,996 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:58:05,999 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:58:06,005 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:06,020 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth
+Successfully saving the model of test 1 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth
+2022-11-10 13:58:40,961 INFO: Test_acc of task 3 on test 1 is 	 0.01333
+
+2022-11-10 13:58:40,992 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth.
+2022-11-10 13:58:41,013 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:58:41,015 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:58:41,021 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:41,036 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth
+Successfully saving the model of test 1 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth
+2022-11-10 13:59:13,324 INFO: Test_acc of task 4 on test 1 is 	 0.01250
+
+2022-11-10 13:59:13,354 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth.
+2022-11-10 13:59:13,376 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:59:13,378 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:59:13,384 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:59:13,400 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth
+Successfully saving the model of test 1 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth
+2022-11-10 13:59:48,030 INFO: Test_acc of task 5 on test 1 is 	 0.01176
+
+2022-11-10 13:59:48,055 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth.
+2022-11-10 13:59:48,075 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:59:48,078 INFO: Model [ICaRLModel] is created.
+2022-11-10 13:59:48,084 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:59:48,101 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth
+Successfully saving the model of test 1 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth
+2022-11-10 14:00:23,343 INFO: Test_acc of task 6 on test 1 is 	 0.01111
+
+2022-11-10 14:00:23,370 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth.
+2022-11-10 14:00:23,391 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:00:23,393 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:00:23,399 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:00:23,416 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth
+Successfully saving the model of test 1 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth
+2022-11-10 14:00:59,324 INFO: Test_acc of task 7 on test 1 is 	 0.01053
+
+2022-11-10 14:00:59,352 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth.
+2022-11-10 14:00:59,372 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:00:59,374 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:00:59,380 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:00:59,398 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth
+Successfully saving the model of test 1 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth
+2022-11-10 14:01:36,148 INFO: Test_acc of task 8 on test 1 is 	 0.01000
+
+2022-11-10 14:01:36,176 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:01:36,194 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:01:36,249 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:01:36,264 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:01:49,176 INFO: Test_acc of task 0 on test 2 is 	 0.71717
+
+2022-11-10 14:02:15,172 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth.
+2022-11-10 14:02:15,194 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:02:15,195 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:02:15,201 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:15,213 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_8.pth
+Successfully saving the model of test 1 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth
+Successfully saving the model of test 2 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth
+2022-11-10 14:02:48,316 INFO: Test_acc of task 1 on test 2 is 	 0.01538
+
+2022-11-10 14:02:48,340 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth.
+2022-11-10 14:02:48,362 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:02:48,364 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:02:48,369 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:48,382 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth
+Successfully saving the model of test 2 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth
+2022-11-10 14:03:21,327 INFO: Test_acc of task 2 on test 2 is 	 0.01429
+
+2022-11-10 14:03:21,354 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth.
+2022-11-10 14:03:21,376 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:03:21,378 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:03:21,384 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:03:21,398 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth
+Successfully saving the model of test 2 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth
+2022-11-10 14:03:55,075 INFO: Test_acc of task 3 on test 2 is 	 0.01333
+
+2022-11-10 14:03:55,102 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth.
+2022-11-10 14:03:55,124 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:03:55,126 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:03:55,132 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:03:55,149 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth
+Successfully saving the model of test 2 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth
+2022-11-10 14:04:30,192 INFO: Test_acc of task 4 on test 2 is 	 0.01250
+
+2022-11-10 14:04:30,218 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth.
+2022-11-10 14:04:30,242 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:04:30,245 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:04:30,252 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:04:30,271 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth
+Successfully saving the model of test 2 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth
+2022-11-10 14:05:04,714 INFO: Test_acc of task 5 on test 2 is 	 0.01176
+
+2022-11-10 14:05:04,740 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth.
+2022-11-10 14:05:04,764 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:05:04,766 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:05:04,773 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:05:04,791 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth
+Successfully saving the model of test 2 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth
+2022-11-10 14:05:39,753 INFO: Test_acc of task 6 on test 2 is 	 0.01111
+
+2022-11-10 14:05:39,780 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth.
+2022-11-10 14:05:39,804 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:05:39,806 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:05:39,812 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:05:39,829 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth
+Successfully saving the model of test 2 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth
+2022-11-10 14:06:15,687 INFO: Test_acc of task 7 on test 2 is 	 0.01053
+
+2022-11-10 14:06:15,715 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth.
+2022-11-10 14:06:15,738 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:06:15,740 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:06:15,747 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:15,765 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth
+Successfully saving the model of test 2 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth
+2022-11-10 14:06:51,359 INFO: Test_acc of task 8 on test 2 is 	 0.01000
+
+2022-11-10 14:06:51,386 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:06:51,407 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:06:51,461 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:51,473 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:07:04,297 INFO: Test_acc of task 0 on test 3 is 	 0.71717
+
+2022-11-10 14:07:28,789 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth.
+2022-11-10 14:07:28,812 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:07:28,816 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:07:28,822 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:07:28,835 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_8.pth
+Successfully saving the model of test 2 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth
+Successfully saving the model of test 3 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth
+2022-11-10 14:08:01,806 INFO: Test_acc of task 1 on test 3 is 	 0.01538
+
+2022-11-10 14:08:01,833 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth.
+2022-11-10 14:08:01,857 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:08:01,859 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:08:01,865 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:08:01,878 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth
+Successfully saving the model of test 3 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth
+2022-11-10 14:08:34,737 INFO: Test_acc of task 2 on test 3 is 	 0.01429
+
+2022-11-10 14:08:34,762 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth.
+2022-11-10 14:08:34,784 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:08:34,786 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:08:34,792 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:08:34,806 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth
+Successfully saving the model of test 3 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth
+2022-11-10 14:09:09,138 INFO: Test_acc of task 3 on test 3 is 	 0.01333
+
+2022-11-10 14:09:09,166 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth.
+2022-11-10 14:09:09,193 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:09:09,196 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:09:09,201 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:09:09,216 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth
+Successfully saving the model of test 3 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth
+2022-11-10 14:09:43,366 INFO: Test_acc of task 4 on test 3 is 	 0.01250
+
+2022-11-10 14:09:43,392 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth.
+2022-11-10 14:09:43,419 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:09:43,422 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:09:43,428 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:09:43,444 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth
+Successfully saving the model of test 3 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth
+2022-11-10 14:10:18,497 INFO: Test_acc of task 5 on test 3 is 	 0.01176
+
+2022-11-10 14:10:18,522 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth.
+2022-11-10 14:10:18,545 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:10:18,548 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:10:18,554 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:18,571 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth
+Successfully saving the model of test 3 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth
+2022-11-10 14:10:53,351 INFO: Test_acc of task 6 on test 3 is 	 0.01111
+
+2022-11-10 14:10:53,377 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth.
+2022-11-10 14:10:53,400 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:10:53,403 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:10:53,408 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:53,426 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth
+Successfully saving the model of test 3 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth
+2022-11-10 14:11:29,126 INFO: Test_acc of task 7 on test 3 is 	 0.01053
+
+2022-11-10 14:11:29,152 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth.
+2022-11-10 14:11:29,178 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:11:29,181 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:11:29,188 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:11:29,210 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth
+Successfully saving the model of test 3 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth
+2022-11-10 14:12:04,973 INFO: Test_acc of task 8 on test 3 is 	 0.01000
+
+2022-11-10 14:12:04,998 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:12:05,016 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:12:05,072 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:12:05,086 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:12:18,377 INFO: Test_acc of task 0 on test 4 is 	 0.71717
+
+2022-11-10 14:12:42,663 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth.
+2022-11-10 14:12:42,760 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:12:42,762 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:12:42,769 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:12:42,785 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_8.pth
+Successfully saving the model of test 3 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/ICaRLModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth
+Successfully saving the model of test 4 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth
+2022-11-10 14:13:15,516 INFO: Test_acc of task 1 on test 4 is 	 0.01538
+
+2022-11-10 14:13:15,545 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth.
+2022-11-10 14:13:15,570 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:13:15,572 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:13:15,578 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:13:15,591 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth
+Successfully saving the model of test 4 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth
+2022-11-10 14:13:49,295 INFO: Test_acc of task 2 on test 4 is 	 0.01429
+
+2022-11-10 14:13:49,323 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth.
+2022-11-10 14:13:49,349 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:13:49,351 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:13:49,359 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:13:49,374 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth
+Successfully saving the model of test 4 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth
+2022-11-10 14:14:25,500 INFO: Test_acc of task 3 on test 4 is 	 0.01333
+
+2022-11-10 14:14:25,526 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth.
+2022-11-10 14:14:25,551 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:14:25,553 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:14:25,560 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:14:25,576 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth
+Successfully saving the model of test 4 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth
+2022-11-10 14:15:01,479 INFO: Test_acc of task 4 on test 4 is 	 0.01250
+
+2022-11-10 14:15:01,503 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth.
+2022-11-10 14:15:01,527 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:15:01,529 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:15:01,535 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:15:01,550 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth
+Successfully saving the model of test 4 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth
+2022-11-10 14:15:34,863 INFO: Test_acc of task 5 on test 4 is 	 0.01176
+
+2022-11-10 14:15:34,888 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth.
+2022-11-10 14:15:34,912 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:15:34,914 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:15:34,920 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:15:34,937 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth
+Successfully saving the model of test 4 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth
+2022-11-10 14:16:07,721 INFO: Test_acc of task 6 on test 4 is 	 0.01111
+
+2022-11-10 14:16:07,745 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth.
+2022-11-10 14:16:07,770 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:16:07,772 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:16:07,778 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:16:07,797 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth
+Successfully saving the model of test 4 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth
+2022-11-10 14:16:42,178 INFO: Test_acc of task 7 on test 4 is 	 0.01053
+
+2022-11-10 14:16:42,205 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth.
+2022-11-10 14:16:42,229 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:16:42,232 INFO: Model [ICaRLModel] is created.
+2022-11-10 14:16:42,237 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:16:42,256 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth
+Successfully saving the model of test 4 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth
+2022-11-10 14:17:16,267 INFO: Test_acc of task 8 on test 4 is 	 0.01000
+
+2022-11-10 14:17:16,282 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-10 14:17:16,283 INFO: Session 1: 71.72+-0.00
+2022-11-10 14:17:16,283 INFO: Session 2: 1.54+-0.00
+2022-11-10 14:17:16,283 INFO: Session 3: 1.43+-0.00
+2022-11-10 14:17:16,283 INFO: Session 4: 1.33+-0.00
+2022-11-10 14:17:16,283 INFO: Session 5: 1.25+-0.00
+2022-11-10 14:17:16,283 INFO: Session 6: 1.18+-0.00
+2022-11-10 14:17:16,283 INFO: Session 7: 1.11+-0.00
+2022-11-10 14:17:16,283 INFO: Session 8: 1.05+-0.00
+2022-11-10 14:17:16,283 INFO: Session 9: 1.00+-0.00
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_ICaRL_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_8.pth
+Successfully saving the model of test 4 session 8
+finish!!
+finish

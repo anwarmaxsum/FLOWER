@@ -1,0 +1,1963 @@
+Path already exists. Rename it to /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug_archived_20221108_084736
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-08 08:47:36,673 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-08 08:47:36,673 INFO: 
+  name: FLOWER1_res18_cub_5shots_50base_debug
+  model_type: FLOWER1Model
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  details: True
+  transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  datasets:[
+    train:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/train
+      aug: False
+      num_worker_per_gpu: 8
+      batch_size: None
+      pin_memory: True
+      pre_load: False
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    val:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      num_worker_per_gpu: 8
+      pin_memory: True
+      pre_load: False
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    test:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      num_worker_per_gpu: 8
+      pin_memory: True
+      pre_load: False
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet18_softmax
+    Embed_dim: 512
+    pretrained: False
+    norm: False
+    num_classes: 50
+    adopt_classifier: False
+    addition_net: False
+    flatten: True
+    cut_at_pooling: False
+  ]
+  path:[
+    pretrain_model_g: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+    base_model: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug
+    training_states: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/training_states
+    log: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug
+    models: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models
+    prototypes: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/feat_buffer
+  ]
+  importance_path: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/importance.pt
+  older_params_path: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/older_params.pt
+  gen_proto_only: True
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.2
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [5]
+      gamma: 1e-06
+    ]
+    novel_exemplars: 5
+    fine_tune: False
+    feat_buffer: False
+    calculate_pt_with_buffer: False
+    warmup_iter: -1
+    bases: 50
+    tasks: 11
+    shots: 5
+    num_test: 5
+  ]
+  val:[
+    val_freq: 1
+    test_type: NCM
+    use_all_bases: False
+  ]
+  logger:[
+    print_freq: 1
+    use_tb_logger: True
+    wandb:[
+      project: FIL-Noise-Cub-Incremental
+      resume_id: None
+    ]
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-08 08:47:36,673 INFO: Random seed: 1997
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:181: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  init.kaiming_normal(m.weight, mode='fan_out')
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:188: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(m.weight, std=0.001)
+2022-11-08 08:47:38,998 INFO: Network: Resnet18_softmax, with parameters: 11,689,512
+2022-11-08 08:48:10,009 INFO: Resnet18_softmax(
+  (func): ResNet_pytorch(
+    (base): ResNet(
+      (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+      (layer1): Sequential(
+        (0): BasicBlock(
+          (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): BasicBlock(
+          (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (layer2): Sequential(
+        (0): BasicBlock(
+          (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (downsample): Sequential(
+            (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): BasicBlock(
+          (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (layer3): Sequential(
+        (0): BasicBlock(
+          (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (downsample): Sequential(
+            (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): BasicBlock(
+          (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (layer4): Sequential(
+        (0): BasicBlock(
+          (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (downsample): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): BasicBlock(
+          (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+      (fc): Linear(in_features=512, out_features=1000, bias=True)
+    )
+  )
+)
+2022-11-08 08:48:10,010 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:48:10,074 WARNING: Current net - loaded net:
+2022-11-08 08:48:10,201 WARNING: Loaded net - current net:
+2022-11-08 08:48:10,201 WARNING:   func.classifier.bias
+2022-11-08 08:48:10,201 WARNING:   func.classifier.weight
+2022-11-08 08:48:10,222 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:48:10,263 WARNING: Current net - loaded net:
+2022-11-08 08:48:10,263 WARNING: Loaded net - current net:
+2022-11-08 08:48:10,263 WARNING:   func.classifier.bias
+2022-11-08 08:48:10,263 WARNING:   func.classifier.weight
+2022-11-08 08:48:10,345 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:48:27,409 INFO: [Test_acc of task 0 on test 0: 0.79626][acc of former classes: 0.00000][acc of former samples in all classes: 0.00000]
+[acc of novel samples in all classes: 0.79626]
+2022-11-08 08:48:31,212 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:48:31,249 WARNING: Current net - loaded net:
+2022-11-08 08:48:31,249 WARNING: Loaded net - current net:
+2022-11-08 08:48:31,249 WARNING:   func.classifier.bias
+2022-11-08 08:48:31,249 WARNING:   func.classifier.weight
+2022-11-08 08:48:31,289 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth.
+2022-11-08 08:48:31,420 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:48:31,424 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:48:31,721 INFO: fine-tune procedure is finished!
+2022-11-08 08:48:52,589 INFO: [Test_acc of task 1 on test 0: 0.71577][acc of former classes: 0.76962][acc of former samples in all classes: 0.76962]
+[acc of novel samples in all classes: 0.54462]
+2022-11-08 08:48:53,007 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:48:53,033 WARNING: Current net - loaded net:
+2022-11-08 08:48:53,033 WARNING: Loaded net - current net:
+2022-11-08 08:48:53,033 WARNING:   func.classifier.bias
+2022-11-08 08:48:53,033 WARNING:   func.classifier.weight
+2022-11-08 08:48:53,056 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_1.pth.
+2022-11-08 08:48:53,144 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:48:53,148 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:48:53,495 INFO: fine-tune procedure is finished!
+2022-11-08 08:49:19,152 INFO: [Test_acc of task 2 on test 0: 0.66989][acc of former classes: 0.75954][acc of former samples in all classes: 0.75954]
+[acc of novel samples in all classes: 0.52888]
+2022-11-08 08:49:19,510 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:49:19,534 WARNING: Current net - loaded net:
+2022-11-08 08:49:19,534 WARNING: Loaded net - current net:
+2022-11-08 08:49:19,534 WARNING:   func.classifier.bias
+2022-11-08 08:49:19,534 WARNING:   func.classifier.weight
+2022-11-08 08:49:19,560 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_2.pth.
+2022-11-08 08:49:19,668 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:49:19,673 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:49:19,960 INFO: fine-tune procedure is finished!
+2022-11-08 08:49:50,185 INFO: [Test_acc of task 3 on test 0: 0.65120][acc of former classes: 0.75162][acc of former samples in all classes: 0.75162]
+[acc of novel samples in all classes: 0.54600]
+2022-11-08 08:49:50,658 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:49:50,682 WARNING: Current net - loaded net:
+2022-11-08 08:49:50,682 WARNING: Loaded net - current net:
+2022-11-08 08:49:50,682 WARNING:   func.classifier.bias
+2022-11-08 08:49:50,682 WARNING:   func.classifier.weight
+2022-11-08 08:49:50,707 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_3.pth.
+2022-11-08 08:49:50,814 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:49:50,817 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:49:51,145 INFO: fine-tune procedure is finished!
+2022-11-08 08:50:24,979 INFO: [Test_acc of task 4 on test 0: 0.60865][acc of former classes: 0.73146][acc of former samples in all classes: 0.73146]
+[acc of novel samples in all classes: 0.51140]
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+>>> Test >>>
+Former classes: []
+Novel classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+##############################
+Test: 0 Task: 1
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[64, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+cek train test set before load prototype
+[50 51 52 53 54 55 56 57 58 59 60 61 62 63 64]
+50
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_1.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session1.pt
+
+
+
+
+##############################
+Test: 0 Task: 2
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_1.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_1.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+cek train test set before load prototype
+[65 66 67 68 69 70 71 72 73 74 75 76 77 78 79]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session1.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_2.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session2.pt
+
+
+
+
+##############################
+Test: 0 Task: 3
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_2.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_2.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+cek train test set before load prototype
+[80 81 82 83 84 85 86 87 88 89 90 91 92 93 94]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session2.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_3.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session3.pt
+
+
+
+
+##############################
+Test: 0 Task: 4
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_3.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_3.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 95]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+cek train test set before load prototype
+[ 95  96  97  98  99 100 101 102 103 104 105 106 107 108 109]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session3.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_4.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session4.pt2022-11-08 08:50:25,344 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:50:25,372 WARNING: Current net - loaded net:
+2022-11-08 08:50:25,372 WARNING: Loaded net - current net:
+2022-11-08 08:50:25,372 WARNING:   func.classifier.bias
+2022-11-08 08:50:25,372 WARNING:   func.classifier.weight
+2022-11-08 08:50:25,390 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_4.pth.
+2022-11-08 08:50:25,501 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:50:25,505 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:50:25,807 INFO: fine-tune procedure is finished!
+2022-11-08 08:51:04,661 INFO: [Test_acc of task 5 on test 0: 0.55702][acc of former classes: 0.72786][acc of former samples in all classes: 0.72786]
+[acc of novel samples in all classes: 0.44861]
+2022-11-08 08:51:05,168 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:51:05,193 WARNING: Current net - loaded net:
+2022-11-08 08:51:05,194 WARNING: Loaded net - current net:
+2022-11-08 08:51:05,194 WARNING:   func.classifier.bias
+2022-11-08 08:51:05,194 WARNING:   func.classifier.weight
+2022-11-08 08:51:05,223 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_5.pth.
+2022-11-08 08:51:05,404 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:51:05,408 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:51:05,724 INFO: fine-tune procedure is finished!
+2022-11-08 08:51:49,545 INFO: [Test_acc of task 6 on test 0: 0.51490][acc of former classes: 0.72066][acc of former samples in all classes: 0.72066]
+[acc of novel samples in all classes: 0.40659]
+2022-11-08 08:51:49,931 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:51:49,955 WARNING: Current net - loaded net:
+2022-11-08 08:51:49,955 WARNING: Loaded net - current net:
+2022-11-08 08:51:49,955 WARNING:   func.classifier.bias
+2022-11-08 08:51:49,955 WARNING:   func.classifier.weight
+2022-11-08 08:51:49,980 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_6.pth.
+2022-11-08 08:51:50,103 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:51:50,107 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:51:50,400 INFO: fine-tune procedure is finished!
+2022-11-08 08:52:38,157 INFO: [Test_acc of task 7 on test 0: 0.48657][acc of former classes: 0.71274][acc of former samples in all classes: 0.71274]
+[acc of novel samples in all classes: 0.38447]
+2022-11-08 08:52:38,580 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:52:38,610 WARNING: Current net - loaded net:
+2022-11-08 08:52:38,610 WARNING: Loaded net - current net:
+2022-11-08 08:52:38,611 WARNING:   func.classifier.bias
+2022-11-08 08:52:38,611 WARNING:   func.classifier.weight
+2022-11-08 08:52:38,629 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_7.pth.
+2022-11-08 08:52:38,731 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:52:38,735 INFO: Dataset NormalDataset - cub is created.
+
+
+
+
+
+##############################
+Test: 0 Task: 5
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_4.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_4.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+cek train test set before load prototype
+[110 111 112 113 114 115 116 117 118 119 120 121 122 123 124]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session4.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_5.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session5.pt
+
+
+
+
+##############################
+Test: 0 Task: 6
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_5.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_5.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 125, 126, 127]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+cek train test set before load prototype
+[125 126 127 128 129 130 131 132 133 134 135 136 137 138 139]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session5.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_6.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session6.pt
+
+
+
+
+##############################
+Test: 0 Task: 7
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_6.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_6.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+cek train test set before load prototype
+[140 141 142 143 144 145 146 147 148 149 150 151 152 153 154]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session6.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_7.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session7.pt
+
+
+
+
+##############################
+Test: 0 Task: 8
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_7.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_7.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 155, 156, 157, 158, 159]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]2022-11-08 08:52:39,002 INFO: fine-tune procedure is finished!
+2022-11-08 08:53:32,531 INFO: [Test_acc of task 8 on test 0: 0.46854][acc of former classes: 0.70626][acc of former samples in all classes: 0.70626]
+[acc of novel samples in all classes: 0.37479]
+2022-11-08 08:53:32,984 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:53:33,016 WARNING: Current net - loaded net:
+2022-11-08 08:53:33,016 WARNING: Loaded net - current net:
+2022-11-08 08:53:33,016 WARNING:   func.classifier.bias
+2022-11-08 08:53:33,016 WARNING:   func.classifier.weight
+2022-11-08 08:53:33,044 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_8.pth.
+2022-11-08 08:53:33,140 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:53:33,144 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:53:33,511 INFO: fine-tune procedure is finished!
+2022-11-08 08:54:34,774 INFO: [Test_acc of task 9 on test 0: 0.45079][acc of former classes: 0.70194][acc of former samples in all classes: 0.70194]
+[acc of novel samples in all classes: 0.36283]
+2022-11-08 08:54:35,126 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:54:35,152 WARNING: Current net - loaded net:
+2022-11-08 08:54:35,152 WARNING: Loaded net - current net:
+2022-11-08 08:54:35,152 WARNING:   func.classifier.bias
+2022-11-08 08:54:35,153 WARNING:   func.classifier.weight
+2022-11-08 08:54:35,183 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_9.pth.
+2022-11-08 08:54:35,308 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:54:35,313 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:54:35,641 INFO: fine-tune procedure is finished!
+2022-11-08 08:55:41,181 INFO: [Test_acc of task 10 on test 0: 0.44632][acc of former classes: 0.69834][acc of former samples in all classes: 0.69834]
+[acc of novel samples in all classes: 0.36686]
+2022-11-08 08:55:41,623 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:55:41,655 WARNING: Current net - loaded net:
+2022-11-08 08:55:41,656 WARNING: Loaded net - current net:
+2022-11-08 08:55:41,656 WARNING:   func.classifier.bias
+2022-11-08 08:55:41,656 WARNING:   func.classifier.weight
+2022-11-08 08:55:41,678 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth.
+2022-11-08 08:55:41,804 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:55:41,808 INFO: Dataset NormalDataset - cub is created.
+
+cek train test set before load prototype
+[155 156 157 158 159 160 161 162 163 164 165 166 167 168 169]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session7.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_8.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session8.pt
+
+
+
+
+##############################
+Test: 0 Task: 9
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_8.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_8.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+cek train test set before load prototype
+[170 171 172 173 174 175 176 177 178 179 180 181 182 183 184]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session8.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_9.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session9.pt
+
+
+
+
+##############################
+Test: 0 Task: 10
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_9.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_9.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[192, 193, 194, 195, 196, 197, 198, 199, 185, 186, 187, 188, 189, 190, 191]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+cek train test set before load prototype
+[185 186 187 188 189 190 191 192 193 194 195 196 197 198 199]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session9.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_10.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session10.pt
+
+
+
+
+##############################
+Test: 1 Task: 1
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[64, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+cek train test set before load prototype
+[50 51 52 53 54 55 56 57 58 59 60 61 62 63 64]2022-11-08 08:55:42,058 INFO: fine-tune procedure is finished!
+2022-11-08 08:56:03,159 INFO: [Test_acc of task 1 on test 1: 0.71577][acc of former classes: 0.77394][acc of former samples in all classes: 0.77394]
+[acc of novel samples in all classes: 0.53089]
+2022-11-08 08:56:03,662 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:56:03,695 WARNING: Current net - loaded net:
+2022-11-08 08:56:03,695 WARNING: Loaded net - current net:
+2022-11-08 08:56:03,695 WARNING:   func.classifier.bias
+2022-11-08 08:56:03,695 WARNING:   func.classifier.weight
+2022-11-08 08:56:03,723 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_1.pth.
+2022-11-08 08:56:03,835 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:56:03,840 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:56:04,133 INFO: fine-tune procedure is finished!
+2022-11-08 08:56:29,987 INFO: [Test_acc of task 2 on test 1: 0.67033][acc of former classes: 0.76170][acc of former samples in all classes: 0.76170]
+[acc of novel samples in all classes: 0.52661]
+2022-11-08 08:56:30,392 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:56:30,415 WARNING: Current net - loaded net:
+2022-11-08 08:56:30,415 WARNING: Loaded net - current net:
+2022-11-08 08:56:30,415 WARNING:   func.classifier.bias
+2022-11-08 08:56:30,415 WARNING:   func.classifier.weight
+2022-11-08 08:56:30,447 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_2.pth.
+2022-11-08 08:56:30,560 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:56:30,564 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:56:30,933 INFO: fine-tune procedure is finished!
+2022-11-08 08:57:02,713 INFO: [Test_acc of task 3 on test 1: 0.64604][acc of former classes: 0.75450][acc of former samples in all classes: 0.75450]
+[acc of novel samples in all classes: 0.53243]
+2022-11-08 08:57:03,190 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:57:03,216 WARNING: Current net - loaded net:
+2022-11-08 08:57:03,216 WARNING: Loaded net - current net:
+2022-11-08 08:57:03,216 WARNING:   func.classifier.bias
+2022-11-08 08:57:03,216 WARNING:   func.classifier.weight
+2022-11-08 08:57:03,244 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_3.pth.
+2022-11-08 08:57:03,376 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:57:03,380 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:57:03,727 INFO: fine-tune procedure is finished!
+2022-11-08 08:57:40,306 INFO: [Test_acc of task 4 on test 1: 0.59402][acc of former classes: 0.73650][acc of former samples in all classes: 0.73650]
+[acc of novel samples in all classes: 0.48119]
+2022-11-08 08:57:40,807 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:57:40,832 WARNING: Current net - loaded net:
+2022-11-08 08:57:40,832 WARNING: Loaded net - current net:
+2022-11-08 08:57:40,832 WARNING:   func.classifier.bias
+2022-11-08 08:57:40,832 WARNING:   func.classifier.weight
+2022-11-08 08:57:40,858 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_4.pth.
+2022-11-08 08:57:40,965 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:57:40,971 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:57:41,299 INFO: fine-tune procedure is finished!
+
+50
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_1.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session1.pt
+
+
+
+
+##############################
+Test: 1 Task: 2
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_1.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_1.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+cek train test set before load prototype
+[65 66 67 68 69 70 71 72 73 74 75 76 77 78 79]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session1.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_2.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session2.pt
+
+
+
+
+##############################
+Test: 1 Task: 3
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_2.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_2.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+cek train test set before load prototype
+[80 81 82 83 84 85 86 87 88 89 90 91 92 93 94]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session2.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_3.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session3.pt
+
+
+
+
+##############################
+Test: 1 Task: 4
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_3.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_3.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 95]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+cek train test set before load prototype
+[ 95  96  97  98  99 100 101 102 103 104 105 106 107 108 109]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session3.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_4.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session4.pt
+
+
+
+
+##############################
+Test: 1 Task: 5
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_4.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_4.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+cek train test set before load prototype
+[110 111 112 113 114 115 116 117 118 119 120 121 122 123 124]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session4.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]2022-11-08 08:58:22,510 INFO: [Test_acc of task 5 on test 1: 0.55059][acc of former classes: 0.73146][acc of former samples in all classes: 0.73146]
+[acc of novel samples in all classes: 0.43582]
+2022-11-08 08:58:22,933 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:58:22,967 WARNING: Current net - loaded net:
+2022-11-08 08:58:22,967 WARNING: Loaded net - current net:
+2022-11-08 08:58:22,967 WARNING:   func.classifier.bias
+2022-11-08 08:58:22,967 WARNING:   func.classifier.weight
+2022-11-08 08:58:23,001 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_5.pth.
+2022-11-08 08:58:23,125 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:58:23,129 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:58:23,507 INFO: fine-tune procedure is finished!
+2022-11-08 08:59:08,572 INFO: [Test_acc of task 6 on test 1: 0.51763][acc of former classes: 0.72498][acc of former samples in all classes: 0.72498]
+[acc of novel samples in all classes: 0.40849]
+2022-11-08 08:59:09,010 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 08:59:09,043 WARNING: Current net - loaded net:
+2022-11-08 08:59:09,044 WARNING: Loaded net - current net:
+2022-11-08 08:59:09,044 WARNING:   func.classifier.bias
+2022-11-08 08:59:09,044 WARNING:   func.classifier.weight
+2022-11-08 08:59:09,065 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_6.pth.
+2022-11-08 08:59:09,209 INFO: Model [FLOWER1Model] is created.
+2022-11-08 08:59:09,214 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 08:59:09,565 INFO: fine-tune procedure is finished!
+2022-11-08 09:00:01,358 INFO: [Test_acc of task 7 on test 1: 0.49283][acc of former classes: 0.72066][acc of former samples in all classes: 0.72066]
+[acc of novel samples in all classes: 0.38999]
+2022-11-08 09:00:01,881 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:00:01,905 WARNING: Current net - loaded net:
+2022-11-08 09:00:01,905 WARNING: Loaded net - current net:
+2022-11-08 09:00:01,905 WARNING:   func.classifier.bias
+2022-11-08 09:00:01,905 WARNING:   func.classifier.weight
+2022-11-08 09:00:01,940 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_7.pth.
+2022-11-08 09:00:02,037 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:00:02,042 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:00:02,427 INFO: fine-tune procedure is finished!
+2022-11-08 09:00:58,134 INFO: [Test_acc of task 8 on test 1: 0.47933][acc of former classes: 0.71058][acc of former samples in all classes: 0.71058]
+[acc of novel samples in all classes: 0.38813]
+2022-11-08 09:00:58,633 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:00:58,665 WARNING: Current net - loaded net:
+2022-11-08 09:00:58,665 WARNING: Loaded net - current net:
+2022-11-08 09:00:58,665 WARNING:   func.classifier.bias
+2022-11-08 09:00:58,665 WARNING:   func.classifier.weight
+
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_5.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session5.pt
+
+
+
+
+##############################
+Test: 1 Task: 6
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_5.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_5.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 125, 126, 127]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+cek train test set before load prototype
+[125 126 127 128 129 130 131 132 133 134 135 136 137 138 139]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session5.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_6.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session6.pt
+
+
+
+
+##############################
+Test: 1 Task: 7
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_6.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_6.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+cek train test set before load prototype
+[140 141 142 143 144 145 146 147 148 149 150 151 152 153 154]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session6.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_7.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session7.pt
+
+
+
+
+##############################
+Test: 1 Task: 8
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_7.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_7.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 155, 156, 157, 158, 159]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+cek train test set before load prototype
+[155 156 157 158 159 160 161 162 163 164 165 166 167 168 169]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session7.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_8.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session8.pt
+
+
+
+
+##############################
+Test: 1 Task: 9
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_8.pth2022-11-08 09:00:58,697 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_8.pth.
+2022-11-08 09:00:58,862 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:00:58,867 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:00:59,239 INFO: fine-tune procedure is finished!
+2022-11-08 09:02:00,110 INFO: [Test_acc of task 9 on test 1: 0.46050][acc of former classes: 0.70626][acc of former samples in all classes: 0.70626]
+[acc of novel samples in all classes: 0.37443]
+2022-11-08 09:02:00,590 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:02:00,622 WARNING: Current net - loaded net:
+2022-11-08 09:02:00,622 WARNING: Loaded net - current net:
+2022-11-08 09:02:00,622 WARNING:   func.classifier.bias
+2022-11-08 09:02:00,622 WARNING:   func.classifier.weight
+2022-11-08 09:02:00,657 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_9.pth.
+2022-11-08 09:02:00,775 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:02:00,778 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:02:01,153 INFO: fine-tune procedure is finished!
+2022-11-08 09:03:08,003 INFO: [Test_acc of task 10 on test 1: 0.45599][acc of former classes: 0.70122][acc of former samples in all classes: 0.70122]
+[acc of novel samples in all classes: 0.37866]
+2022-11-08 09:03:08,555 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:03:08,579 WARNING: Current net - loaded net:
+2022-11-08 09:03:08,579 WARNING: Loaded net - current net:
+2022-11-08 09:03:08,579 WARNING:   func.classifier.bias
+2022-11-08 09:03:08,579 WARNING:   func.classifier.weight
+2022-11-08 09:03:08,618 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth.
+2022-11-08 09:03:08,794 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:03:08,800 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:03:09,085 INFO: fine-tune procedure is finished!
+2022-11-08 09:03:30,367 INFO: [Test_acc of task 1 on test 2: 0.70975][acc of former classes: 0.77394][acc of former samples in all classes: 0.77394]
+[acc of novel samples in all classes: 0.50572]
+2022-11-08 09:03:30,829 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:03:30,852 WARNING: Current net - loaded net:
+2022-11-08 09:03:30,853 WARNING: Loaded net - current net:
+2022-11-08 09:03:30,853 WARNING:   func.classifier.bias
+2022-11-08 09:03:30,853 WARNING:   func.classifier.weight
+2022-11-08 09:03:30,883 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_1.pth.
+2022-11-08 09:03:31,003 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:03:31,008 INFO: Dataset NormalDataset - cub is created.
+
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_8.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+cek train test set before load prototype
+[170 171 172 173 174 175 176 177 178 179 180 181 182 183 184]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session8.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_9.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session9.pt
+
+
+
+
+##############################
+Test: 1 Task: 10
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_9.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_9.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[192, 193, 194, 195, 196, 197, 198, 199, 185, 186, 187, 188, 189, 190, 191]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+cek train test set before load prototype
+[185 186 187 188 189 190 191 192 193 194 195 196 197 198 199]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session9.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test1_session_10.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test1_session10.pt
+
+
+
+
+##############################
+Test: 2 Task: 1
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[64, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+cek train test set before load prototype
+[50 51 52 53 54 55 56 57 58 59 60 61 62 63 64]
+50
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_1.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session1.pt
+
+
+
+
+##############################
+Test: 2 Task: 2
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_1.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_1.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+cek train test set before load prototype
+[65 66 67 68 69 70 71 72 73 74 75 76 77 78 79]2022-11-08 09:03:31,329 INFO: fine-tune procedure is finished!
+2022-11-08 09:03:57,696 INFO: [Test_acc of task 2 on test 2: 0.65449][acc of former classes: 0.76746][acc of former samples in all classes: 0.76746]
+[acc of novel samples in all classes: 0.47678]
+2022-11-08 09:03:58,095 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:03:58,120 WARNING: Current net - loaded net:
+2022-11-08 09:03:58,120 WARNING: Loaded net - current net:
+2022-11-08 09:03:58,120 WARNING:   func.classifier.bias
+2022-11-08 09:03:58,120 WARNING:   func.classifier.weight
+2022-11-08 09:03:58,146 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_2.pth.
+2022-11-08 09:03:58,295 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:03:58,306 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:03:58,625 INFO: fine-tune procedure is finished!
+2022-11-08 09:04:29,308 INFO: [Test_acc of task 3 on test 2: 0.63278][acc of former classes: 0.76242][acc of former samples in all classes: 0.76242]
+[acc of novel samples in all classes: 0.49698]
+2022-11-08 09:04:29,695 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:04:29,728 WARNING: Current net - loaded net:
+2022-11-08 09:04:29,728 WARNING: Loaded net - current net:
+2022-11-08 09:04:29,728 WARNING:   func.classifier.bias
+2022-11-08 09:04:29,728 WARNING:   func.classifier.weight
+2022-11-08 09:04:29,761 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_3.pth.
+2022-11-08 09:04:29,872 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:04:29,878 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:04:30,197 INFO: fine-tune procedure is finished!
+2022-11-08 09:05:06,795 INFO: [Test_acc of task 4 on test 2: 0.59784][acc of former classes: 0.74298][acc of former samples in all classes: 0.74298]
+[acc of novel samples in all classes: 0.48290]
+2022-11-08 09:05:07,254 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:05:07,281 WARNING: Current net - loaded net:
+2022-11-08 09:05:07,281 WARNING: Loaded net - current net:
+2022-11-08 09:05:07,281 WARNING:   func.classifier.bias
+2022-11-08 09:05:07,281 WARNING:   func.classifier.weight
+2022-11-08 09:05:07,308 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_4.pth.
+2022-11-08 09:05:07,421 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:05:07,425 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:05:07,782 INFO: fine-tune procedure is finished!
+2022-11-08 09:05:48,199 INFO: [Test_acc of task 5 on test 2: 0.54891][acc of former classes: 0.73938][acc of former samples in all classes: 0.73938]
+[acc of novel samples in all classes: 0.42805]
+2022-11-08 09:05:48,693 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:05:48,719 WARNING: Current net - loaded net:
+2022-11-08 09:05:48,720 WARNING: Loaded net - current net:
+2022-11-08 09:05:48,720 WARNING:   func.classifier.bias
+2022-11-08 09:05:48,720 WARNING:   func.classifier.weight
+2022-11-08 09:05:48,818 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_5.pth.
+2022-11-08 09:05:48,939 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:05:48,944 INFO: Dataset NormalDataset - cub is created.
+
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session1.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_2.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session2.pt
+
+
+
+
+##############################
+Test: 2 Task: 3
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_2.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_2.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+cek train test set before load prototype
+[80 81 82 83 84 85 86 87 88 89 90 91 92 93 94]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session2.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_3.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session3.pt
+
+
+
+
+##############################
+Test: 2 Task: 4
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_3.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_3.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 95]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+cek train test set before load prototype
+[ 95  96  97  98  99 100 101 102 103 104 105 106 107 108 109]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session3.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_4.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session4.pt
+
+
+
+
+##############################
+Test: 2 Task: 5
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_4.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_4.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+cek train test set before load prototype
+[110 111 112 113 114 115 116 117 118 119 120 121 122 123 124]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session4.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_5.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session5.pt
+
+
+
+
+##############################
+Test: 2 Task: 6
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_5.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_5.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 125, 126, 127]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]2022-11-08 09:05:49,288 INFO: fine-tune procedure is finished!
+2022-11-08 09:06:35,390 INFO: [Test_acc of task 6 on test 2: 0.51663][acc of former classes: 0.73290][acc of former samples in all classes: 0.73290]
+[acc of novel samples in all classes: 0.40280]
+2022-11-08 09:06:35,808 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:06:35,832 WARNING: Current net - loaded net:
+2022-11-08 09:06:35,832 WARNING: Loaded net - current net:
+2022-11-08 09:06:35,832 WARNING:   func.classifier.bias
+2022-11-08 09:06:35,832 WARNING:   func.classifier.weight
+2022-11-08 09:06:35,850 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_6.pth.
+2022-11-08 09:06:35,972 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:06:35,976 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:06:36,290 INFO: fine-tune procedure is finished!
+2022-11-08 09:07:26,331 INFO: [Test_acc of task 7 on test 2: 0.49194][acc of former classes: 0.72786][acc of former samples in all classes: 0.72786]
+[acc of novel samples in all classes: 0.38544]
+2022-11-08 09:07:26,830 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:07:26,863 WARNING: Current net - loaded net:
+2022-11-08 09:07:26,863 WARNING: Loaded net - current net:
+2022-11-08 09:07:26,863 WARNING:   func.classifier.bias
+2022-11-08 09:07:26,863 WARNING:   func.classifier.weight
+2022-11-08 09:07:26,897 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_7.pth.
+2022-11-08 09:07:27,037 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:07:27,044 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:07:28,391 INFO: fine-tune procedure is finished!
+2022-11-08 09:08:22,101 INFO: [Test_acc of task 8 on test 2: 0.47974][acc of former classes: 0.71994][acc of former samples in all classes: 0.71994]
+[acc of novel samples in all classes: 0.38501]
+2022-11-08 09:08:22,700 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:08:22,732 WARNING: Current net - loaded net:
+2022-11-08 09:08:22,732 WARNING: Loaded net - current net:
+2022-11-08 09:08:22,732 WARNING:   func.classifier.bias
+2022-11-08 09:08:22,732 WARNING:   func.classifier.weight
+2022-11-08 09:08:22,775 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_8.pth.
+2022-11-08 09:08:22,888 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:08:22,894 INFO: Dataset NormalDataset - cub is created.
+
+cek train test set before load prototype
+[125 126 127 128 129 130 131 132 133 134 135 136 137 138 139]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session5.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_6.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session6.pt
+
+
+
+
+##############################
+Test: 2 Task: 7
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_6.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_6.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+cek train test set before load prototype
+[140 141 142 143 144 145 146 147 148 149 150 151 152 153 154]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session6.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_7.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session7.pt
+
+
+
+
+##############################
+Test: 2 Task: 8
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_7.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_7.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 155, 156, 157, 158, 159]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+cek train test set before load prototype
+[155 156 157 158 159 160 161 162 163 164 165 166 167 168 169]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session7.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_8.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session8.pt
+
+
+
+
+##############################
+Test: 2 Task: 9
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_8.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_8.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+cek train test set before load prototype
+[170 171 172 173 174 175 176 177 178 179 180 181 182 183 184]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session8.pt2022-11-08 09:08:23,242 INFO: fine-tune procedure is finished!
+2022-11-08 09:09:23,558 INFO: [Test_acc of task 9 on test 2: 0.45994][acc of former classes: 0.71706][acc of former samples in all classes: 0.71706]
+[acc of novel samples in all classes: 0.36989]
+2022-11-08 09:09:24,073 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:09:24,097 WARNING: Current net - loaded net:
+2022-11-08 09:09:24,097 WARNING: Loaded net - current net:
+2022-11-08 09:09:24,097 WARNING:   func.classifier.bias
+2022-11-08 09:09:24,098 WARNING:   func.classifier.weight
+2022-11-08 09:09:24,119 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_9.pth.
+2022-11-08 09:09:24,219 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:09:24,225 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:09:24,583 INFO: fine-tune procedure is finished!
+2022-11-08 09:10:30,127 INFO: [Test_acc of task 10 on test 2: 0.45495][acc of former classes: 0.71346][acc of former samples in all classes: 0.71346]
+[acc of novel samples in all classes: 0.37344]
+2022-11-08 09:10:30,611 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:10:30,637 WARNING: Current net - loaded net:
+2022-11-08 09:10:30,638 WARNING: Loaded net - current net:
+2022-11-08 09:10:30,638 WARNING:   func.classifier.bias
+2022-11-08 09:10:30,638 WARNING:   func.classifier.weight
+2022-11-08 09:10:30,668 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth.
+2022-11-08 09:10:30,803 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:10:30,809 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:10:31,217 INFO: fine-tune procedure is finished!
+2022-11-08 09:10:53,160 INFO: [Test_acc of task 1 on test 3: 0.71139][acc of former classes: 0.77754][acc of former samples in all classes: 0.77754]
+[acc of novel samples in all classes: 0.50114]
+2022-11-08 09:10:53,630 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:10:53,660 WARNING: Current net - loaded net:
+2022-11-08 09:10:53,661 WARNING: Loaded net - current net:
+2022-11-08 09:10:53,661 WARNING:   func.classifier.bias
+2022-11-08 09:10:53,661 WARNING:   func.classifier.weight
+2022-11-08 09:10:53,684 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_1.pth.
+2022-11-08 09:10:53,793 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:10:53,797 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:10:54,134 INFO: fine-tune procedure is finished!
+2022-11-08 09:11:22,293 INFO: [Test_acc of task 2 on test 3: 0.65845][acc of former classes: 0.76458][acc of former samples in all classes: 0.76458]
+[acc of novel samples in all classes: 0.49151]
+2022-11-08 09:11:22,702 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:11:22,728 WARNING: Current net - loaded net:
+2022-11-08 09:11:22,728 WARNING: Loaded net - current net:
+2022-11-08 09:11:22,728 WARNING:   func.classifier.bias
+2022-11-08 09:11:22,728 WARNING:   func.classifier.weight
+2022-11-08 09:11:22,754 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_2.pth.
+2022-11-08 09:11:22,882 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:11:22,888 INFO: Dataset NormalDataset - cub is created.
+
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_9.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session9.pt
+
+
+
+
+##############################
+Test: 2 Task: 10
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_9.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_9.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[192, 193, 194, 195, 196, 197, 198, 199, 185, 186, 187, 188, 189, 190, 191]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+cek train test set before load prototype
+[185 186 187 188 189 190 191 192 193 194 195 196 197 198 199]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session9.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test2_session_10.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test2_session10.pt
+
+
+
+
+##############################
+Test: 3 Task: 1
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[64, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+cek train test set before load prototype
+[50 51 52 53 54 55 56 57 58 59 60 61 62 63 64]
+50
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_1.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session1.pt
+
+
+
+
+##############################
+Test: 3 Task: 2
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_1.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_1.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+cek train test set before load prototype
+[65 66 67 68 69 70 71 72 73 74 75 76 77 78 79]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session1.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_2.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session2.pt
+
+
+
+
+##############################
+Test: 3 Task: 3
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_2.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_2.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]2022-11-08 09:11:23,210 INFO: fine-tune procedure is finished!
+2022-11-08 09:11:55,541 INFO: [Test_acc of task 3 on test 3: 0.64236][acc of former classes: 0.75882][acc of former samples in all classes: 0.75882]
+[acc of novel samples in all classes: 0.52036]
+2022-11-08 09:11:55,927 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:11:55,951 WARNING: Current net - loaded net:
+2022-11-08 09:11:55,951 WARNING: Loaded net - current net:
+2022-11-08 09:11:55,951 WARNING:   func.classifier.bias
+2022-11-08 09:11:55,951 WARNING:   func.classifier.weight
+2022-11-08 09:11:55,977 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_3.pth.
+2022-11-08 09:11:56,152 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:11:56,160 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:11:56,508 INFO: fine-tune procedure is finished!
+2022-11-08 09:12:32,695 INFO: [Test_acc of task 4 on test 3: 0.59879][acc of former classes: 0.73866][acc of former samples in all classes: 0.73866]
+[acc of novel samples in all classes: 0.48803]
+2022-11-08 09:12:33,148 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:12:33,175 WARNING: Current net - loaded net:
+2022-11-08 09:12:33,175 WARNING: Loaded net - current net:
+2022-11-08 09:12:33,175 WARNING:   func.classifier.bias
+2022-11-08 09:12:33,175 WARNING:   func.classifier.weight
+2022-11-08 09:12:33,206 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_4.pth.
+2022-11-08 09:12:33,332 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:12:33,335 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:12:33,618 INFO: fine-tune procedure is finished!
+2022-11-08 09:13:15,236 INFO: [Test_acc of task 5 on test 3: 0.55059][acc of former classes: 0.73506][acc of former samples in all classes: 0.73506]
+[acc of novel samples in all classes: 0.43353]
+2022-11-08 09:13:15,748 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:13:15,774 WARNING: Current net - loaded net:
+2022-11-08 09:13:15,774 WARNING: Loaded net - current net:
+2022-11-08 09:13:15,774 WARNING:   func.classifier.bias
+2022-11-08 09:13:15,774 WARNING:   func.classifier.weight
+2022-11-08 09:13:15,799 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_5.pth.
+2022-11-08 09:13:15,915 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:13:15,921 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:13:16,314 INFO: fine-tune procedure is finished!
+2022-11-08 09:14:02,288 INFO: [Test_acc of task 6 on test 3: 0.51986][acc of former classes: 0.72786][acc of former samples in all classes: 0.72786]
+[acc of novel samples in all classes: 0.41038]
+2022-11-08 09:14:02,846 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:14:02,885 WARNING: Current net - loaded net:
+2022-11-08 09:14:02,885 WARNING: Loaded net - current net:
+2022-11-08 09:14:02,885 WARNING:   func.classifier.bias
+2022-11-08 09:14:02,885 WARNING:   func.classifier.weight
+2022-11-08 09:14:02,916 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_6.pth.
+
+cek train test set before load prototype
+[80 81 82 83 84 85 86 87 88 89 90 91 92 93 94]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session2.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_3.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session3.pt
+
+
+
+
+##############################
+Test: 3 Task: 4
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_3.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_3.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 95]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+cek train test set before load prototype
+[ 95  96  97  98  99 100 101 102 103 104 105 106 107 108 109]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session3.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_4.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session4.pt
+
+
+
+
+##############################
+Test: 3 Task: 5
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_4.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_4.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+cek train test set before load prototype
+[110 111 112 113 114 115 116 117 118 119 120 121 122 123 124]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session4.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_5.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session5.pt
+
+
+
+
+##############################
+Test: 3 Task: 6
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_5.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_5.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 125, 126, 127]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+cek train test set before load prototype
+[125 126 127 128 129 130 131 132 133 134 135 136 137 138 139]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session5.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_6.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session6.pt
+
+
+
+
+##############################
+Test: 3 Task: 7
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_6.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_6.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt2022-11-08 09:14:03,142 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:14:03,149 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:14:03,520 INFO: fine-tune procedure is finished!
+2022-11-08 09:14:53,900 INFO: [Test_acc of task 7 on test 3: 0.49664][acc of former classes: 0.72210][acc of former samples in all classes: 0.72210]
+[acc of novel samples in all classes: 0.39487]
+2022-11-08 09:14:54,358 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:14:54,387 WARNING: Current net - loaded net:
+2022-11-08 09:14:54,387 WARNING: Loaded net - current net:
+2022-11-08 09:14:54,387 WARNING:   func.classifier.bias
+2022-11-08 09:14:54,387 WARNING:   func.classifier.weight
+2022-11-08 09:14:54,403 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_7.pth.
+2022-11-08 09:14:54,526 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:14:54,530 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:14:54,853 INFO: fine-tune procedure is finished!
+2022-11-08 09:15:48,490 INFO: [Test_acc of task 8 on test 3: 0.48483][acc of former classes: 0.71274][acc of former samples in all classes: 0.71274]
+[acc of novel samples in all classes: 0.39495]
+2022-11-08 09:15:48,983 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:15:49,013 WARNING: Current net - loaded net:
+2022-11-08 09:15:49,013 WARNING: Loaded net - current net:
+2022-11-08 09:15:49,013 WARNING:   func.classifier.bias
+2022-11-08 09:15:49,013 WARNING:   func.classifier.weight
+2022-11-08 09:15:49,041 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_8.pth.
+2022-11-08 09:15:49,176 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:15:49,180 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:15:49,553 INFO: fine-tune procedure is finished!
+2022-11-08 09:16:48,387 INFO: [Test_acc of task 9 on test 3: 0.46032][acc of former classes: 0.71058][acc of former samples in all classes: 0.71058]
+[acc of novel samples in all classes: 0.37267]
+2022-11-08 09:16:48,907 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:16:48,935 WARNING: Current net - loaded net:
+2022-11-08 09:16:48,935 WARNING: Loaded net - current net:
+2022-11-08 09:16:48,935 WARNING:   func.classifier.bias
+2022-11-08 09:16:48,935 WARNING:   func.classifier.weight
+2022-11-08 09:16:48,962 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_9.pth.
+2022-11-08 09:16:49,076 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:16:49,080 INFO: Dataset NormalDataset - cub is created.
+
+Trainset classes:
+[140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+cek train test set before load prototype
+[140 141 142 143 144 145 146 147 148 149 150 151 152 153 154]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session6.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_7.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session7.pt
+
+
+
+
+##############################
+Test: 3 Task: 8
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_7.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_7.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 155, 156, 157, 158, 159]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+cek train test set before load prototype
+[155 156 157 158 159 160 161 162 163 164 165 166 167 168 169]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session7.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_8.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session8.pt
+
+
+
+
+##############################
+Test: 3 Task: 9
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_8.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_8.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+cek train test set before load prototype
+[170 171 172 173 174 175 176 177 178 179 180 181 182 183 184]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session8.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_9.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session9.pt
+
+
+
+
+##############################
+Test: 3 Task: 10
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_9.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_9.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[192, 193, 194, 195, 196, 197, 198, 199, 185, 186, 187, 188, 189, 190, 191]2022-11-08 09:16:49,447 INFO: fine-tune procedure is finished!
+2022-11-08 09:17:52,067 INFO: [Test_acc of task 10 on test 3: 0.46065][acc of former classes: 0.70626][acc of former samples in all classes: 0.70626]
+[acc of novel samples in all classes: 0.38320]
+2022-11-08 09:17:52,547 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:17:52,575 WARNING: Current net - loaded net:
+2022-11-08 09:17:52,576 WARNING: Loaded net - current net:
+2022-11-08 09:17:52,576 WARNING:   func.classifier.bias
+2022-11-08 09:17:52,576 WARNING:   func.classifier.weight
+2022-11-08 09:17:52,605 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth.
+2022-11-08 09:17:52,741 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:17:52,746 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:17:53,149 INFO: fine-tune procedure is finished!
+2022-11-08 09:18:12,935 INFO: [Test_acc of task 1 on test 4: 0.70427][acc of former classes: 0.76674][acc of former samples in all classes: 0.76674]
+[acc of novel samples in all classes: 0.50572]
+2022-11-08 09:18:13,298 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:18:13,326 WARNING: Current net - loaded net:
+2022-11-08 09:18:13,326 WARNING: Loaded net - current net:
+2022-11-08 09:18:13,326 WARNING:   func.classifier.bias
+2022-11-08 09:18:13,326 WARNING:   func.classifier.weight
+2022-11-08 09:18:13,347 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_1.pth.
+2022-11-08 09:18:13,451 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:18:13,455 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:18:13,742 INFO: fine-tune procedure is finished!
+2022-11-08 09:18:37,841 INFO: [Test_acc of task 2 on test 4: 0.65581][acc of former classes: 0.75666][acc of former samples in all classes: 0.75666]
+[acc of novel samples in all classes: 0.49717]
+2022-11-08 09:18:38,264 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:18:38,291 WARNING: Current net - loaded net:
+2022-11-08 09:18:38,291 WARNING: Loaded net - current net:
+2022-11-08 09:18:38,291 WARNING:   func.classifier.bias
+2022-11-08 09:18:38,291 WARNING:   func.classifier.weight
+2022-11-08 09:18:38,310 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_2.pth.
+2022-11-08 09:18:38,411 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:18:38,416 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:18:38,710 INFO: fine-tune procedure is finished!
+2022-11-08 09:19:08,889 INFO: [Test_acc of task 3 on test 4: 0.63867][acc of former classes: 0.74730][acc of former samples in all classes: 0.74730]
+[acc of novel samples in all classes: 0.52489]
+2022-11-08 09:19:09,393 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:19:09,431 WARNING: Current net - loaded net:
+2022-11-08 09:19:09,431 WARNING: Loaded net - current net:
+2022-11-08 09:19:09,431 WARNING:   func.classifier.bias
+2022-11-08 09:19:09,431 WARNING:   func.classifier.weight
+2022-11-08 09:19:09,450 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_3.pth.
+
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+cek train test set before load prototype
+[185 186 187 188 189 190 191 192 193 194 195 196 197 198 199]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session9.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test3_session_10.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test3_session10.pt
+
+
+
+
+##############################
+Test: 4 Task: 1
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test0_session_0.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[64, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+cek train test set before load prototype
+[50 51 52 53 54 55 56 57 58 59 60 61 62 63 64]
+50
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_1.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session1.pt
+
+
+
+
+##############################
+Test: 4 Task: 2
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_1.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_1.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+cek train test set before load prototype
+[65 66 67 68 69 70 71 72 73 74 75 76 77 78 79]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session1.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_2.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session2.pt
+
+
+
+
+##############################
+Test: 4 Task: 3
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_2.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_2.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+cek train test set before load prototype
+[80 81 82 83 84 85 86 87 88 89 90 91 92 93 94]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session2.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_3.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session3.pt
+
+
+
+
+##############################
+Test: 4 Task: 4
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_3.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_3.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt2022-11-08 09:19:09,576 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:19:09,580 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:19:09,908 INFO: fine-tune procedure is finished!
+2022-11-08 09:19:43,636 INFO: [Test_acc of task 4 on test 4: 0.60197][acc of former classes: 0.73002][acc of former samples in all classes: 0.73002]
+[acc of novel samples in all classes: 0.50057]
+2022-11-08 09:19:44,088 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:19:44,116 WARNING: Current net - loaded net:
+2022-11-08 09:19:44,117 WARNING: Loaded net - current net:
+2022-11-08 09:19:44,117 WARNING:   func.classifier.bias
+2022-11-08 09:19:44,117 WARNING:   func.classifier.weight
+2022-11-08 09:19:44,141 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_4.pth.
+2022-11-08 09:19:44,256 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:19:44,261 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:19:44,590 INFO: fine-tune procedure is finished!
+2022-11-08 09:20:22,464 INFO: [Test_acc of task 5 on test 4: 0.55143][acc of former classes: 0.72642][acc of former samples in all classes: 0.72642]
+[acc of novel samples in all classes: 0.44038]
+2022-11-08 09:20:22,961 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:20:22,986 WARNING: Current net - loaded net:
+2022-11-08 09:20:22,986 WARNING: Loaded net - current net:
+2022-11-08 09:20:22,986 WARNING:   func.classifier.bias
+2022-11-08 09:20:22,986 WARNING:   func.classifier.weight
+2022-11-08 09:20:23,101 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_5.pth.
+2022-11-08 09:20:23,218 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:20:23,222 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:20:23,530 INFO: fine-tune procedure is finished!
+2022-11-08 09:21:07,495 INFO: [Test_acc of task 6 on test 4: 0.51787][acc of former classes: 0.71922][acc of former samples in all classes: 0.71922]
+[acc of novel samples in all classes: 0.41190]
+2022-11-08 09:21:07,935 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:21:07,965 WARNING: Current net - loaded net:
+2022-11-08 09:21:07,965 WARNING: Loaded net - current net:
+2022-11-08 09:21:07,965 WARNING:   func.classifier.bias
+2022-11-08 09:21:07,965 WARNING:   func.classifier.weight
+2022-11-08 09:21:08,000 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_6.pth.
+2022-11-08 09:21:08,167 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:21:08,174 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:21:08,468 INFO: fine-tune procedure is finished!
+
+Trainset classes:
+[96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 95]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+cek train test set before load prototype
+[ 95  96  97  98  99 100 101 102 103 104 105 106 107 108 109]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session3.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_4.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session4.pt
+
+
+
+
+##############################
+Test: 4 Task: 5
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_4.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_4.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+cek train test set before load prototype
+[110 111 112 113 114 115 116 117 118 119 120 121 122 123 124]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session4.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_5.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session5.pt
+
+
+
+
+##############################
+Test: 4 Task: 6
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_5.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_5.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 125, 126, 127]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+cek train test set before load prototype
+[125 126 127 128 129 130 131 132 133 134 135 136 137 138 139]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session5.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_6.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session6.pt
+
+
+
+
+##############################
+Test: 4 Task: 7
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_6.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_6.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+cek train test set before load prototype
+[140 141 142 143 144 145 146 147 148 149 150 151 152 153 154]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session6.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154]2022-11-08 09:21:54,346 INFO: [Test_acc of task 7 on test 4: 0.48858][acc of former classes: 0.70914][acc of former samples in all classes: 0.70914]
+[acc of novel samples in all classes: 0.38902]
+2022-11-08 09:21:54,803 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:21:54,829 WARNING: Current net - loaded net:
+2022-11-08 09:21:54,830 WARNING: Loaded net - current net:
+2022-11-08 09:21:54,830 WARNING:   func.classifier.bias
+2022-11-08 09:21:54,830 WARNING:   func.classifier.weight
+2022-11-08 09:21:54,851 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_7.pth.
+2022-11-08 09:21:54,979 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:21:54,983 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:21:55,311 INFO: fine-tune procedure is finished!
+2022-11-08 09:22:46,198 INFO: [Test_acc of task 8 on test 4: 0.47709][acc of former classes: 0.69978][acc of former samples in all classes: 0.69978]
+[acc of novel samples in all classes: 0.38927]
+2022-11-08 09:22:46,724 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:22:46,764 WARNING: Current net - loaded net:
+2022-11-08 09:22:46,764 WARNING: Loaded net - current net:
+2022-11-08 09:22:46,764 WARNING:   func.classifier.bias
+2022-11-08 09:22:46,764 WARNING:   func.classifier.weight
+2022-11-08 09:22:46,812 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_8.pth.
+2022-11-08 09:22:47,041 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:22:47,047 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:22:47,359 INFO: fine-tune procedure is finished!
+2022-11-08 09:23:42,022 INFO: [Test_acc of task 9 on test 4: 0.45247][acc of former classes: 0.69618][acc of former samples in all classes: 0.69618]
+[acc of novel samples in all classes: 0.36712]
+2022-11-08 09:23:42,474 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth.
+2022-11-08 09:23:42,501 WARNING: Current net - loaded net:
+2022-11-08 09:23:42,502 WARNING: Loaded net - current net:
+2022-11-08 09:23:42,502 WARNING:   func.classifier.bias
+2022-11-08 09:23:42,502 WARNING:   func.classifier.weight
+2022-11-08 09:23:42,520 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_9.pth.
+2022-11-08 09:23:42,644 INFO: Model [FLOWER1Model] is created.
+2022-11-08 09:23:42,649 INFO: Dataset NormalDataset - cub is created.
+2022-11-08 09:23:42,976 INFO: fine-tune procedure is finished!
+
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_7.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session7.pt
+
+
+
+
+##############################
+Test: 4 Task: 8
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_7.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_7.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 155, 156, 157, 158, 159]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+cek train test set before load prototype
+[155 156 157 158 159 160 161 162 163 164 165 166 167 168 169]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session7.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_8.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session8.pt
+
+
+
+
+##############################
+Test: 4 Task: 9
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_8.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_8.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+cek train test set before load prototype
+[170 171 172 173 174 175 176 177 178 179 180 181 182 183 184]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session8.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184]
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_9.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session9.pt
+
+
+
+
+##############################
+Test: 4 Task: 10
+Load NETWORK MODEL From: ./exp/cub_bases50/F2MMASJ0A_res18_CUB_baseline_50base_wandb_02/models/best_net_latest.pth
+/workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_9.pth
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_9.pth
+Load prototype for FSCIL with memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test0_session0.pt
+Trainset classes:
+[192, 193, 194, 195, 196, 197, 198, 199, 185, 186, 187, 188, 189, 190, 191]
+Testset classes:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+cek train test set before load prototype
+[185 186 187 188 189 190 191 192 193 194 195 196 197 198 199]
+50
+Load prototype for FSCIL without memory from: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session9.pt
+>>> Test >>>
+Former classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Novel classes: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]2022-11-08 09:24:42,719 INFO: [Test_acc of task 10 on test 4: 0.44667][acc of former classes: 0.69258][acc of former samples in all classes: 0.69258]
+[acc of novel samples in all classes: 0.36913]
+2022-11-08 09:24:42,914 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-08 09:24:42,915 INFO: Session 1: 79.63+-0.00[acc of former classes: 0.0000][acc of former samples in all classes: 0.0000]
+[acc of novel samples in all classes: 0.7963]
+2022-11-08 09:24:42,915 INFO: Session 2: 71.14+-0.38[acc of former classes: 0.7724][acc of former samples in all classes: 0.7724]
+[acc of novel samples in all classes: 0.5176]
+2022-11-08 09:24:42,915 INFO: Session 3: 66.18+-0.61[acc of former classes: 0.7620][acc of former samples in all classes: 0.7620]
+[acc of novel samples in all classes: 0.5042]
+2022-11-08 09:24:42,915 INFO: Session 4: 64.22+-0.55[acc of former classes: 0.7549][acc of former samples in all classes: 0.7549]
+[acc of novel samples in all classes: 0.5241]
+2022-11-08 09:24:42,915 INFO: Session 5: 60.03+-0.43[acc of former classes: 0.7359][acc of former samples in all classes: 0.7359]
+[acc of novel samples in all classes: 0.4928]
+2022-11-08 09:24:42,915 INFO: Session 6: 55.17+-0.24[acc of former classes: 0.7320][acc of former samples in all classes: 0.7320]
+[acc of novel samples in all classes: 0.4373]
+2022-11-08 09:24:42,915 INFO: Session 7: 51.74+-0.14[acc of former classes: 0.7251][acc of former samples in all classes: 0.7251]
+[acc of novel samples in all classes: 0.4080]
+2022-11-08 09:24:42,916 INFO: Session 8: 49.13+-0.31[acc of former classes: 0.7185][acc of former samples in all classes: 0.7185]
+[acc of novel samples in all classes: 0.3888]
+2022-11-08 09:24:42,916 INFO: Session 9: 47.79+-0.47[acc of former classes: 0.7099][acc of former samples in all classes: 0.7099]
+[acc of novel samples in all classes: 0.3864]
+2022-11-08 09:24:42,916 INFO: Session 10: 45.68+-0.37[acc of former classes: 0.7064][acc of former samples in all classes: 0.7064]
+[acc of novel samples in all classes: 0.3694]
+2022-11-08 09:24:42,916 INFO: Session 11: 45.29+-0.49[acc of former classes: 0.7024][acc of former samples in all classes: 0.7024]
+[acc of novel samples in all classes: 0.3743]
+2022-11-08 09:24:42,916 INFO: random seed: 1997
+
+save network to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/models/test4_session_10.pth
+save prototype to: /workspace/FLOWER/f2m/increment/cub_bases50/FLOWER1_res18_cub_5shots_50base_debug/prototypes/test4_session10.pt
+
+
+
+
+finish!!

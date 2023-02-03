@@ -1,0 +1,721 @@
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-10 10:13:21,088 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-10 10:13:21,088 INFO: 
+  name: 1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug
+  model_type: RebalanceModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  datasets:[
+    train:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 8
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    val:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/test
+      aug: False
+      pre_load: False
+      pin_memory: True
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    test:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/test
+      aug: False
+      pre_load: False
+      pin_memory: True
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet18_softmax
+    num_classes: 60
+    adopt_classifier: False
+    flatten: True
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+    base_model_cf: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug
+    training_states: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/training_states
+    log: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug
+    models: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models
+    prototypes: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.01
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    loss: [OrderedDict([('type', 'CosineCrossEntropy')]), OrderedDict([('type', 'LessForget'), ('lambda_base', 3)]), OrderedDict([('type', 'InterClassSeparation'), ('K', 2), ('weight', 1), ('margin', 0.5)])]
+    random: True
+    Embed_dim: 512
+    fine_tune: True
+    buffer_size: 1
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 60
+    tasks: 9
+    shots: 1
+    num_test: 5
+  ]
+  val:[
+    val_freq: 100
+    test_type: CNN
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 1
+    use_tb_logger: True
+    wandb:[
+      project: FIL-Noise-Cifar-Incremental-Results
+      resume_id: None
+    ]
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-10 10:13:21,088 INFO: Random seed: 1997
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:181: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  init.kaiming_normal(m.weight, mode='fan_out')
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:188: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(m.weight, std=0.001)
+2022-11-10 10:13:22,832 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth.
+2022-11-10 10:13:22,893 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:13:22,894 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:13:22,950 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:13:22,963 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:13:41,181 INFO: Test_acc of task 0 on test 0 is 	 0.66450
+
+2022-11-10 10:13:42,184 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth.
+2022-11-10 10:13:42,236 INFO: The size of buffer is 0.14041614532470703 Mb, the number of images is 60
+2022-11-10 10:13:42,238 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:13:42,238 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:13:42,246 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:13:42,260 INFO: Dataset NormalDataset - miniImageNet is created.
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth
+Successfully saving the model of test 0 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth
+2022-11-10 10:14:07,548 INFO: Test_acc of task 1 on test 0 is 	 0.61292
+
+2022-11-10 10:14:07,841 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth.
+2022-11-10 10:14:07,898 INFO: The size of buffer is 0.1522846221923828 Mb, the number of images is 65
+2022-11-10 10:14:07,901 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:14:07,901 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:14:07,907 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:14:07,921 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth
+Successfully saving the model of test 0 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth
+2022-11-10 10:14:36,277 INFO: Test_acc of task 2 on test 0 is 	 0.56914
+
+2022-11-10 10:14:36,568 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth.
+2022-11-10 10:14:36,627 INFO: The size of buffer is 0.1625833511352539 Mb, the number of images is 70
+2022-11-10 10:14:36,629 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:14:36,629 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:14:36,635 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:14:36,650 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth
+Successfully saving the model of test 0 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth
+2022-11-10 10:15:04,050 INFO: Test_acc of task 3 on test 0 is 	 0.53120
+
+2022-11-10 10:15:04,358 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth.
+2022-11-10 10:15:04,416 INFO: The size of buffer is 0.17520809173583984 Mb, the number of images is 75
+2022-11-10 10:15:04,419 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:15:04,419 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:15:04,425 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:15:04,441 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth
+Successfully saving the model of test 0 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth
+2022-11-10 10:15:31,497 INFO: Test_acc of task 4 on test 0 is 	 0.49800
+
+2022-11-10 10:15:31,794 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth.
+2022-11-10 10:15:31,846 INFO: The size of buffer is 0.18645381927490234 Mb, the number of images is 80
+2022-11-10 10:15:31,848 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:15:31,848 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:15:31,854 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:15:31,871 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth
+Successfully saving the model of test 0 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth
+2022-11-10 10:16:00,365 INFO: Test_acc of task 5 on test 0 is 	 0.46871
+
+2022-11-10 10:16:00,746 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth.
+2022-11-10 10:16:00,803 INFO: The size of buffer is 0.1982574462890625 Mb, the number of images is 85
+2022-11-10 10:16:00,805 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:16:00,806 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:16:00,812 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:16:00,830 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth
+Successfully saving the model of test 0 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth
+2022-11-10 10:16:30,269 INFO: Test_acc of task 6 on test 0 is 	 0.44267
+
+2022-11-10 10:16:30,620 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth.
+2022-11-10 10:16:30,669 INFO: The size of buffer is 0.2097320556640625 Mb, the number of images is 90
+2022-11-10 10:16:30,671 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:16:30,671 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:16:30,677 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:16:30,696 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth
+Successfully saving the model of test 0 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth
+2022-11-10 10:16:57,621 INFO: Test_acc of task 7 on test 0 is 	 0.41937
+
+2022-11-10 10:16:57,916 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth.
+2022-11-10 10:16:57,967 INFO: The size of buffer is 0.2217693328857422 Mb, the number of images is 95
+2022-11-10 10:16:57,969 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:16:57,969 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:16:57,975 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:16:57,995 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth
+Successfully saving the model of test 0 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth
+2022-11-10 10:17:27,861 INFO: Test_acc of task 8 on test 0 is 	 0.39840
+
+2022-11-10 10:17:28,146 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth.
+2022-11-10 10:17:28,203 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:17:28,204 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:17:28,261 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:17:28,273 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:17:44,172 INFO: Test_acc of task 0 on test 1 is 	 0.66450
+
+2022-11-10 10:17:44,999 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth.
+2022-11-10 10:17:45,152 INFO: The size of buffer is 0.37933826446533203 Mb, the number of images is 160
+2022-11-10 10:17:45,154 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:17:45,154 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:17:45,160 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:17:45,173 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_8.pth
+Successfully saving the model of test 0 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth
+Successfully saving the model of test 1 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth
+2022-11-10 10:18:09,125 INFO: Test_acc of task 1 on test 1 is 	 0.61338
+
+2022-11-10 10:18:09,421 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth.
+2022-11-10 10:18:09,479 INFO: The size of buffer is 0.3897438049316406 Mb, the number of images is 165
+2022-11-10 10:18:09,481 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:18:09,481 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:18:09,487 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:18:09,502 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth
+Successfully saving the model of test 1 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth
+2022-11-10 10:18:35,897 INFO: Test_acc of task 2 on test 1 is 	 0.56957
+
+2022-11-10 10:18:36,257 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth.
+2022-11-10 10:18:36,308 INFO: The size of buffer is 0.40244483947753906 Mb, the number of images is 170
+2022-11-10 10:18:36,310 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:18:36,310 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:18:36,317 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:18:36,332 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth
+Successfully saving the model of test 1 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth
+2022-11-10 10:19:02,932 INFO: Test_acc of task 3 on test 1 is 	 0.53160
+
+2022-11-10 10:19:03,287 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth.
+2022-11-10 10:19:03,338 INFO: The size of buffer is 0.4134845733642578 Mb, the number of images is 175
+2022-11-10 10:19:03,340 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:19:03,340 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:19:03,346 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:19:03,363 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth
+Successfully saving the model of test 1 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth
+2022-11-10 10:19:31,881 INFO: Test_acc of task 4 on test 1 is 	 0.49838
+
+2022-11-10 10:19:32,168 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth.
+2022-11-10 10:19:32,225 INFO: The size of buffer is 0.4253215789794922 Mb, the number of images is 180
+2022-11-10 10:19:32,228 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:19:32,228 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:19:32,234 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:19:32,251 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth
+Successfully saving the model of test 1 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth
+2022-11-10 10:20:01,666 INFO: Test_acc of task 5 on test 1 is 	 0.46906
+
+2022-11-10 10:20:01,959 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth.
+2022-11-10 10:20:02,017 INFO: The size of buffer is 0.43749332427978516 Mb, the number of images is 185
+2022-11-10 10:20:02,020 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:20:02,020 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:20:02,026 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:20:02,044 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth
+Successfully saving the model of test 1 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth
+2022-11-10 10:20:28,677 INFO: Test_acc of task 6 on test 1 is 	 0.44300
+
+2022-11-10 10:20:28,969 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth.
+2022-11-10 10:20:29,019 INFO: The size of buffer is 0.44931507110595703 Mb, the number of images is 190
+2022-11-10 10:20:29,021 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:20:29,022 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:20:29,027 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:20:29,046 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth
+Successfully saving the model of test 1 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth
+2022-11-10 10:20:56,077 INFO: Test_acc of task 7 on test 1 is 	 0.41968
+
+2022-11-10 10:20:56,358 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth.
+2022-11-10 10:20:56,429 INFO: The size of buffer is 0.4609203338623047 Mb, the number of images is 195
+2022-11-10 10:20:56,432 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:20:56,432 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:20:56,438 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:20:56,458 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth
+Successfully saving the model of test 1 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth
+2022-11-10 10:21:26,268 INFO: Test_acc of task 8 on test 1 is 	 0.39870
+
+2022-11-10 10:21:26,553 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth.
+2022-11-10 10:21:27,533 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:21:27,533 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:21:27,590 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:21:27,603 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:21:43,707 INFO: Test_acc of task 0 on test 2 is 	 0.66450
+
+2022-11-10 10:21:44,840 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth.
+2022-11-10 10:21:44,909 INFO: The size of buffer is 0.6187906265258789 Mb, the number of images is 260
+2022-11-10 10:21:44,911 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:21:44,912 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:21:44,921 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:21:44,935 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_8.pth
+Successfully saving the model of test 1 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth
+Successfully saving the model of test 2 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth
+2022-11-10 10:22:11,338 INFO: Test_acc of task 1 on test 2 is 	 0.61338
+
+2022-11-10 10:22:11,620 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth.
+2022-11-10 10:22:11,683 INFO: The size of buffer is 0.6304740905761719 Mb, the number of images is 265
+2022-11-10 10:22:11,685 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:22:11,685 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:22:11,691 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:22:11,705 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth
+Successfully saving the model of test 2 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth
+2022-11-10 10:22:39,277 INFO: Test_acc of task 2 on test 2 is 	 0.56957
+
+2022-11-10 10:22:39,577 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth.
+2022-11-10 10:22:39,631 INFO: The size of buffer is 0.6408843994140625 Mb, the number of images is 270
+2022-11-10 10:22:39,633 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:22:39,633 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:22:39,639 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:22:39,655 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth
+Successfully saving the model of test 2 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth
+2022-11-10 10:23:06,563 INFO: Test_acc of task 3 on test 2 is 	 0.53160
+
+2022-11-10 10:23:06,927 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth.
+2022-11-10 10:23:06,987 INFO: The size of buffer is 0.651820182800293 Mb, the number of images is 275
+2022-11-10 10:23:06,989 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:23:06,989 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:23:06,995 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:23:07,012 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth
+Successfully saving the model of test 2 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth
+2022-11-10 10:23:34,393 INFO: Test_acc of task 4 on test 2 is 	 0.49838
+
+2022-11-10 10:23:34,689 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth.
+2022-11-10 10:23:34,747 INFO: The size of buffer is 0.6644220352172852 Mb, the number of images is 280
+2022-11-10 10:23:34,749 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:23:34,749 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:23:34,755 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:23:34,772 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth
+Successfully saving the model of test 2 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth
+2022-11-10 10:23:59,140 INFO: Test_acc of task 5 on test 2 is 	 0.46906
+
+2022-11-10 10:23:59,423 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth.
+2022-11-10 10:23:59,475 INFO: The size of buffer is 0.6787033081054688 Mb, the number of images is 285
+2022-11-10 10:23:59,477 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:23:59,477 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:23:59,485 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:23:59,503 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth
+Successfully saving the model of test 2 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth
+2022-11-10 10:24:24,598 INFO: Test_acc of task 6 on test 2 is 	 0.44300
+
+2022-11-10 10:24:24,872 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth.
+2022-11-10 10:24:24,928 INFO: The size of buffer is 0.6920661926269531 Mb, the number of images is 290
+2022-11-10 10:24:24,930 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:24:24,930 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:24:24,936 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:24:24,955 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth
+Successfully saving the model of test 2 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth
+2022-11-10 10:24:52,210 INFO: Test_acc of task 7 on test 2 is 	 0.41968
+
+2022-11-10 10:24:52,496 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth.
+2022-11-10 10:24:52,550 INFO: The size of buffer is 0.7046699523925781 Mb, the number of images is 295
+2022-11-10 10:24:52,552 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:24:52,553 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:24:52,558 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:24:52,578 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth
+Successfully saving the model of test 2 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth
+2022-11-10 10:25:22,176 INFO: Test_acc of task 8 on test 2 is 	 0.39870
+
+2022-11-10 10:25:22,469 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth.
+2022-11-10 10:25:22,517 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:25:22,517 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:25:22,574 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:25:22,586 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:25:38,835 INFO: Test_acc of task 0 on test 3 is 	 0.66450
+
+2022-11-10 10:25:39,692 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth.
+2022-11-10 10:25:39,747 INFO: The size of buffer is 0.8600101470947266 Mb, the number of images is 360
+2022-11-10 10:25:39,750 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:25:39,750 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:25:39,760 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:25:39,776 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_8.pth
+Successfully saving the model of test 2 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth
+Successfully saving the model of test 3 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth
+2022-11-10 10:26:05,682 INFO: Test_acc of task 1 on test 3 is 	 0.61338
+
+2022-11-10 10:26:06,010 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth.
+2022-11-10 10:26:06,079 INFO: The size of buffer is 0.8713235855102539 Mb, the number of images is 365
+2022-11-10 10:26:06,081 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:26:06,082 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:26:06,087 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:26:06,102 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth
+Successfully saving the model of test 3 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth
+2022-11-10 10:26:33,569 INFO: Test_acc of task 2 on test 3 is 	 0.56957
+
+2022-11-10 10:26:33,864 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth.
+2022-11-10 10:26:33,925 INFO: The size of buffer is 0.8823432922363281 Mb, the number of images is 370
+2022-11-10 10:26:33,927 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:26:33,928 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:26:33,934 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:26:33,949 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth
+Successfully saving the model of test 3 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth
+2022-11-10 10:27:01,176 INFO: Test_acc of task 3 on test 3 is 	 0.53160
+
+2022-11-10 10:27:01,514 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth.
+2022-11-10 10:27:01,568 INFO: The size of buffer is 0.8937005996704102 Mb, the number of images is 375
+2022-11-10 10:27:01,571 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:27:01,571 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:27:01,577 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:27:01,595 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth
+Successfully saving the model of test 3 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth
+2022-11-10 10:27:27,418 INFO: Test_acc of task 4 on test 3 is 	 0.49838
+
+2022-11-10 10:27:27,759 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth.
+2022-11-10 10:27:27,816 INFO: The size of buffer is 0.9068918228149414 Mb, the number of images is 380
+2022-11-10 10:27:27,819 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:27:27,819 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:27:27,825 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:27:27,842 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth
+Successfully saving the model of test 3 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth
+2022-11-10 10:27:58,006 INFO: Test_acc of task 5 on test 3 is 	 0.46906
+
+2022-11-10 10:27:58,287 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth.
+2022-11-10 10:27:58,343 INFO: The size of buffer is 0.9195013046264648 Mb, the number of images is 385
+2022-11-10 10:27:58,345 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:27:58,345 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:27:58,353 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:27:58,371 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth
+Successfully saving the model of test 3 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth
+2022-11-10 10:28:25,818 INFO: Test_acc of task 6 on test 3 is 	 0.44300
+
+2022-11-10 10:28:26,119 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth.
+2022-11-10 10:28:26,183 INFO: The size of buffer is 0.9314975738525391 Mb, the number of images is 390
+2022-11-10 10:28:26,185 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:28:26,185 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:28:26,192 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:28:26,213 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth
+Successfully saving the model of test 3 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth
+2022-11-10 10:28:54,708 INFO: Test_acc of task 7 on test 3 is 	 0.41968
+
+2022-11-10 10:28:54,987 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth.
+2022-11-10 10:28:55,049 INFO: The size of buffer is 0.9432201385498047 Mb, the number of images is 395
+2022-11-10 10:28:55,052 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:28:55,052 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:28:55,058 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:28:55,078 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth
+Successfully saving the model of test 3 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth
+2022-11-10 10:29:24,402 INFO: Test_acc of task 8 on test 3 is 	 0.39870
+
+2022-11-10 10:29:24,709 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth.
+2022-11-10 10:29:24,765 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:29:24,765 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:29:24,823 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:29:24,835 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:29:41,219 INFO: Test_acc of task 0 on test 4 is 	 0.66450
+
+2022-11-10 10:29:42,110 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth.
+2022-11-10 10:29:42,172 INFO: The size of buffer is 1.0985183715820312 Mb, the number of images is 460
+2022-11-10 10:29:42,174 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:29:42,174 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:29:42,180 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:29:42,193 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_8.pth
+Successfully saving the model of test 3 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_NCMModel_res18_miniImageNet_small_60base_wandb_001/models/net_g_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth
+Successfully saving the model of test 4 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth
+2022-11-10 10:30:10,709 INFO: Test_acc of task 1 on test 4 is 	 0.61338
+
+2022-11-10 10:30:11,003 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth.
+2022-11-10 10:30:11,064 INFO: The size of buffer is 1.1098756790161133 Mb, the number of images is 465
+2022-11-10 10:30:11,067 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:30:11,067 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:30:11,073 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:30:11,087 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth
+Successfully saving the model of test 4 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth
+2022-11-10 10:30:35,587 INFO: Test_acc of task 2 on test 4 is 	 0.56957
+
+2022-11-10 10:30:35,876 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth.
+2022-11-10 10:30:35,936 INFO: The size of buffer is 1.1227359771728516 Mb, the number of images is 470
+2022-11-10 10:30:35,938 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:30:35,938 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:30:35,944 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:30:35,959 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth
+Successfully saving the model of test 4 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth
+2022-11-10 10:31:01,426 INFO: Test_acc of task 3 on test 4 is 	 0.53160
+
+2022-11-10 10:31:01,707 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth.
+2022-11-10 10:31:01,772 INFO: The size of buffer is 1.134023666381836 Mb, the number of images is 475
+2022-11-10 10:31:01,774 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:31:01,774 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:31:01,780 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:31:01,796 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth
+Successfully saving the model of test 4 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth
+2022-11-10 10:31:26,712 INFO: Test_acc of task 4 on test 4 is 	 0.49838
+
+2022-11-10 10:31:26,994 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth.
+2022-11-10 10:31:27,048 INFO: The size of buffer is 1.1459684371948242 Mb, the number of images is 480
+2022-11-10 10:31:27,050 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:31:27,050 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:31:27,056 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:31:27,073 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth
+Successfully saving the model of test 4 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth
+2022-11-10 10:31:56,306 INFO: Test_acc of task 5 on test 4 is 	 0.46906
+
+2022-11-10 10:31:56,599 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth.
+2022-11-10 10:31:56,663 INFO: The size of buffer is 1.1585254669189453 Mb, the number of images is 485
+2022-11-10 10:31:56,665 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:31:56,665 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:31:56,674 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:31:56,693 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth
+Successfully saving the model of test 4 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth
+2022-11-10 10:32:25,121 INFO: Test_acc of task 6 on test 4 is 	 0.44300
+
+2022-11-10 10:32:25,406 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth.
+2022-11-10 10:32:25,471 INFO: The size of buffer is 1.1711864471435547 Mb, the number of images is 490
+2022-11-10 10:32:25,473 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:32:25,474 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:32:25,480 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:32:25,499 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth
+Successfully saving the model of test 4 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth
+2022-11-10 10:32:53,723 INFO: Test_acc of task 7 on test 4 is 	 0.41968
+
+2022-11-10 10:32:54,050 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth.
+2022-11-10 10:32:54,114 INFO: The size of buffer is 1.1822633743286133 Mb, the number of images is 495
+2022-11-10 10:32:54,116 WARNING: Params fc.former will not be optimized.
+2022-11-10 10:32:54,117 INFO: Model [RebalanceModel] is created.
+2022-11-10 10:32:54,122 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:32:54,143 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth
+Successfully saving the model of test 4 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth
+2022-11-10 10:33:23,660 INFO: Test_acc of task 8 on test 4 is 	 0.39870
+
+2022-11-10 10:33:23,760 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-10 10:33:23,760 INFO: Session 1: 66.45+-0.00
+2022-11-10 10:33:23,760 INFO: Session 2: 61.33+-0.02
+2022-11-10 10:33:23,761 INFO: Session 3: 56.95+-0.02
+2022-11-10 10:33:23,761 INFO: Session 4: 53.15+-0.01
+2022-11-10 10:33:23,761 INFO: Session 5: 49.83+-0.01
+2022-11-10 10:33:23,761 INFO: Session 6: 46.90+-0.01
+2022-11-10 10:33:23,761 INFO: Session 7: 44.29+-0.01
+2022-11-10 10:33:23,761 INFO: Session 8: 41.96+-0.01
+2022-11-10 10:33:23,761 INFO: Session 9: 39.86+-0.01
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_NCM_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_8.pth
+Successfully saving the model of test 4 session 8
+finish!!
+finish

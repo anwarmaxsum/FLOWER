@@ -1,0 +1,34 @@
+Example of Running Script:
+
+CIFAR-100:
+Base Task Learning (60 base classes):
+- F2M: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_CFRPModel_AG_ProtoFix_SGD_ori.yml
+- Baseline, FSLL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_CFRPModel_baseline_SGD.yml
+- ICARL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_ICaRL_SGD_dev.yml
+- Rebalance (NCM): CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_NCM_SGD_02.yml
+- FLOWER: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_F2MMASJ0A_SGD_8L4R.yml
+
+Base Task Learning (20 base classes):
+- F2M: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_CFRPModel_AG_ProtoFix_20base_SGD_ori.yml
+- Baseline, FSLL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_CFRPModel_baseline_20base_SGD.yml
+- ICARL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_ICaRL_20base_SGD_dev.yml
+- Rebalance (NCM): CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_NCM_SGD_20base_02.yml
+- FLOWER: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/FSIL_train_res18_cifar_F2MMASJ0A_20_base_SGD_8L4R.yml
+
+Continual Tasks Learning (60 base classes):
+- F2M: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_MTNBModel_5shots_SGD_02.yml
+- Baseline: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_BaselineModel_5shots_SGD.yml
+- FSLL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_FSLLModel_baseline_SGD.yml
+- ICARL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_iCaRL_5shots_SGD.yml
+- Rebalance (NCM): CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_MTNBModel_5shots_SGD_02.yml
+- FLOWER: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_FLOWER1Model_RR.yml
+
+
+Continual Tasks Learning (20 base classes):
+- F2M: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_MTNBModel_5shots_SGD_20base_02.yml
+- Baseline: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_BaselineModel_5shots_SGD_20base.yml
+- FSLL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_FSLLModel_baseline_SGD_20base.yml
+- ICARL: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_iCaRL_5shots_SGD_20base.yml
+- Rebalance (NCM): CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_MTNBModel_5shots_SGD_20base_02.yml
+- FLOWER: CUDA_VISIBLE_DEVICES python train.py -opt options/train/cifar/FSIL/incremental_res18_cifar_FLOWER1Model_RR_20base.yml
+

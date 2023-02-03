@@ -1,0 +1,905 @@
+2022-11-07 10:53:35,086 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-07 10:53:35,086 INFO: 
+  name: Rebalance_res18_cub_50bases_wandb
+  model_type: RebalanceModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  datasets:[
+    train:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 1
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    val:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      pre_load: False
+      pin_memory: True
+      num_worker_per_gpu: 1
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    test:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      pre_load: False
+      pin_memory: True
+      num_worker_per_gpu: 1
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet18_softmax
+    Embed_dim: 512
+    pretrained: False
+    norm: False
+    num_classes: 50
+    adopt_classifier: False
+    addition_net: False
+    flatten: True
+    cut_at_pooling: False
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth
+    base_model_cf: ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb
+    training_states: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/training_states
+    log: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb
+    models: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models
+    prototypes: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.01
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    loss: [OrderedDict([('type', 'CosineCrossEntropy')]), OrderedDict([('type', 'LessForget'), ('lambda_base', 5)]), OrderedDict([('type', 'InterClassSeparation'), ('K', 2), ('weight', 1), ('margin', 0.5)])]
+    random: True
+    Embed_dim: 512
+    fine_tune: True
+    buffer_size: 2
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 50
+    tasks: 11
+    shots: 5
+    num_test: 5
+  ]
+  val:[
+    val_freq: 100000
+    test_type: CNN
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 25
+    use_tb_logger: False
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-07 10:53:35,086 INFO: Random seed: 1997
+2022-11-07 10:53:38,073 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth.
+2022-11-07 10:53:38,336 WARNING: Params fc.former will not be optimized.
+2022-11-07 10:53:38,336 INFO: Model [RebalanceModel] is created.
+2022-11-07 10:53:38,342 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:53:38,347 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:54:01,837 INFO: Test_acc of task 0 on test 0 is 	 0.74730
+
+2022-11-07 10:54:04,532 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_0.pth.
+2022-11-07 10:54:04,817 INFO: The size of buffer is 9.69267749786377 Mb, the number of images is 100
+2022-11-07 10:54:04,821 WARNING: Params fc.former will not be optimized.
+2022-11-07 10:54:04,821 INFO: Model [RebalanceModel] is created.
+2022-11-07 10:54:04,825 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:54:04,843 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:54:38,990 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0414, CELoss: 2.7526, InterClassLoss: 0.1007, Loss: 3.2313, ]
+2022-11-07 10:55:10,236 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0428, CELoss: 2.1754, InterClassLoss: 0.1173, Loss: 2.6834, ]
+2022-11-07 10:55:40,667 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0384, CELoss: 2.0181, InterClassLoss: 0.0866, Loss: 2.4556, ]
+2022-11-07 10:56:11,590 INFO: Test_acc of task 1 on test 0 is 	 0.60624
+
+2022-11-07 10:56:12,795 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_1.pth.
+2022-11-07 10:56:13,076 INFO: The size of buffer is 12.683805465698242 Mb, the number of images is 130
+2022-11-07 10:56:13,080 WARNING: Params fc.former will not be optimized.
+2022-11-07 10:56:13,080 INFO: Model [RebalanceModel] is created.
+2022-11-07 10:56:13,084 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:56:13,094 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:56:45,622 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0250, CELoss: 2.4200, InterClassLoss: 0.0718, Loss: 2.7522, ]
+2022-11-07 10:57:18,110 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0282, CELoss: 1.7608, InterClassLoss: 0.1138, Loss: 2.1682, ]
+2022-11-07 10:57:50,493 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0308, CELoss: 1.7744, InterClassLoss: 0.1091, Loss: 2.2036, ]
+2022-11-07 10:58:24,464 INFO: Test_acc of task 2 on test 0 is 	 0.56910
+
+2022-11-07 10:58:25,577 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_2.pth.
+2022-11-07 10:58:25,658 INFO: The size of buffer is 15.879523277282715 Mb, the number of images is 160
+2022-11-07 10:58:25,662 WARNING: Params fc.former will not be optimized.
+2022-11-07 10:58:25,662 INFO: Model [RebalanceModel] is created.
+2022-11-07 10:58:25,666 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:58:25,688 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 10:58:55,194 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0235, CELoss: 2.0456, InterClassLoss: 0.0884, Loss: 2.4051, ]
+2022-11-07 10:59:27,193 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0315, CELoss: 1.5550, InterClassLoss: 0.1304, Loss: 2.0492, ]
+2022-11-07 10:59:59,956 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0291, CELoss: 1.3736, InterClassLoss: 0.1159, Loss: 1.8257, ]
+2022-11-07 11:00:35,702 INFO: Test_acc of task 3 on test 0 is 	 0.56169
+
+2022-11-07 11:00:37,031 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_3.pth.
+2022-11-07 11:00:37,176 INFO: The size of buffer is 18.606122970581055 Mb, the number of images is 190
+2022-11-07 11:00:37,180 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:00:37,181 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:00:37,185 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:00:37,200 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:01:02,270 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0238, CELoss: 1.7588, InterClassLoss: 0.1066, Loss: 2.1644, ]
+2022-11-07 11:01:25,906 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0286, CELoss: 1.2904, InterClassLoss: 0.1330, Loss: 1.7832, ]
+2022-11-07 11:01:49,225 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0322, CELoss: 1.0350, InterClassLoss: 0.0991, Loss: 1.5393, ]
+2022-11-07 11:02:11,095 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0326, CELoss: 0.7368, InterClassLoss: 0.0930, Loss: 1.2398, ]
+2022-11-07 11:02:35,468 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0286, CELoss: 0.7667, InterClassLoss: 0.0825, Loss: 1.2088, ]
+2022-11-07 11:02:58,914 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0285, CELoss: 0.7797, InterClassLoss: 0.1035, Loss: 1.2416, ]
+2022-11-07 11:03:23,415 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0259, CELoss: 0.6893, InterClassLoss: 0.0922, Loss: 1.1075, ]
+2022-11-07 11:03:47,301 INFO: Test_acc of task 4 on test 0 is 	 0.48139
+
+2022-11-07 11:03:48,437 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_4.pth.
+2022-11-07 11:03:48,512 INFO: The size of buffer is 21.85078525543213 Mb, the number of images is 220
+2022-11-07 11:03:48,516 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:03:48,516 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:03:48,520 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:03:48,547 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:04:12,934 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0234, CELoss: 1.2073, InterClassLoss: 0.0816, Loss: 1.6051, ]
+2022-11-07 11:04:36,668 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0275, CELoss: 0.9557, InterClassLoss: 0.0849, Loss: 1.4135, ]
+2022-11-07 11:05:00,689 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0363, CELoss: 0.8195, InterClassLoss: 0.0701, Loss: 1.3816, ]
+2022-11-07 11:05:21,800 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0325, CELoss: 0.5884, InterClassLoss: 0.0669, Loss: 1.0949, ]
+2022-11-07 11:05:46,354 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0241, CELoss: 0.6101, InterClassLoss: 0.0591, Loss: 0.9956, ]
+2022-11-07 11:06:09,885 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0219, CELoss: 0.5093, InterClassLoss: 0.0467, Loss: 0.8529, ]
+2022-11-07 11:06:34,336 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0260, CELoss: 0.5408, InterClassLoss: 0.0571, Loss: 0.9492, ]
+2022-11-07 11:07:01,408 INFO: Test_acc of task 5 on test 0 is 	 0.41224
+
+2022-11-07 11:07:02,775 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_5.pth.
+2022-11-07 11:07:03,005 INFO: The size of buffer is 25.270392417907715 Mb, the number of images is 250
+2022-11-07 11:07:03,010 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:07:03,011 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:07:03,015 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:07:03,044 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:07:28,144 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0305, CELoss: 1.0715, InterClassLoss: 0.1330, Loss: 1.6443, ]
+2022-11-07 11:07:51,638 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0247, CELoss: 0.6566, InterClassLoss: 0.1196, Loss: 1.1334, ]
+2022-11-07 11:08:16,171 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0268, CELoss: 0.5004, InterClassLoss: 0.0821, Loss: 0.9691, ]
+2022-11-07 11:08:37,506 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0291, CELoss: 0.5382, InterClassLoss: 0.0890, Loss: 1.0467, ]
+2022-11-07 11:09:02,806 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0207, CELoss: 0.4308, InterClassLoss: 0.0858, Loss: 0.8158, ]
+2022-11-07 11:09:29,433 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0272, CELoss: 0.5067, InterClassLoss: 0.0968, Loss: 0.9961, ]
+2022-11-07 11:09:57,189 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0233, CELoss: 0.4792, InterClassLoss: 0.0931, Loss: 0.9088, ]
+2022-11-07 11:10:27,814 INFO: Test_acc of task 6 on test 0 is 	 0.36668
+
+2022-11-07 11:10:28,984 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_6.pth.
+2022-11-07 11:10:29,279 INFO: The size of buffer is 28.363478660583496 Mb, the number of images is 280
+2022-11-07 11:10:29,284 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:10:29,285 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:10:29,289 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:10:29,317 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:10:56,953 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0244, CELoss: 0.7307, InterClassLoss: 0.1292, Loss: 1.2327, ]
+2022-11-07 11:11:24,509 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0286, CELoss: 0.5834, InterClassLoss: 0.1209, Loss: 1.1406, ]
+2022-11-07 11:11:51,839 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0240, CELoss: 0.4893, InterClassLoss: 0.1020, Loss: 0.9586, ]
+2022-11-07 11:12:18,727 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0294, CELoss: 0.5263, InterClassLoss: 0.1023, Loss: 1.0774, ]
+2022-11-07 11:12:46,930 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0266, CELoss: 0.4739, InterClassLoss: 0.0783, Loss: 0.9586, ]
+2022-11-07 11:13:11,630 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0216, CELoss: 0.4378, InterClassLoss: 0.0710, Loss: 0.8387, ]
+2022-11-07 11:13:33,579 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0217, CELoss: 0.3834, InterClassLoss: 0.0721, Loss: 0.7877, ]
+2022-11-07 11:14:07,635 INFO: Test_acc of task 7 on test 0 is 	 0.33274
+
+2022-11-07 11:14:08,775 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_7.pth.
+2022-11-07 11:14:08,884 INFO: The size of buffer is 31.171642303466797 Mb, the number of images is 310
+2022-11-07 11:14:08,889 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:14:08,890 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:14:08,893 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:14:08,925 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:14:33,602 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0224, CELoss: 0.7714, InterClassLoss: 0.0847, Loss: 1.2154, ]
+2022-11-07 11:14:57,096 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0316, CELoss: 0.6086, InterClassLoss: 0.1036, Loss: 1.2205, ]
+2022-11-07 11:15:21,325 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0351, CELoss: 0.6286, InterClassLoss: 0.0853, Loss: 1.2788, ]
+2022-11-07 11:15:45,640 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0325, CELoss: 0.4047, InterClassLoss: 0.0653, Loss: 0.9916, ]
+2022-11-07 11:16:09,267 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0357, CELoss: 0.5014, InterClassLoss: 0.0752, Loss: 1.1508, ]
+2022-11-07 11:16:33,299 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0287, CELoss: 0.4633, InterClassLoss: 0.0719, Loss: 0.9966, ]
+2022-11-07 11:16:57,856 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0187, CELoss: 0.3103, InterClassLoss: 0.0550, Loss: 0.6656, ]
+2022-11-07 11:17:21,485 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0231, CELoss: 0.3145, InterClassLoss: 0.0513, Loss: 0.7368, ]
+2022-11-07 11:17:45,712 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0205, CELoss: 0.2962, InterClassLoss: 0.0399, Loss: 0.6655, ]
+2022-11-07 11:18:05,545 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0187, CELoss: 0.2914, InterClassLoss: 0.0394, Loss: 0.6312, ]
+2022-11-07 11:18:49,386 INFO: Test_acc of task 8 on test 0 is 	 0.31643
+
+2022-11-07 11:18:50,711 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_8.pth.
+2022-11-07 11:18:50,951 INFO: The size of buffer is 33.70870113372803 Mb, the number of images is 340
+2022-11-07 11:18:50,957 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:18:50,958 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:18:50,962 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:18:50,981 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:19:16,056 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0185, CELoss: 0.5842, InterClassLoss: 0.1143, Loss: 1.0093, ]
+2022-11-07 11:19:39,926 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0264, CELoss: 0.6009, InterClassLoss: 0.1362, Loss: 1.1812, ]
+2022-11-07 11:20:03,552 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0261, CELoss: 0.4819, InterClassLoss: 0.0929, Loss: 1.0134, ]
+2022-11-07 11:20:28,129 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0258, CELoss: 0.4341, InterClassLoss: 0.0835, Loss: 0.9525, ]
+2022-11-07 11:20:52,195 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0267, CELoss: 0.4173, InterClassLoss: 0.0856, Loss: 0.9528, ]
+2022-11-07 11:21:15,809 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0214, CELoss: 0.2606, InterClassLoss: 0.0798, Loss: 0.7010, ]
+2022-11-07 11:21:40,475 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0169, CELoss: 0.2563, InterClassLoss: 0.0740, Loss: 0.6151, ]
+2022-11-07 11:22:04,625 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0185, CELoss: 0.3371, InterClassLoss: 0.0836, Loss: 0.7316, ]
+2022-11-07 11:22:28,336 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0154, CELoss: 0.2621, InterClassLoss: 0.0587, Loss: 0.5794, ]
+2022-11-07 11:22:49,199 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0171, CELoss: 0.2983, InterClassLoss: 0.0599, Loss: 0.6469, ]
+2022-11-07 11:23:36,530 INFO: Test_acc of task 9 on test 0 is 	 0.28347
+
+2022-11-07 11:23:37,795 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test0_session_9.pth.
+2022-11-07 11:23:37,958 INFO: The size of buffer is 36.737693786621094 Mb, the number of images is 370
+2022-11-07 11:23:37,964 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:23:37,965 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:23:37,968 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:23:38,002 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:24:02,117 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0251, CELoss: 0.6490, InterClassLoss: 0.1035, Loss: 1.1940, ]
+2022-11-07 11:24:25,613 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0217, CELoss: 0.4071, InterClassLoss: 0.1303, Loss: 0.9178, ]
+2022-11-07 11:24:49,249 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0273, CELoss: 0.4122, InterClassLoss: 0.0929, Loss: 0.9853, ]
+2022-11-07 11:25:13,763 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0257, CELoss: 0.4500, InterClassLoss: 0.0879, Loss: 0.9894, ]
+2022-11-07 11:25:37,807 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0239, CELoss: 0.3474, InterClassLoss: 0.0881, Loss: 0.8544, ]
+2022-11-07 11:26:01,494 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0238, CELoss: 0.2920, InterClassLoss: 0.0732, Loss: 0.7829, ]
+2022-11-07 11:26:25,957 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0194, CELoss: 0.2636, InterClassLoss: 0.0647, Loss: 0.6684, ]
+2022-11-07 11:26:50,111 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0207, CELoss: 0.4342, InterClassLoss: 0.0830, Loss: 0.8808, ]
+2022-11-07 11:27:13,665 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0194, CELoss: 0.2942, InterClassLoss: 0.0658, Loss: 0.7014, ]
+2022-11-07 11:27:35,131 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0194, CELoss: 0.2264, InterClassLoss: 0.0608, Loss: 0.6285, ]
+2022-11-07 11:28:21,880 INFO: Test_acc of task 10 on test 0 is 	 0.27321
+
+2022-11-07 11:28:23,061 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth.
+2022-11-07 11:28:23,227 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:28:23,228 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:28:23,237 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:28:23,245 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:28:38,619 INFO: Test_acc of task 0 on test 1 is 	 0.74730
+
+2022-11-07 11:28:41,461 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_0.pth.
+2022-11-07 11:28:41,661 INFO: The size of buffer is 49.5159969329834 Mb, the number of images is 500
+2022-11-07 11:28:41,664 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:28:41,664 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:28:41,667 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:28:41,675 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:29:13,551 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0382, CELoss: 2.7739, InterClassLoss: 0.0745, Loss: 3.1972, ]
+2022-11-07 11:29:45,327 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0448, CELoss: 2.1750, InterClassLoss: 0.0818, Loss: 2.6662, ]
+2022-11-07 11:30:17,558 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0393, CELoss: 2.0755, InterClassLoss: 0.1078, Loss: 2.5421, ]
+2022-11-07 11:30:48,684 INFO: Test_acc of task 1 on test 1 is 	 0.61117
+
+2022-11-07 11:30:49,787 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_1.pth.
+2022-11-07 11:30:49,866 INFO: The size of buffer is 52.121214866638184 Mb, the number of images is 530
+2022-11-07 11:30:49,869 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:30:49,869 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:30:49,873 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:30:49,892 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:31:22,577 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0237, CELoss: 2.3599, InterClassLoss: 0.0724, Loss: 2.6792, ]
+2022-11-07 11:31:52,675 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0277, CELoss: 1.8708, InterClassLoss: 0.1167, Loss: 2.2761, ]
+2022-11-07 11:32:25,322 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0248, CELoss: 1.7111, InterClassLoss: 0.1044, Loss: 2.0731, ]
+2022-11-07 11:32:57,109 INFO: Test_acc of task 2 on test 1 is 	 0.55810
+
+2022-11-07 11:32:58,283 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_2.pth.
+2022-11-07 11:32:58,366 INFO: The size of buffer is 54.79836463928223 Mb, the number of images is 560
+2022-11-07 11:32:58,370 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:32:58,370 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:32:58,374 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:32:58,384 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:33:30,396 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0263, CELoss: 2.1397, InterClassLoss: 0.1087, Loss: 2.5515, ]
+2022-11-07 11:34:02,979 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0313, CELoss: 1.5045, InterClassLoss: 0.1204, Loss: 1.9865, ]
+2022-11-07 11:34:35,790 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0337, CELoss: 1.5461, InterClassLoss: 0.1269, Loss: 2.0616, ]
+2022-11-07 11:35:08,385 INFO: Test_acc of task 3 on test 1 is 	 0.53812
+
+2022-11-07 11:35:09,608 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_3.pth.
+2022-11-07 11:35:09,707 INFO: The size of buffer is 57.46303653717041 Mb, the number of images is 590
+2022-11-07 11:35:09,711 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:35:09,711 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:35:09,714 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:35:09,738 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:35:34,484 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0230, CELoss: 1.6870, InterClassLoss: 0.1064, Loss: 2.0825, ]
+2022-11-07 11:35:58,099 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0289, CELoss: 1.2978, InterClassLoss: 0.1253, Loss: 1.7866, ]
+2022-11-07 11:36:22,553 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0309, CELoss: 0.9478, InterClassLoss: 0.1071, Loss: 1.4433, ]
+2022-11-07 11:36:46,294 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0322, CELoss: 0.7587, InterClassLoss: 0.1055, Loss: 1.2688, ]
+2022-11-07 11:37:10,789 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0300, CELoss: 0.7595, InterClassLoss: 0.0906, Loss: 1.2273, ]
+2022-11-07 11:37:34,439 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0279, CELoss: 0.7114, InterClassLoss: 0.1032, Loss: 1.1656, ]
+2022-11-07 11:37:58,756 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0270, CELoss: 0.6824, InterClassLoss: 0.0936, Loss: 1.1162, ]
+2022-11-07 11:38:20,511 INFO: Test_acc of task 4 on test 1 is 	 0.48234
+
+2022-11-07 11:38:21,608 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_4.pth.
+2022-11-07 11:38:21,690 INFO: The size of buffer is 60.63252353668213 Mb, the number of images is 620
+2022-11-07 11:38:21,694 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:38:21,695 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:38:21,698 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:38:21,723 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:38:46,093 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0214, CELoss: 1.1797, InterClassLoss: 0.0853, Loss: 1.5551, ]
+2022-11-07 11:39:09,537 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0264, CELoss: 0.8617, InterClassLoss: 0.0807, Loss: 1.3003, ]
+2022-11-07 11:39:34,032 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0296, CELoss: 0.7171, InterClassLoss: 0.0607, Loss: 1.1782, ]
+2022-11-07 11:39:57,598 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0314, CELoss: 0.5803, InterClassLoss: 0.0696, Loss: 1.0755, ]
+2022-11-07 11:40:22,038 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0270, CELoss: 0.5312, InterClassLoss: 0.0494, Loss: 0.9460, ]
+2022-11-07 11:40:45,827 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0247, CELoss: 0.5771, InterClassLoss: 0.0656, Loss: 0.9766, ]
+2022-11-07 11:41:10,184 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0248, CELoss: 0.5276, InterClassLoss: 0.0535, Loss: 0.9166, ]
+2022-11-07 11:41:34,446 INFO: Test_acc of task 5 on test 1 is 	 0.43097
+
+2022-11-07 11:41:35,609 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_5.pth.
+2022-11-07 11:41:35,690 INFO: The size of buffer is 63.387139320373535 Mb, the number of images is 650
+2022-11-07 11:41:35,695 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:41:35,695 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:41:35,699 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:41:35,712 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:42:00,189 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0226, CELoss: 0.8167, InterClassLoss: 0.1153, Loss: 1.2575, ]
+2022-11-07 11:42:23,730 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0294, CELoss: 0.7720, InterClassLoss: 0.1403, Loss: 1.3360, ]
+2022-11-07 11:42:48,049 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0308, CELoss: 0.6393, InterClassLoss: 0.0988, Loss: 1.1824, ]
+2022-11-07 11:43:11,700 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0316, CELoss: 0.5266, InterClassLoss: 0.0950, Loss: 1.0784, ]
+2022-11-07 11:43:36,221 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0251, CELoss: 0.4618, InterClassLoss: 0.0835, Loss: 0.9076, ]
+2022-11-07 11:43:59,831 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0222, CELoss: 0.4896, InterClassLoss: 0.0850, Loss: 0.8952, ]
+2022-11-07 11:44:24,286 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0261, CELoss: 0.4454, InterClassLoss: 0.0870, Loss: 0.9097, ]
+2022-11-07 11:44:51,165 INFO: Test_acc of task 6 on test 1 is 	 0.38654
+
+2022-11-07 11:44:52,336 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_6.pth.
+2022-11-07 11:44:52,427 INFO: The size of buffer is 66.4459638595581 Mb, the number of images is 680
+2022-11-07 11:44:52,432 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:44:52,433 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:44:52,436 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:44:52,466 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:45:16,261 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0327, CELoss: 0.8710, InterClassLoss: 0.1297, Loss: 1.5004, ]
+2022-11-07 11:45:39,705 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0263, CELoss: 0.6232, InterClassLoss: 0.1179, Loss: 1.1432, ]
+2022-11-07 11:46:04,160 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0282, CELoss: 0.5927, InterClassLoss: 0.1086, Loss: 1.1324, ]
+2022-11-07 11:46:27,702 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0343, CELoss: 0.5289, InterClassLoss: 0.0891, Loss: 1.1416, ]
+2022-11-07 11:46:52,283 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0269, CELoss: 0.3823, InterClassLoss: 0.0651, Loss: 0.8583, ]
+2022-11-07 11:47:15,974 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0192, CELoss: 0.3581, InterClassLoss: 0.0796, Loss: 0.7316, ]
+2022-11-07 11:47:40,435 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0256, CELoss: 0.3585, InterClassLoss: 0.0649, Loss: 0.8149, ]
+2022-11-07 11:48:10,646 INFO: Test_acc of task 7 on test 1 is 	 0.33789
+
+2022-11-07 11:48:11,738 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_7.pth.
+2022-11-07 11:48:11,819 INFO: The size of buffer is 69.16305828094482 Mb, the number of images is 710
+2022-11-07 11:48:11,824 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:48:11,825 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:48:11,831 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:48:11,847 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:48:35,652 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0258, CELoss: 0.7410, InterClassLoss: 0.0963, Loss: 1.2523, ]
+2022-11-07 11:48:59,276 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0287, CELoss: 0.5939, InterClassLoss: 0.0961, Loss: 1.1520, ]
+2022-11-07 11:49:23,349 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0312, CELoss: 0.4909, InterClassLoss: 0.0683, Loss: 1.0604, ]
+2022-11-07 11:49:47,815 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0259, CELoss: 0.3452, InterClassLoss: 0.0662, Loss: 0.8284, ]
+2022-11-07 11:50:11,582 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0311, CELoss: 0.4386, InterClassLoss: 0.0704, Loss: 1.0096, ]
+2022-11-07 11:50:35,674 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0267, CELoss: 0.2950, InterClassLoss: 0.0582, Loss: 0.7819, ]
+2022-11-07 11:51:00,147 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0245, CELoss: 0.4198, InterClassLoss: 0.0700, Loss: 0.8836, ]
+2022-11-07 11:51:23,944 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0194, CELoss: 0.3376, InterClassLoss: 0.0483, Loss: 0.6980, ]
+2022-11-07 11:51:47,970 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0213, CELoss: 0.3429, InterClassLoss: 0.0489, Loss: 0.7338, ]
+2022-11-07 11:52:12,424 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0148, CELoss: 0.2779, InterClassLoss: 0.0514, Loss: 0.5665, ]
+2022-11-07 11:53:01,679 INFO: Test_acc of task 8 on test 1 is 	 0.31725
+
+2022-11-07 11:53:02,851 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_8.pth.
+2022-11-07 11:53:02,949 INFO: The size of buffer is 71.72796440124512 Mb, the number of images is 740
+2022-11-07 11:53:02,954 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:53:02,955 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:53:02,958 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:53:02,977 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:53:28,157 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0294, CELoss: 0.8208, InterClassLoss: 0.1286, Loss: 1.4440, ]
+2022-11-07 11:53:52,063 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0224, CELoss: 0.5594, InterClassLoss: 0.1330, Loss: 1.0696, ]
+2022-11-07 11:54:15,651 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0274, CELoss: 0.4355, InterClassLoss: 0.0843, Loss: 0.9816, ]
+2022-11-07 11:54:40,092 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0271, CELoss: 0.4176, InterClassLoss: 0.0842, Loss: 0.9580, ]
+2022-11-07 11:55:03,987 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0225, CELoss: 0.3444, InterClassLoss: 0.0739, Loss: 0.7964, ]
+2022-11-07 11:55:27,586 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0238, CELoss: 0.2827, InterClassLoss: 0.0748, Loss: 0.7574, ]
+2022-11-07 11:55:52,179 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0213, CELoss: 0.2917, InterClassLoss: 0.0603, Loss: 0.7110, ]
+2022-11-07 11:56:16,191 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0203, CELoss: 0.2989, InterClassLoss: 0.0800, Loss: 0.7201, ]
+2022-11-07 11:56:39,774 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0189, CELoss: 0.2973, InterClassLoss: 0.0699, Loss: 0.6850, ]
+2022-11-07 11:57:04,295 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0177, CELoss: 0.2486, InterClassLoss: 0.0570, Loss: 0.6042, ]
+2022-11-07 11:57:56,368 INFO: Test_acc of task 9 on test 1 is 	 0.30047
+
+2022-11-07 11:57:57,511 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test1_session_9.pth.
+2022-11-07 11:57:57,794 INFO: The size of buffer is 74.70352935791016 Mb, the number of images is 770
+2022-11-07 11:57:57,800 WARNING: Params fc.former will not be optimized.
+2022-11-07 11:57:57,800 INFO: Model [RebalanceModel] is created.
+2022-11-07 11:57:57,804 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:57:57,839 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 11:58:21,875 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0212, CELoss: 0.5261, InterClassLoss: 0.0979, Loss: 0.9966, ]
+2022-11-07 11:58:45,350 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0203, CELoss: 0.3197, InterClassLoss: 0.1229, Loss: 0.7998, ]
+2022-11-07 11:59:09,325 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0210, CELoss: 0.3512, InterClassLoss: 0.0937, Loss: 0.8139, ]
+2022-11-07 11:59:33,763 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0242, CELoss: 0.2943, InterClassLoss: 0.0768, Loss: 0.7968, ]
+2022-11-07 11:59:57,498 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0213, CELoss: 0.3351, InterClassLoss: 0.0804, Loss: 0.7889, ]
+2022-11-07 12:00:21,448 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0294, CELoss: 0.3062, InterClassLoss: 0.0862, Loss: 0.9080, ]
+2022-11-07 12:00:45,948 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0195, CELoss: 0.3233, InterClassLoss: 0.0738, Loss: 0.7391, ]
+2022-11-07 12:01:09,574 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0161, CELoss: 0.2171, InterClassLoss: 0.0591, Loss: 0.5587, ]
+2022-11-07 12:01:33,670 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0191, CELoss: 0.2428, InterClassLoss: 0.0562, Loss: 0.6348, ]
+2022-11-07 12:01:58,207 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0180, CELoss: 0.2630, InterClassLoss: 0.0750, Loss: 0.6545, ]
+2022-11-07 12:02:50,953 INFO: Test_acc of task 10 on test 1 is 	 0.28219
+
+2022-11-07 12:02:52,260 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth.
+2022-11-07 12:02:52,396 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:02:52,396 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:02:52,406 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:02:52,414 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:03:09,474 INFO: Test_acc of task 0 on test 2 is 	 0.74730
+
+2022-11-07 12:03:12,396 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_0.pth.
+2022-11-07 12:03:12,549 INFO: The size of buffer is 87.06853199005127 Mb, the number of images is 900
+2022-11-07 12:03:12,552 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:03:12,552 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:03:12,555 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:03:12,562 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:03:44,666 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0448, CELoss: 2.7525, InterClassLoss: 0.0683, Loss: 3.2294, ]
+2022-11-07 12:04:17,648 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0435, CELoss: 2.3340, InterClassLoss: 0.1382, Loss: 2.8692, ]
+2022-11-07 12:04:50,439 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0412, CELoss: 2.1542, InterClassLoss: 0.1142, Loss: 2.6447, ]
+2022-11-07 12:05:21,038 INFO: Test_acc of task 1 on test 2 is 	 0.60296
+
+2022-11-07 12:05:22,423 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_1.pth.
+2022-11-07 12:05:22,541 INFO: The size of buffer is 89.84018230438232 Mb, the number of images is 930
+2022-11-07 12:05:22,545 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:05:22,545 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:05:22,552 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:05:22,561 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:05:55,868 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0249, CELoss: 2.5033, InterClassLoss: 0.1027, Loss: 2.8654, ]
+2022-11-07 12:06:28,781 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0309, CELoss: 1.8861, InterClassLoss: 0.1272, Loss: 2.3348, ]
+2022-11-07 12:06:59,282 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0272, CELoss: 1.7830, InterClassLoss: 0.1020, Loss: 2.1679, ]
+2022-11-07 12:07:28,261 INFO: Test_acc of task 2 on test 2 is 	 0.56734
+
+2022-11-07 12:07:29,372 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_2.pth.
+2022-11-07 12:07:29,465 INFO: The size of buffer is 92.08170795440674 Mb, the number of images is 960
+2022-11-07 12:07:29,468 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:07:29,469 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:07:29,472 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:07:29,495 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:07:58,410 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0242, CELoss: 2.1870, InterClassLoss: 0.0805, Loss: 2.5475, ]
+2022-11-07 12:08:30,729 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0364, CELoss: 1.5604, InterClassLoss: 0.1291, Loss: 2.1104, ]
+2022-11-07 12:09:02,666 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0301, CELoss: 1.5801, InterClassLoss: 0.1415, Loss: 2.0693, ]
+2022-11-07 12:09:37,132 INFO: Test_acc of task 3 on test 2 is 	 0.52891
+
+2022-11-07 12:09:38,492 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_3.pth.
+2022-11-07 12:09:38,798 INFO: The size of buffer is 94.93184471130371 Mb, the number of images is 990
+2022-11-07 12:09:38,802 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:09:38,802 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:09:38,806 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:09:38,817 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:10:03,325 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0253, CELoss: 1.8340, InterClassLoss: 0.1162, Loss: 2.2683, ]
+2022-11-07 12:10:26,907 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0320, CELoss: 1.2753, InterClassLoss: 0.1209, Loss: 1.7987, ]
+2022-11-07 12:10:51,491 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0297, CELoss: 1.0104, InterClassLoss: 0.1086, Loss: 1.4923, ]
+2022-11-07 12:11:13,413 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0318, CELoss: 0.8313, InterClassLoss: 0.0810, Loss: 1.3127, ]
+2022-11-07 12:11:37,517 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0336, CELoss: 0.8035, InterClassLoss: 0.0867, Loss: 1.3132, ]
+2022-11-07 12:12:01,077 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0312, CELoss: 0.8665, InterClassLoss: 0.0962, Loss: 1.3558, ]
+2022-11-07 12:12:25,513 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0301, CELoss: 0.7420, InterClassLoss: 0.0998, Loss: 1.2206, ]
+2022-11-07 12:12:47,406 INFO: Test_acc of task 4 on test 2 is 	 0.47821
+
+2022-11-07 12:12:48,574 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_4.pth.
+2022-11-07 12:12:48,658 INFO: The size of buffer is 97.68877220153809 Mb, the number of images is 1020
+2022-11-07 12:12:48,664 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:12:48,664 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:12:48,673 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:12:48,685 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:13:13,863 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0203, CELoss: 1.0592, InterClassLoss: 0.0769, Loss: 1.4113, ]
+2022-11-07 12:13:37,548 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0300, CELoss: 0.9526, InterClassLoss: 0.0821, Loss: 1.4410, ]
+2022-11-07 12:14:02,079 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0332, CELoss: 0.8031, InterClassLoss: 0.0840, Loss: 1.3372, ]
+2022-11-07 12:14:24,046 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0276, CELoss: 0.5351, InterClassLoss: 0.0510, Loss: 0.9595, ]
+2022-11-07 12:14:47,903 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0255, CELoss: 0.5148, InterClassLoss: 0.0526, Loss: 0.9126, ]
+2022-11-07 12:15:11,418 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0265, CELoss: 0.5397, InterClassLoss: 0.0634, Loss: 0.9624, ]
+2022-11-07 12:15:35,829 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0226, CELoss: 0.4654, InterClassLoss: 0.0408, Loss: 0.8117, ]
+2022-11-07 12:16:00,612 INFO: Test_acc of task 5 on test 2 is 	 0.42733
+
+2022-11-07 12:16:01,749 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_5.pth.
+2022-11-07 12:16:01,846 INFO: The size of buffer is 100.51984310150146 Mb, the number of images is 1050
+2022-11-07 12:16:01,850 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:16:01,851 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:16:01,854 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:16:01,867 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:16:25,808 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0255, CELoss: 0.8421, InterClassLoss: 0.1244, Loss: 1.3352, ]
+2022-11-07 12:16:49,374 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0296, CELoss: 0.7814, InterClassLoss: 0.1273, Loss: 1.3359, ]
+2022-11-07 12:17:13,660 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0271, CELoss: 0.5721, InterClassLoss: 0.0942, Loss: 1.0571, ]
+2022-11-07 12:17:35,378 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0330, CELoss: 0.6207, InterClassLoss: 0.1100, Loss: 1.2075, ]
+2022-11-07 12:17:59,029 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0288, CELoss: 0.5329, InterClassLoss: 0.1038, Loss: 1.0529, ]
+2022-11-07 12:18:22,538 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0236, CELoss: 0.4114, InterClassLoss: 0.0894, Loss: 0.8419, ]
+2022-11-07 12:18:46,895 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0254, CELoss: 0.4880, InterClassLoss: 0.0952, Loss: 0.9500, ]
+2022-11-07 12:19:13,945 INFO: Test_acc of task 6 on test 2 is 	 0.36097
+
+2022-11-07 12:19:15,313 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_6.pth.
+2022-11-07 12:19:15,584 INFO: The size of buffer is 103.31691360473633 Mb, the number of images is 1080
+2022-11-07 12:19:15,589 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:19:15,589 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:19:15,593 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:19:15,614 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:19:40,534 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0223, CELoss: 0.8238, InterClassLoss: 0.1143, Loss: 1.2785, ]
+2022-11-07 12:20:04,029 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0235, CELoss: 0.5252, InterClassLoss: 0.1121, Loss: 0.9965, ]
+2022-11-07 12:20:28,418 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0287, CELoss: 0.5379, InterClassLoss: 0.1182, Loss: 1.0942, ]
+2022-11-07 12:20:50,110 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0312, CELoss: 0.5371, InterClassLoss: 0.0959, Loss: 1.1099, ]
+2022-11-07 12:21:13,793 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0214, CELoss: 0.3683, InterClassLoss: 0.0553, Loss: 0.7504, ]
+2022-11-07 12:21:37,278 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0214, CELoss: 0.4730, InterClassLoss: 0.0944, Loss: 0.8945, ]
+2022-11-07 12:22:01,668 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0178, CELoss: 0.3357, InterClassLoss: 0.0721, Loss: 0.6803, ]
+2022-11-07 12:22:30,891 INFO: Test_acc of task 7 on test 2 is 	 0.33050
+
+2022-11-07 12:22:32,131 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_7.pth.
+2022-11-07 12:22:32,250 INFO: The size of buffer is 106.042405128479 Mb, the number of images is 1110
+2022-11-07 12:22:32,255 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:22:32,255 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:22:32,259 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:22:32,289 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:22:55,955 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0271, CELoss: 0.7517, InterClassLoss: 0.1341, Loss: 1.3209, ]
+2022-11-07 12:23:19,974 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0237, CELoss: 0.4904, InterClassLoss: 0.0935, Loss: 0.9650, ]
+2022-11-07 12:23:44,382 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0287, CELoss: 0.6153, InterClassLoss: 0.0840, Loss: 1.1604, ]
+2022-11-07 12:24:06,321 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0268, CELoss: 0.4239, InterClassLoss: 0.0747, Loss: 0.9293, ]
+2022-11-07 12:24:26,084 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0259, CELoss: 0.3327, InterClassLoss: 0.0686, Loss: 0.8183, ]
+2022-11-07 12:24:50,062 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0244, CELoss: 0.2766, InterClassLoss: 0.0523, Loss: 0.7211, ]
+2022-11-07 12:25:14,665 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0228, CELoss: 0.3379, InterClassLoss: 0.0605, Loss: 0.7644, ]
+2022-11-07 12:25:38,671 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0231, CELoss: 0.3202, InterClassLoss: 0.0483, Loss: 0.7402, ]
+2022-11-07 12:26:02,302 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0185, CELoss: 0.3045, InterClassLoss: 0.0483, Loss: 0.6507, ]
+2022-11-07 12:26:27,001 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0222, CELoss: 0.3861, InterClassLoss: 0.0628, Loss: 0.8051, ]
+2022-11-07 12:27:13,519 INFO: Test_acc of task 8 on test 2 is 	 0.30422
+
+2022-11-07 12:27:14,809 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_8.pth.
+2022-11-07 12:27:15,027 INFO: The size of buffer is 108.64910221099854 Mb, the number of images is 1140
+2022-11-07 12:27:15,036 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:27:15,036 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:27:15,041 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:27:15,061 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:27:38,067 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0212, CELoss: 0.6435, InterClassLoss: 0.1026, Loss: 1.1031, ]
+2022-11-07 12:27:57,222 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0176, CELoss: 0.3698, InterClassLoss: 0.1004, Loss: 0.7673, ]
+2022-11-07 12:28:19,795 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0262, CELoss: 0.3726, InterClassLoss: 0.0816, Loss: 0.8949, ]
+2022-11-07 12:28:44,166 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0255, CELoss: 0.3644, InterClassLoss: 0.0852, Loss: 0.8785, ]
+2022-11-07 12:29:07,805 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0251, CELoss: 0.3952, InterClassLoss: 0.0747, Loss: 0.8923, ]
+2022-11-07 12:29:31,724 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0212, CELoss: 0.2842, InterClassLoss: 0.0586, Loss: 0.6994, ]
+2022-11-07 12:29:56,204 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0215, CELoss: 0.3306, InterClassLoss: 0.0628, Loss: 0.7547, ]
+2022-11-07 12:30:19,906 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0236, CELoss: 0.3576, InterClassLoss: 0.0680, Loss: 0.8237, ]
+2022-11-07 12:30:44,044 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0184, CELoss: 0.2994, InterClassLoss: 0.0684, Loss: 0.6774, ]
+2022-11-07 12:31:08,537 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0165, CELoss: 0.2326, InterClassLoss: 0.0591, Loss: 0.5692, ]
+2022-11-07 12:31:57,685 INFO: Test_acc of task 9 on test 2 is 	 0.28683
+
+2022-11-07 12:31:58,890 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test2_session_9.pth.
+2022-11-07 12:31:58,998 INFO: The size of buffer is 111.41211318969727 Mb, the number of images is 1170
+2022-11-07 12:31:59,007 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:31:59,007 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:31:59,011 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:31:59,030 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:32:22,049 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0285, CELoss: 0.7465, InterClassLoss: 0.1076, Loss: 1.3546, ]
+2022-11-07 12:32:41,040 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0192, CELoss: 0.2971, InterClassLoss: 0.1263, Loss: 0.7613, ]
+2022-11-07 12:33:03,850 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0312, CELoss: 0.4550, InterClassLoss: 0.0965, Loss: 1.0990, ]
+2022-11-07 12:33:28,305 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0194, CELoss: 0.2792, InterClassLoss: 0.0899, Loss: 0.7105, ]
+2022-11-07 12:33:52,327 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0275, CELoss: 0.2585, InterClassLoss: 0.0790, Loss: 0.8204, ]
+2022-11-07 12:34:15,966 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0249, CELoss: 0.2893, InterClassLoss: 0.0847, Loss: 0.8114, ]
+2022-11-07 12:34:40,415 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0229, CELoss: 0.3083, InterClassLoss: 0.0609, Loss: 0.7715, ]
+2022-11-07 12:35:04,540 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0193, CELoss: 0.2184, InterClassLoss: 0.0589, Loss: 0.6164, ]
+2022-11-07 12:35:28,151 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0177, CELoss: 0.2819, InterClassLoss: 0.0748, Loss: 0.6675, ]
+2022-11-07 12:35:52,789 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0181, CELoss: 0.2268, InterClassLoss: 0.0632, Loss: 0.6083, ]
+2022-11-07 12:36:44,315 INFO: Test_acc of task 10 on test 2 is 	 0.27425
+
+2022-11-07 12:36:45,626 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth.
+2022-11-07 12:36:45,908 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:36:45,908 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:36:45,915 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:36:45,920 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:37:02,143 INFO: Test_acc of task 0 on test 3 is 	 0.74730
+
+2022-11-07 12:37:04,682 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_0.pth.
+2022-11-07 12:37:04,775 INFO: The size of buffer is 124.03114891052246 Mb, the number of images is 1300
+2022-11-07 12:37:04,778 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:37:04,778 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:37:04,782 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:37:04,790 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:37:34,787 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0438, CELoss: 2.7855, InterClassLoss: 0.0772, Loss: 3.2621, ]
+2022-11-07 12:38:07,610 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0439, CELoss: 2.2637, InterClassLoss: 0.1100, Loss: 2.7744, ]
+2022-11-07 12:38:40,634 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0341, CELoss: 2.0100, InterClassLoss: 0.0684, Loss: 2.3902, ]
+2022-11-07 12:39:10,693 INFO: Test_acc of task 1 on test 3 is 	 0.60296
+
+2022-11-07 12:39:11,931 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_1.pth.
+2022-11-07 12:39:12,037 INFO: The size of buffer is 126.69002437591553 Mb, the number of images is 1330
+2022-11-07 12:39:12,040 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:39:12,041 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:39:12,048 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:39:12,063 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:39:44,607 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0252, CELoss: 2.5087, InterClassLoss: 0.0813, Loss: 2.8521, ]
+2022-11-07 12:40:17,748 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0266, CELoss: 1.8612, InterClassLoss: 0.0995, Loss: 2.2381, ]
+2022-11-07 12:40:50,591 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0274, CELoss: 1.8818, InterClassLoss: 0.0963, Loss: 2.2637, ]
+2022-11-07 12:41:22,955 INFO: Test_acc of task 2 on test 3 is 	 0.55898
+
+2022-11-07 12:41:24,096 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_2.pth.
+2022-11-07 12:41:24,191 INFO: The size of buffer is 129.16683292388916 Mb, the number of images is 1360
+2022-11-07 12:41:24,195 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:41:24,195 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:41:24,199 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:41:24,208 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:41:53,153 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0278, CELoss: 2.1866, InterClassLoss: 0.1132, Loss: 2.6204, ]
+2022-11-07 12:42:25,606 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0320, CELoss: 1.4831, InterClassLoss: 0.1361, Loss: 1.9888, ]
+2022-11-07 12:42:58,258 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0263, CELoss: 1.4692, InterClassLoss: 0.1221, Loss: 1.8951, ]
+2022-11-07 12:43:34,097 INFO: Test_acc of task 3 on test 3 is 	 0.53370
+
+2022-11-07 12:43:35,304 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_3.pth.
+2022-11-07 12:43:35,643 INFO: The size of buffer is 132.0578851699829 Mb, the number of images is 1390
+2022-11-07 12:43:35,648 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:43:35,649 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:43:35,652 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:43:35,664 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:44:03,271 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0279, CELoss: 1.8132, InterClassLoss: 0.1185, Loss: 2.2822, ]
+2022-11-07 12:44:30,327 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0301, CELoss: 1.3537, InterClassLoss: 0.1368, Loss: 1.8697, ]
+2022-11-07 12:44:58,343 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0370, CELoss: 1.0975, InterClassLoss: 0.1354, Loss: 1.6979, ]
+2022-11-07 12:45:25,683 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0341, CELoss: 0.8572, InterClassLoss: 0.1136, Loss: 1.4003, ]
+2022-11-07 12:45:53,920 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0320, CELoss: 0.6865, InterClassLoss: 0.0897, Loss: 1.1788, ]
+2022-11-07 12:46:16,888 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0306, CELoss: 0.7619, InterClassLoss: 0.0955, Loss: 1.2428, ]
+2022-11-07 12:46:38,539 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0293, CELoss: 0.7620, InterClassLoss: 0.1141, Loss: 1.2448, ]
+2022-11-07 12:46:59,700 INFO: Test_acc of task 4 on test 3 is 	 0.48330
+
+2022-11-07 12:47:00,793 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_4.pth.
+2022-11-07 12:47:00,969 INFO: The size of buffer is 134.95350074768066 Mb, the number of images is 1420
+2022-11-07 12:47:00,973 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:47:00,974 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:47:00,977 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:47:00,993 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:47:23,735 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0235, CELoss: 1.0549, InterClassLoss: 0.0920, Loss: 1.4644, ]
+2022-11-07 12:47:46,924 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0329, CELoss: 0.9333, InterClassLoss: 0.0781, Loss: 1.4568, ]
+2022-11-07 12:48:11,213 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0315, CELoss: 0.7264, InterClassLoss: 0.0689, Loss: 1.2213, ]
+2022-11-07 12:48:34,733 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0320, CELoss: 0.6856, InterClassLoss: 0.0668, Loss: 1.1862, ]
+2022-11-07 12:48:59,160 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0255, CELoss: 0.5436, InterClassLoss: 0.0446, Loss: 0.9333, ]
+2022-11-07 12:49:22,627 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0242, CELoss: 0.5495, InterClassLoss: 0.0600, Loss: 0.9376, ]
+2022-11-07 12:49:47,170 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0263, CELoss: 0.5478, InterClassLoss: 0.0648, Loss: 0.9683, ]
+2022-11-07 12:50:10,882 INFO: Test_acc of task 5 on test 3 is 	 0.42789
+
+2022-11-07 12:50:12,076 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_5.pth.
+2022-11-07 12:50:12,186 INFO: The size of buffer is 137.71456146240234 Mb, the number of images is 1450
+2022-11-07 12:50:12,191 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:50:12,192 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:50:12,195 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:50:12,209 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:50:34,962 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0237, CELoss: 0.7976, InterClassLoss: 0.1236, Loss: 1.2626, ]
+2022-11-07 12:50:58,373 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0284, CELoss: 0.6565, InterClassLoss: 0.0964, Loss: 1.1632, ]
+2022-11-07 12:51:22,793 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0308, CELoss: 0.6357, InterClassLoss: 0.0963, Loss: 1.1767, ]
+2022-11-07 12:51:46,426 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0284, CELoss: 0.4557, InterClassLoss: 0.0774, Loss: 0.9427, ]
+2022-11-07 12:52:10,943 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0279, CELoss: 0.5497, InterClassLoss: 0.0831, Loss: 1.0353, ]
+2022-11-07 12:52:34,638 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0238, CELoss: 0.4687, InterClassLoss: 0.0820, Loss: 0.8948, ]
+2022-11-07 12:52:59,023 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0257, CELoss: 0.4167, InterClassLoss: 0.0784, Loss: 0.8660, ]
+2022-11-07 12:53:25,918 INFO: Test_acc of task 6 on test 3 is 	 0.38059
+
+2022-11-07 12:53:26,945 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_6.pth.
+2022-11-07 12:53:27,121 INFO: The size of buffer is 140.74901580810547 Mb, the number of images is 1480
+2022-11-07 12:53:27,126 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:53:27,126 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:53:27,130 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:53:27,145 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:53:50,401 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0232, CELoss: 0.7931, InterClassLoss: 0.1174, Loss: 1.2652, ]
+2022-11-07 12:54:13,842 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0301, CELoss: 0.6085, InterClassLoss: 0.1168, Loss: 1.1850, ]
+2022-11-07 12:54:38,235 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0290, CELoss: 0.5008, InterClassLoss: 0.1169, Loss: 1.0604, ]
+2022-11-07 12:55:01,750 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0299, CELoss: 0.4684, InterClassLoss: 0.0824, Loss: 1.0072, ]
+2022-11-07 12:55:26,203 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0249, CELoss: 0.5086, InterClassLoss: 0.0793, Loss: 0.9681, ]
+2022-11-07 12:55:49,842 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0216, CELoss: 0.4013, InterClassLoss: 0.0699, Loss: 0.8005, ]
+2022-11-07 12:56:14,288 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0205, CELoss: 0.3825, InterClassLoss: 0.0819, Loss: 0.7782, ]
+2022-11-07 12:56:43,273 INFO: Test_acc of task 7 on test 3 is 	 0.33766
+
+2022-11-07 12:56:44,392 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_7.pth.
+2022-11-07 12:56:44,593 INFO: The size of buffer is 143.4325008392334 Mb, the number of images is 1510
+2022-11-07 12:56:44,598 WARNING: Params fc.former will not be optimized.
+2022-11-07 12:56:44,598 INFO: Model [RebalanceModel] is created.
+2022-11-07 12:56:44,605 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:56:44,636 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 12:57:07,340 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0307, CELoss: 0.8878, InterClassLoss: 0.1025, Loss: 1.4832, ]
+2022-11-07 12:57:30,763 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0298, CELoss: 0.6737, InterClassLoss: 0.0846, Loss: 1.2378, ]
+2022-11-07 12:57:54,859 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0246, CELoss: 0.5543, InterClassLoss: 0.0605, Loss: 1.0096, ]
+2022-11-07 12:58:18,993 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0324, CELoss: 0.4722, InterClassLoss: 0.0680, Loss: 1.0613, ]
+2022-11-07 12:58:43,102 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0215, CELoss: 0.3235, InterClassLoss: 0.0565, Loss: 0.7255, ]
+2022-11-07 12:59:07,063 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0285, CELoss: 0.4778, InterClassLoss: 0.0706, Loss: 1.0059, ]
+2022-11-07 12:59:31,612 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0225, CELoss: 0.3253, InterClassLoss: 0.0504, Loss: 0.7367, ]
+2022-11-07 12:59:55,338 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0188, CELoss: 0.3051, InterClassLoss: 0.0426, Loss: 0.6501, ]
+2022-11-07 13:00:17,665 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0169, CELoss: 0.2464, InterClassLoss: 0.0546, Loss: 0.5733, ]
+2022-11-07 13:00:37,457 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0214, CELoss: 0.3163, InterClassLoss: 0.0431, Loss: 0.7033, ]
+2022-11-07 13:01:23,177 INFO: Test_acc of task 8 on test 3 is 	 0.30992
+
+2022-11-07 13:01:24,301 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_8.pth.
+2022-11-07 13:01:24,403 INFO: The size of buffer is 146.23598289489746 Mb, the number of images is 1540
+2022-11-07 13:01:24,408 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:01:24,408 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:01:24,412 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:01:24,430 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:01:48,328 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0229, CELoss: 0.6232, InterClassLoss: 0.0983, Loss: 1.1065, ]
+2022-11-07 13:02:12,602 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0229, CELoss: 0.5484, InterClassLoss: 0.1164, Loss: 1.0499, ]
+2022-11-07 13:02:37,133 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0231, CELoss: 0.4750, InterClassLoss: 0.0794, Loss: 0.9424, ]
+2022-11-07 13:03:01,939 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0246, CELoss: 0.4113, InterClassLoss: 0.0830, Loss: 0.9090, ]
+2022-11-07 13:03:26,144 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0251, CELoss: 0.3380, InterClassLoss: 0.0805, Loss: 0.8407, ]
+2022-11-07 13:03:49,843 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0226, CELoss: 0.2743, InterClassLoss: 0.0755, Loss: 0.7302, ]
+2022-11-07 13:04:09,566 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0196, CELoss: 0.4054, InterClassLoss: 0.0787, Loss: 0.8145, ]
+2022-11-07 13:04:32,726 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0153, CELoss: 0.2404, InterClassLoss: 0.0690, Loss: 0.5666, ]
+2022-11-07 13:04:56,466 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0168, CELoss: 0.3093, InterClassLoss: 0.0643, Loss: 0.6567, ]
+2022-11-07 13:05:21,071 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0182, CELoss: 0.3310, InterClassLoss: 0.0772, Loss: 0.7139, ]
+2022-11-07 13:06:09,442 INFO: Test_acc of task 9 on test 3 is 	 0.29150
+
+2022-11-07 13:06:10,819 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test3_session_9.pth.
+2022-11-07 13:06:11,087 INFO: The size of buffer is 149.36559009552002 Mb, the number of images is 1570
+2022-11-07 13:06:11,093 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:06:11,094 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:06:11,097 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:06:11,130 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:06:35,653 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0224, CELoss: 0.5540, InterClassLoss: 0.1006, Loss: 1.0478, ]
+2022-11-07 13:06:59,793 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0242, CELoss: 0.4361, InterClassLoss: 0.1372, Loss: 0.9974, ]
+2022-11-07 13:07:24,105 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0192, CELoss: 0.3392, InterClassLoss: 0.1074, Loss: 0.7840, ]
+2022-11-07 13:07:43,905 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0222, CELoss: 0.3942, InterClassLoss: 0.0865, Loss: 0.8711, ]
+2022-11-07 13:08:05,651 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0266, CELoss: 0.3432, InterClassLoss: 0.0757, Loss: 0.8861, ]
+2022-11-07 13:08:29,566 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0247, CELoss: 0.2763, InterClassLoss: 0.0702, Loss: 0.7810, ]
+2022-11-07 13:08:54,012 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0186, CELoss: 0.2639, InterClassLoss: 0.0579, Loss: 0.6493, ]
+2022-11-07 13:09:17,643 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0164, CELoss: 0.2208, InterClassLoss: 0.0536, Loss: 0.5625, ]
+2022-11-07 13:09:41,736 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0154, CELoss: 0.2422, InterClassLoss: 0.0616, Loss: 0.5738, ]
+2022-11-07 13:10:06,136 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0153, CELoss: 0.2058, InterClassLoss: 0.0594, Loss: 0.5334, ]
+2022-11-07 13:10:57,672 INFO: Test_acc of task 10 on test 3 is 	 0.28202
+
+2022-11-07 13:10:58,799 INFO: Loading Resnet18_softmax model from ./exp/cub_bases50/RebalanceModel_res18_cub_50base_wandb_001/models/best_net_latest.pth.
+2022-11-07 13:10:58,881 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:10:58,882 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:10:58,889 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:10:58,895 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:11:15,810 INFO: Test_acc of task 0 on test 4 is 	 0.74730
+
+2022-11-07 13:11:18,713 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_0.pth.
+2022-11-07 13:11:18,929 INFO: The size of buffer is 161.78274250030518 Mb, the number of images is 1700
+2022-11-07 13:11:18,932 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:11:18,933 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:11:18,936 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:11:18,953 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:11:50,824 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0434, CELoss: 2.7528, InterClassLoss: 0.0876, Loss: 3.2364, ]
+2022-11-07 13:12:20,471 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0428, CELoss: 2.1948, InterClassLoss: 0.1138, Loss: 2.6991, ]
+2022-11-07 13:12:52,959 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0401, CELoss: 2.0379, InterClassLoss: 0.0943, Loss: 2.4978, ]
+2022-11-07 13:13:23,007 INFO: Test_acc of task 1 on test 4 is 	 0.62212
+
+2022-11-07 13:13:24,374 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_1.pth.
+2022-11-07 13:13:24,691 INFO: The size of buffer is 164.61583137512207 Mb, the number of images is 1730
+2022-11-07 13:13:24,694 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:13:24,694 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:13:24,698 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:13:24,706 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:13:56,903 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0253, CELoss: 2.4816, InterClassLoss: 0.0734, Loss: 2.8186, ]
+2022-11-07 13:14:29,800 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0320, CELoss: 1.9865, InterClassLoss: 0.1349, Loss: 2.4540, ]
+2022-11-07 13:15:03,348 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0246, CELoss: 1.7811, InterClassLoss: 0.0958, Loss: 2.1334, ]
+2022-11-07 13:15:36,330 INFO: Test_acc of task 2 on test 4 is 	 0.56118
+
+2022-11-07 13:15:37,660 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_2.pth.
+2022-11-07 13:15:37,921 INFO: The size of buffer is 167.15419483184814 Mb, the number of images is 1760
+2022-11-07 13:15:37,924 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:15:37,925 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:15:37,928 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:15:37,949 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:16:10,521 INFO: [epoch: 24, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0224, CELoss: 2.0766, InterClassLoss: 0.0881, Loss: 2.4235, ]
+2022-11-07 13:16:40,716 INFO: [epoch: 49, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0300, CELoss: 1.4830, InterClassLoss: 0.1290, Loss: 1.9585, ]
+2022-11-07 13:17:12,648 INFO: [epoch: 74, iter:  75, lr:(1.000e-04)] [ LFLoss: 0.0284, CELoss: 1.4206, InterClassLoss: 0.1270, Loss: 1.8760, ]
+2022-11-07 13:17:47,273 INFO: Test_acc of task 3 on test 4 is 	 0.53407
+
+2022-11-07 13:17:48,432 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_3.pth.
+2022-11-07 13:17:48,595 INFO: The size of buffer is 170.2480754852295 Mb, the number of images is 1790
+2022-11-07 13:17:48,599 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:17:48,599 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:17:48,606 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:17:48,617 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:18:16,225 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0263, CELoss: 1.7828, InterClassLoss: 0.1003, Loss: 2.2142, ]
+2022-11-07 13:18:43,637 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0280, CELoss: 1.2843, InterClassLoss: 0.1481, Loss: 1.7850, ]
+2022-11-07 13:19:10,385 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0383, CELoss: 1.1247, InterClassLoss: 0.1294, Loss: 1.7361, ]
+2022-11-07 13:19:37,727 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0309, CELoss: 0.7344, InterClassLoss: 0.0963, Loss: 1.2199, ]
+2022-11-07 13:20:05,126 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0351, CELoss: 0.7370, InterClassLoss: 0.0883, Loss: 1.2675, ]
+2022-11-07 13:20:32,821 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0285, CELoss: 0.6548, InterClassLoss: 0.0828, Loss: 1.0961, ]
+2022-11-07 13:20:59,648 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0307, CELoss: 0.6619, InterClassLoss: 0.0863, Loss: 1.1346, ]
+2022-11-07 13:21:20,751 INFO: Test_acc of task 4 on test 4 is 	 0.49030
+
+2022-11-07 13:21:21,991 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_4.pth.
+2022-11-07 13:21:22,089 INFO: The size of buffer is 172.91740703582764 Mb, the number of images is 1820
+2022-11-07 13:21:22,093 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:21:22,094 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:21:22,097 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:21:22,111 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:21:47,532 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0269, CELoss: 1.2630, InterClassLoss: 0.0933, Loss: 1.7208, ]
+2022-11-07 13:22:14,063 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0253, CELoss: 0.8987, InterClassLoss: 0.0826, Loss: 1.3238, ]
+2022-11-07 13:22:41,653 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0295, CELoss: 0.6868, InterClassLoss: 0.0814, Loss: 1.1672, ]
+2022-11-07 13:23:08,830 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0290, CELoss: 0.6421, InterClassLoss: 0.0662, Loss: 1.1004, ]
+2022-11-07 13:23:36,280 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0245, CELoss: 0.6429, InterClassLoss: 0.0705, Loss: 1.0450, ]
+2022-11-07 13:24:03,869 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0239, CELoss: 0.5717, InterClassLoss: 0.0675, Loss: 0.9631, ]
+2022-11-07 13:24:31,524 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0251, CELoss: 0.5641, InterClassLoss: 0.0601, Loss: 0.9637, ]
+2022-11-07 13:24:57,518 INFO: Test_acc of task 5 on test 4 is 	 0.42622
+
+2022-11-07 13:24:58,667 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_5.pth.
+2022-11-07 13:24:58,784 INFO: The size of buffer is 175.89383792877197 Mb, the number of images is 1850
+2022-11-07 13:24:58,789 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:24:58,790 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:24:58,794 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:24:58,808 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:25:26,416 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0247, CELoss: 0.8810, InterClassLoss: 0.1070, Loss: 1.3452, ]
+2022-11-07 13:25:52,275 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0372, CELoss: 0.8582, InterClassLoss: 0.1278, Loss: 1.5222, ]
+2022-11-07 13:26:14,640 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0293, CELoss: 0.5564, InterClassLoss: 0.0919, Loss: 1.0716, ]
+2022-11-07 13:26:36,381 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0368, CELoss: 0.5673, InterClassLoss: 0.1021, Loss: 1.2003, ]
+2022-11-07 13:26:58,373 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0282, CELoss: 0.4810, InterClassLoss: 0.0972, Loss: 0.9850, ]
+2022-11-07 13:27:22,209 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0233, CELoss: 0.4515, InterClassLoss: 0.0873, Loss: 0.8757, ]
+2022-11-07 13:27:46,480 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0219, CELoss: 0.4711, InterClassLoss: 0.0964, Loss: 0.8829, ]
+2022-11-07 13:28:13,879 INFO: Test_acc of task 6 on test 4 is 	 0.37537
+
+2022-11-07 13:28:15,044 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_6.pth.
+2022-11-07 13:28:15,150 INFO: The size of buffer is 178.58275508880615 Mb, the number of images is 1880
+2022-11-07 13:28:15,155 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:28:15,155 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:28:15,159 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:28:15,188 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:28:39,782 INFO: [epoch: 12, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0266, CELoss: 0.8032, InterClassLoss: 0.1241, Loss: 1.3342, ]
+2022-11-07 13:29:03,374 INFO: [epoch: 24, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0297, CELoss: 0.6593, InterClassLoss: 0.1384, Loss: 1.2516, ]
+2022-11-07 13:29:27,876 INFO: [epoch: 37, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0308, CELoss: 0.5344, InterClassLoss: 0.0975, Loss: 1.1025, ]
+2022-11-07 13:29:51,526 INFO: [epoch: 49, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0313, CELoss: 0.4796, InterClassLoss: 0.0840, Loss: 1.0421, ]
+2022-11-07 13:30:13,838 INFO: [epoch: 62, iter: 125, lr:(1.000e-03)] [ LFLoss: 0.0249, CELoss: 0.4161, InterClassLoss: 0.0722, Loss: 0.8687, ]
+2022-11-07 13:30:37,218 INFO: [epoch: 74, iter: 150, lr:(1.000e-04)] [ LFLoss: 0.0242, CELoss: 0.3436, InterClassLoss: 0.0754, Loss: 0.7885, ]
+2022-11-07 13:31:01,711 INFO: [epoch: 87, iter: 175, lr:(1.000e-04)] [ LFLoss: 0.0205, CELoss: 0.3886, InterClassLoss: 0.0715, Loss: 0.7728, ]
+2022-11-07 13:31:31,027 INFO: Test_acc of task 7 on test 4 is 	 0.33229
+
+2022-11-07 13:31:32,275 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_7.pth.
+2022-11-07 13:31:32,389 INFO: The size of buffer is 181.40834426879883 Mb, the number of images is 1910
+2022-11-07 13:31:32,395 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:31:32,395 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:31:32,399 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:31:32,431 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:31:56,578 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0227, CELoss: 0.6875, InterClassLoss: 0.1109, Loss: 1.1638, ]
+2022-11-07 13:32:20,787 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0255, CELoss: 0.5419, InterClassLoss: 0.0984, Loss: 1.0498, ]
+2022-11-07 13:32:44,407 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0251, CELoss: 0.5009, InterClassLoss: 0.0741, Loss: 0.9783, ]
+2022-11-07 13:33:09,633 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0258, CELoss: 0.3624, InterClassLoss: 0.0617, Loss: 0.8390, ]
+2022-11-07 13:33:29,713 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0342, CELoss: 0.4590, InterClassLoss: 0.0506, Loss: 1.0595, ]
+2022-11-07 13:33:52,981 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0242, CELoss: 0.3499, InterClassLoss: 0.0675, Loss: 0.8070, ]
+2022-11-07 13:34:17,769 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0231, CELoss: 0.3294, InterClassLoss: 0.0594, Loss: 0.7600, ]
+2022-11-07 13:34:41,741 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0177, CELoss: 0.2557, InterClassLoss: 0.0506, Loss: 0.5901, ]
+2022-11-07 13:35:05,647 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0170, CELoss: 0.2717, InterClassLoss: 0.0603, Loss: 0.6053, ]
+2022-11-07 13:35:30,223 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0207, CELoss: 0.2623, InterClassLoss: 0.0466, Loss: 0.6412, ]
+2022-11-07 13:36:16,416 INFO: Test_acc of task 8 on test 4 is 	 0.31827
+
+2022-11-07 13:36:17,713 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_8.pth.
+2022-11-07 13:36:17,821 INFO: The size of buffer is 183.97840213775635 Mb, the number of images is 1940
+2022-11-07 13:36:17,827 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:36:17,827 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:36:17,831 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:36:17,853 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:36:42,214 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0258, CELoss: 0.7423, InterClassLoss: 0.1222, Loss: 1.2988, ]
+2022-11-07 13:37:01,673 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0281, CELoss: 0.6378, InterClassLoss: 0.1355, Loss: 1.2468, ]
+2022-11-07 13:37:23,855 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0279, CELoss: 0.3963, InterClassLoss: 0.0864, Loss: 0.9529, ]
+2022-11-07 13:37:48,490 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0216, CELoss: 0.3132, InterClassLoss: 0.0796, Loss: 0.7561, ]
+2022-11-07 13:38:12,070 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0243, CELoss: 0.3204, InterClassLoss: 0.0669, Loss: 0.7970, ]
+2022-11-07 13:38:36,551 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0288, CELoss: 0.4264, InterClassLoss: 0.0922, Loss: 1.0031, ]
+2022-11-07 13:39:00,569 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0214, CELoss: 0.3469, InterClassLoss: 0.0584, Loss: 0.7654, ]
+2022-11-07 13:39:25,029 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0205, CELoss: 0.2513, InterClassLoss: 0.0616, Loss: 0.6576, ]
+2022-11-07 13:39:49,076 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0181, CELoss: 0.2622, InterClassLoss: 0.0786, Loss: 0.6463, ]
+2022-11-07 13:40:13,543 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0203, CELoss: 0.2968, InterClassLoss: 0.0727, Loss: 0.7117, ]
+2022-11-07 13:40:59,819 INFO: Test_acc of task 9 on test 4 is 	 0.30233
+
+2022-11-07 13:41:01,214 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases50/Rebalance_res18_cub_50bases_wandb/models/test4_session_9.pth.
+2022-11-07 13:41:01,514 INFO: The size of buffer is 187.02128314971924 Mb, the number of images is 1970
+2022-11-07 13:41:01,520 WARNING: Params fc.former will not be optimized.
+2022-11-07 13:41:01,520 INFO: Model [RebalanceModel] is created.
+2022-11-07 13:41:01,524 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:41:01,558 INFO: Dataset NormalDataset - cub is created.
+2022-11-07 13:41:26,178 INFO: [epoch:  8, iter:  25, lr:(1.000e-02)] [ LFLoss: 0.0286, CELoss: 0.6472, InterClassLoss: 0.1203, Loss: 1.2696, ]
+2022-11-07 13:41:49,738 INFO: [epoch: 16, iter:  50, lr:(1.000e-02)] [ LFLoss: 0.0263, CELoss: 0.4469, InterClassLoss: 0.1370, Loss: 1.0458, ]
+2022-11-07 13:42:14,412 INFO: [epoch: 24, iter:  75, lr:(1.000e-02)] [ LFLoss: 0.0282, CELoss: 0.3751, InterClassLoss: 0.1087, Loss: 0.9783, ]
+2022-11-07 13:42:39,294 INFO: [epoch: 33, iter: 100, lr:(1.000e-02)] [ LFLoss: 0.0262, CELoss: 0.3208, InterClassLoss: 0.0927, Loss: 0.8741, ]
+2022-11-07 13:43:03,757 INFO: [epoch: 41, iter: 125, lr:(1.000e-02)] [ LFLoss: 0.0286, CELoss: 0.3046, InterClassLoss: 0.0772, Loss: 0.8839, ]
+2022-11-07 13:43:27,713 INFO: [epoch: 49, iter: 150, lr:(1.000e-02)] [ LFLoss: 0.0239, CELoss: 0.2662, InterClassLoss: 0.0745, Loss: 0.7612, ]
+2022-11-07 13:43:52,421 INFO: [epoch: 58, iter: 175, lr:(1.000e-03)] [ LFLoss: 0.0155, CELoss: 0.1514, InterClassLoss: 0.0634, Loss: 0.4873, ]
+2022-11-07 13:44:15,169 INFO: [epoch: 66, iter: 200, lr:(1.000e-03)] [ LFLoss: 0.0155, CELoss: 0.2099, InterClassLoss: 0.0520, Loss: 0.5338, ]
+2022-11-07 13:44:34,863 INFO: [epoch: 74, iter: 225, lr:(1.000e-04)] [ LFLoss: 0.0210, CELoss: 0.2169, InterClassLoss: 0.0585, Loss: 0.6446, ]
+2022-11-07 13:44:59,826 INFO: [epoch: 83, iter: 250, lr:(1.000e-04)] [ LFLoss: 0.0185, CELoss: 0.2993, InterClassLoss: 0.0603, Loss: 0.6851, ]
+2022-11-07 13:45:51,860 INFO: Test_acc of task 10 on test 4 is 	 0.28460
+
+2022-11-07 13:45:52,751 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-07 13:45:52,752 INFO: Session 1: 74.73+-0.00
+2022-11-07 13:45:52,752 INFO: Session 2: 60.91+-0.63
+2022-11-07 13:45:52,752 INFO: Session 3: 56.29+-0.39
+2022-11-07 13:45:52,753 INFO: Session 4: 53.93+-1.01
+2022-11-07 13:45:52,753 INFO: Session 5: 48.31+-0.35
+2022-11-07 13:45:52,753 INFO: Session 6: 42.49+-0.57
+2022-11-07 13:45:52,753 INFO: Session 7: 37.40+-0.81
+2022-11-07 13:45:52,754 INFO: Session 8: 33.42+-0.26
+2022-11-07 13:45:52,754 INFO: Session 9: 31.32+-0.47
+2022-11-07 13:45:52,754 INFO: Session 10: 29.29+-0.65
+2022-11-07 13:45:52,755 INFO: Session 11: 27.93+-0.40

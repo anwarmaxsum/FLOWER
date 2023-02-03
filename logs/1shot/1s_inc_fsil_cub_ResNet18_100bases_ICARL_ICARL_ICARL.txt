@@ -1,0 +1,277 @@
+Path already exists. Rename it to /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001_archived_20221110_095202
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-10 09:52:02,075 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-10 09:52:02,075 INFO: 
+  name: 1S_ICaRL_res18_cub_100bases_1shot_wandb_001
+  model_type: ICaRLModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  datasets:[
+    train:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 8
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    val:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    test:[
+      name: cub
+      type: NormalDataset
+      total_classes: 200
+      dataroot: DataSet/CUB_200_2011/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 224)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 256)]), OrderedDict([('type', 'CenterCrop'), ('size', 224)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet18_softmax
+    Embed_dim: 512
+    pretrained: False
+    norm: False
+    num_classes: 100
+    adopt_classifier: False
+    addition_net: False
+    flatten: True
+    cut_at_pooling: False
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/cub_bases100/FSIL_ICaRLModel_res18_CUB_100base_wandb_001/models/best_net_latest.pth
+    base_model_cf: ./exp/cub_bases100/FSIL_ICaRLModel_res18_CUB_100base_wandb_001/models/best_net_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001
+    training_states: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/training_states
+    log: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001
+    models: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models
+    prototypes: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.01
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    random: False
+    Embed_dim: 512
+    fine_tune: True
+    buffer_size: 0
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 100
+    tasks: 11
+    shots: 1
+    num_test: 1
+  ]
+  val:[
+    val_freq: 1000
+    test_type: NCM
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 1
+    use_tb_logger: True
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-10 09:52:02,251 INFO: Random seed: 1997
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:181: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  init.kaiming_normal(m.weight, mode='fan_out')
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:188: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(m.weight, std=0.001)
+2022-11-10 09:52:03,982 INFO: Loading Resnet18_softmax model from ./exp/cub_bases100/FSIL_ICaRLModel_res18_CUB_100base_wandb_001/models/best_net_latest.pth.
+2022-11-10 09:52:04,051 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:52:04,060 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:52:04,068 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:52:33,791 INFO: Test_acc of task 0 on test 0 is 	 0.75733
+
+2022-11-10 09:52:47,662 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_0.pth.
+2022-11-10 09:52:47,731 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:52:47,734 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:52:47,736 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:52:47,745 INFO: Dataset NormalDataset - cub is created.
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cub_bases100/FSIL_ICaRLModel_res18_CUB_100base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_0.pth
+Successfully saving the model of test 0 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_0.pth
+2022-11-10 09:53:23,623 INFO: Test_acc of task 1 on test 0 is 	 0.00955
+
+2022-11-10 09:53:24,035 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_1.pth.
+2022-11-10 09:53:24,090 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:53:24,093 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:53:24,095 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:53:24,105 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_1.pth
+Successfully saving the model of test 0 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_1.pth
+2022-11-10 09:54:01,503 INFO: Test_acc of task 2 on test 0 is 	 0.00875
+
+2022-11-10 09:54:01,796 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_2.pth.
+2022-11-10 09:54:01,848 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:54:01,852 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:54:01,854 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:54:01,864 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_2.pth
+Successfully saving the model of test 0 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_2.pth
+2022-11-10 09:54:39,628 INFO: Test_acc of task 3 on test 0 is 	 0.00805
+
+2022-11-10 09:54:39,961 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_3.pth.
+2022-11-10 09:54:40,017 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:54:40,020 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:54:40,023 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:54:40,034 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_3.pth
+Successfully saving the model of test 0 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_3.pth
+2022-11-10 09:55:19,669 INFO: Test_acc of task 4 on test 0 is 	 0.00745
+
+2022-11-10 09:55:19,969 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_4.pth.
+2022-11-10 09:55:20,026 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:55:20,030 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:55:20,032 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:55:20,044 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_4.pth
+Successfully saving the model of test 0 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_4.pth
+2022-11-10 09:56:02,687 INFO: Test_acc of task 5 on test 0 is 	 0.00693
+
+2022-11-10 09:56:02,968 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_5.pth.
+2022-11-10 09:56:03,019 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:56:03,023 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:56:03,025 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:56:03,037 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_5.pth
+Successfully saving the model of test 0 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_5.pth
+2022-11-10 09:56:45,616 INFO: Test_acc of task 6 on test 0 is 	 0.00650
+
+2022-11-10 09:56:45,908 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_6.pth.
+2022-11-10 09:56:45,969 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:56:45,972 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:56:45,975 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:56:45,987 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_6.pth
+Successfully saving the model of test 0 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_6.pth
+2022-11-10 09:57:30,529 INFO: Test_acc of task 7 on test 0 is 	 0.00611
+
+2022-11-10 09:57:30,816 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_7.pth.
+2022-11-10 09:57:30,870 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:57:30,874 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:57:30,876 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:57:30,890 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_7.pth
+Successfully saving the model of test 0 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_7.pth
+2022-11-10 09:58:15,545 INFO: Test_acc of task 8 on test 0 is 	 0.00576
+
+2022-11-10 09:58:15,832 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_8.pth.
+2022-11-10 09:58:15,884 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:58:15,889 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:58:15,891 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:58:15,905 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_8.pth
+Successfully saving the model of test 0 session 8
+Beginning of task: 9
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_8.pth
+2022-11-10 09:59:01,292 INFO: Test_acc of task 9 on test 0 is 	 0.00546
+
+2022-11-10 09:59:01,579 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_9.pth.
+2022-11-10 09:59:01,632 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 09:59:01,636 INFO: Model [ICaRLModel] is created.
+2022-11-10 09:59:01,639 INFO: Dataset NormalDataset - cub is created.
+2022-11-10 09:59:01,653 INFO: Dataset NormalDataset - cub is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_9.pth
+Successfully saving the model of test 0 session 9
+Beginning of task: 10
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_9.pth
+2022-11-10 09:59:48,977 INFO: Test_acc of task 10 on test 0 is 	 0.00518
+
+2022-11-10 09:59:49,087 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-10 09:59:49,088 INFO: Session 1: 75.73+-0.00
+2022-11-10 09:59:49,088 INFO: Session 2: 0.95+-0.00
+2022-11-10 09:59:49,089 INFO: Session 3: 0.87+-0.00
+2022-11-10 09:59:49,089 INFO: Session 4: 0.80+-0.00
+2022-11-10 09:59:49,089 INFO: Session 5: 0.74+-0.00
+2022-11-10 09:59:49,090 INFO: Session 6: 0.69+-0.00
+2022-11-10 09:59:49,090 INFO: Session 7: 0.65+-0.00
+2022-11-10 09:59:49,090 INFO: Session 8: 0.61+-0.00
+2022-11-10 09:59:49,090 INFO: Session 9: 0.58+-0.00
+2022-11-10 09:59:49,090 INFO: Session 10: 0.55+-0.00
+2022-11-10 09:59:49,090 INFO: Session 11: 0.52+-0.00
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cub_bases100/1S_ICaRL_res18_cub_100bases_1shot_wandb_001/models/test0_session_10.pth
+Successfully saving the model of test 0 session 10
+finish!!
+finish

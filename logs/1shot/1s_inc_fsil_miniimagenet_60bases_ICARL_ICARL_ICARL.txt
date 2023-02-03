@@ -1,0 +1,840 @@
+Path already exists. Rename it to /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug_archived_20221110_101117
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-10 10:11:17,213 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-10 10:11:17,213 INFO: 
+  name: 1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug
+  model_type: ICaRLModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  details: True
+  transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'ColorJitter'), ('brightness', 0.4), ('contrast', 0.4), ('saturation', 0.4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+  datasets:[
+    train:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 4
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'ColorJitter'), ('brightness', 0.4), ('contrast', 0.4), ('saturation', 0.4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    val:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 4
+      sampler:[
+        type: None
+      ]
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'ColorJitter'), ('brightness', 0.4), ('contrast', 0.4), ('saturation', 0.4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+    test:[
+      name: miniImageNet
+      type: NormalDataset
+      total_classes: 100
+      dataroot: ./DataSet/FSIL_miniImageNet/miniimagenet/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 4
+      sampler:[
+        type: None
+      ]
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomResizedCrop'), ('size', 84)]), OrderedDict([('type', 'ColorJitter'), ('brightness', 0.4), ('contrast', 0.4), ('saturation', 0.4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+      transformer: [OrderedDict([('type', 'Resize'), ('size', 92)]), OrderedDict([('type', 'CenterCrop'), ('size', 84)]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.485, 0.456, 0.406)), ('std', (0.229, 0.224, 0.225))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet18_softmax
+    Embed_dim: 512
+    pretrained: False
+    norm: False
+    num_classes: 60
+    adopt_classifier: False
+    addition_net: False
+    flatten: True
+    cut_at_pooling: False
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+    base_model_cf: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug
+    training_states: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/training_states
+    log: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug
+    models: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models
+    prototypes: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.01
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    random: False
+    Embed_dim: 512
+    fine_tune: True
+    buffer_size: 0
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 60
+    tasks: 9
+    shots: 1
+    num_test: 5
+  ]
+  val:[
+    val_freq: 90
+    test_type: NCM
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 25
+    use_tb_logger: True
+    wandb:[
+      project: FIL-Noise-Cifar-Incremental-Results
+      resume_id: None
+    ]
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-10 10:11:17,213 INFO: Random seed: 1997
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:181: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  init.kaiming_normal(m.weight, mode='fan_out')
+/workspace/FLOWER/f2m/methods/archs/resnet_pytorch_arch.py:188: UserWarning: nn.init.normal is now deprecated in favor of nn.init.normal_.
+  init.normal(m.weight, std=0.001)
+2022-11-10 10:11:18,965 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 10:11:19,022 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:11:19,079 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:11:19,091 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:11:40,166 INFO: Test_acc of task 0 on test 0 is 	 0.66050
+
+2022-11-10 10:12:15,090 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth.
+2022-11-10 10:12:15,142 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:12:15,144 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:12:15,150 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:12:15,164 INFO: Dataset NormalDataset - miniImageNet is created.
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth
+Successfully saving the model of test 0 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_0.pth
+2022-11-10 10:12:37,625 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:12:45,203 INFO: Test_acc of task 1 on test 0 is 	 0.01538
+
+2022-11-10 10:12:52,705 INFO: Test_acc of task 1 on test 0 is 	 0.01538
+
+2022-11-10 10:12:52,954 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth.
+2022-11-10 10:12:53,008 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:12:53,010 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:12:53,016 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:12:53,030 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth
+Successfully saving the model of test 0 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_1.pth
+2022-11-10 10:13:16,844 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:13:22,299 INFO: Test_acc of task 2 on test 0 is 	 0.01429
+
+2022-11-10 10:13:27,759 INFO: Test_acc of task 2 on test 0 is 	 0.01429
+
+2022-11-10 10:13:28,010 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth.
+2022-11-10 10:13:28,063 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:13:28,065 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:13:28,071 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:13:28,086 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth
+Successfully saving the model of test 0 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_2.pth
+2022-11-10 10:13:52,487 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:14:00,679 INFO: Test_acc of task 3 on test 0 is 	 0.01333
+
+2022-11-10 10:14:08,499 INFO: Test_acc of task 3 on test 0 is 	 0.01333
+
+2022-11-10 10:14:08,756 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth.
+2022-11-10 10:14:08,828 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:14:08,831 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:14:08,838 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:14:08,855 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth
+Successfully saving the model of test 0 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_3.pth
+2022-11-10 10:14:35,420 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:14:41,807 INFO: Test_acc of task 4 on test 0 is 	 0.01250
+
+2022-11-10 10:14:48,287 INFO: Test_acc of task 4 on test 0 is 	 0.01250
+
+2022-11-10 10:14:48,532 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth.
+2022-11-10 10:14:48,579 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:14:48,581 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:14:48,588 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:14:48,606 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth
+Successfully saving the model of test 0 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_4.pth
+2022-11-10 10:15:16,108 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:15:22,826 INFO: Test_acc of task 5 on test 0 is 	 0.01176
+
+2022-11-10 10:15:29,472 INFO: Test_acc of task 5 on test 0 is 	 0.01176
+
+2022-11-10 10:15:29,722 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth.
+2022-11-10 10:15:29,775 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:15:29,778 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:15:29,783 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:15:29,801 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth
+Successfully saving the model of test 0 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_5.pth
+2022-11-10 10:15:56,744 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:16:03,974 INFO: Test_acc of task 6 on test 0 is 	 0.01111
+
+2022-11-10 10:16:10,878 INFO: Test_acc of task 6 on test 0 is 	 0.01111
+
+2022-11-10 10:16:11,130 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth.
+2022-11-10 10:16:11,277 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:16:11,279 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:16:11,285 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:16:11,306 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth
+Successfully saving the model of test 0 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_6.pth
+2022-11-10 10:16:39,936 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:16:47,457 INFO: Test_acc of task 7 on test 0 is 	 0.01053
+
+2022-11-10 10:16:54,716 INFO: Test_acc of task 7 on test 0 is 	 0.01053
+
+2022-11-10 10:16:54,961 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth.
+2022-11-10 10:16:55,010 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:16:55,013 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:16:55,019 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:16:55,039 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth
+Successfully saving the model of test 0 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_7.pth
+2022-11-10 10:17:21,188 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:17:29,358 INFO: Test_acc of task 8 on test 0 is 	 0.01000
+
+2022-11-10 10:17:37,112 INFO: Test_acc of task 8 on test 0 is 	 0.01000
+
+2022-11-10 10:17:37,365 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 10:17:37,412 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:17:37,469 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:17:37,481 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:17:55,221 INFO: Test_acc of task 0 on test 1 is 	 0.66050
+
+2022-11-10 10:18:18,452 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth.
+2022-11-10 10:18:18,507 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:18:18,509 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:18:18,515 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:18:18,528 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test0_session_8.pth
+Successfully saving the model of test 0 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth
+Successfully saving the model of test 1 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_0.pth
+2022-11-10 10:18:45,258 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:18:50,301 INFO: Test_acc of task 1 on test 1 is 	 0.01538
+
+2022-11-10 10:18:55,364 INFO: Test_acc of task 1 on test 1 is 	 0.01538
+
+2022-11-10 10:18:55,620 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth.
+2022-11-10 10:18:55,672 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:18:55,674 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:18:55,680 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:18:55,695 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth
+Successfully saving the model of test 1 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_1.pth
+2022-11-10 10:19:23,303 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:19:28,759 INFO: Test_acc of task 2 on test 1 is 	 0.01429
+
+2022-11-10 10:19:34,356 INFO: Test_acc of task 2 on test 1 is 	 0.01429
+
+2022-11-10 10:19:34,627 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth.
+2022-11-10 10:19:34,675 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:19:34,677 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:19:34,683 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:19:34,699 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth
+Successfully saving the model of test 1 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_2.pth
+2022-11-10 10:20:01,135 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:20:07,035 INFO: Test_acc of task 3 on test 1 is 	 0.01333
+
+2022-11-10 10:20:12,788 INFO: Test_acc of task 3 on test 1 is 	 0.01333
+
+2022-11-10 10:20:13,043 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth.
+2022-11-10 10:20:13,099 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:20:13,102 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:20:13,107 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:20:13,126 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth
+Successfully saving the model of test 1 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_3.pth
+2022-11-10 10:20:39,271 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:20:47,834 INFO: Test_acc of task 4 on test 1 is 	 0.01250
+
+2022-11-10 10:20:56,145 INFO: Test_acc of task 4 on test 1 is 	 0.01250
+
+2022-11-10 10:20:56,415 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth.
+2022-11-10 10:20:56,468 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:20:56,471 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:20:56,477 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:20:56,494 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth
+Successfully saving the model of test 1 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_4.pth
+2022-11-10 10:21:23,210 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:21:30,155 INFO: Test_acc of task 5 on test 1 is 	 0.01176
+
+2022-11-10 10:21:36,837 INFO: Test_acc of task 5 on test 1 is 	 0.01176
+
+2022-11-10 10:21:37,080 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth.
+2022-11-10 10:21:37,129 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:21:37,131 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:21:37,137 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:21:37,157 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth
+Successfully saving the model of test 1 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_5.pth
+2022-11-10 10:22:02,481 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:22:09,685 INFO: Test_acc of task 6 on test 1 is 	 0.01111
+
+2022-11-10 10:22:16,771 INFO: Test_acc of task 6 on test 1 is 	 0.01111
+
+2022-11-10 10:22:17,030 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth.
+2022-11-10 10:22:17,083 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:22:17,085 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:22:17,092 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:22:17,114 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth
+Successfully saving the model of test 1 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_6.pth
+2022-11-10 10:22:43,821 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:22:51,324 INFO: Test_acc of task 7 on test 1 is 	 0.01053
+
+2022-11-10 10:22:58,745 INFO: Test_acc of task 7 on test 1 is 	 0.01053
+
+2022-11-10 10:22:59,007 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth.
+2022-11-10 10:22:59,062 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:22:59,065 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:22:59,072 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:22:59,097 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth
+Successfully saving the model of test 1 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_7.pth
+2022-11-10 10:23:25,639 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:23:36,286 INFO: Test_acc of task 8 on test 1 is 	 0.01000
+
+2022-11-10 10:23:46,359 INFO: Test_acc of task 8 on test 1 is 	 0.01000
+
+2022-11-10 10:23:46,621 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 10:23:46,677 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:23:46,740 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:23:46,755 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:24:06,405 INFO: Test_acc of task 0 on test 2 is 	 0.66050
+
+2022-11-10 10:24:37,925 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth.
+2022-11-10 10:24:37,986 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:24:37,988 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:24:37,995 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:24:38,008 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test1_session_8.pth
+Successfully saving the model of test 1 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth
+Successfully saving the model of test 2 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_0.pth
+2022-11-10 10:25:04,709 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:25:11,580 INFO: Test_acc of task 1 on test 2 is 	 0.01538
+
+2022-11-10 10:25:18,830 INFO: Test_acc of task 1 on test 2 is 	 0.01538
+
+2022-11-10 10:25:19,103 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth.
+2022-11-10 10:25:19,160 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:25:19,162 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:25:19,169 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:25:19,183 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth
+Successfully saving the model of test 2 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_1.pth
+2022-11-10 10:25:42,681 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:25:49,929 INFO: Test_acc of task 2 on test 2 is 	 0.01429
+
+2022-11-10 10:25:57,066 INFO: Test_acc of task 2 on test 2 is 	 0.01429
+
+2022-11-10 10:25:57,319 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth.
+2022-11-10 10:25:57,371 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:25:57,374 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:25:57,381 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:25:57,396 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth
+Successfully saving the model of test 2 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_2.pth
+2022-11-10 10:26:24,234 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:26:32,402 INFO: Test_acc of task 3 on test 2 is 	 0.01333
+
+2022-11-10 10:26:40,122 INFO: Test_acc of task 3 on test 2 is 	 0.01333
+
+2022-11-10 10:26:40,370 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth.
+2022-11-10 10:26:40,424 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:26:40,427 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:26:40,433 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:26:40,450 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth
+Successfully saving the model of test 2 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_3.pth
+2022-11-10 10:27:07,420 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:27:15,897 INFO: Test_acc of task 4 on test 2 is 	 0.01250
+
+2022-11-10 10:27:24,179 INFO: Test_acc of task 4 on test 2 is 	 0.01250
+
+2022-11-10 10:27:24,430 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth.
+2022-11-10 10:27:24,484 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:27:24,486 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:27:24,492 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:27:24,510 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth
+Successfully saving the model of test 2 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_4.pth
+2022-11-10 10:27:53,299 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:28:02,131 INFO: Test_acc of task 5 on test 2 is 	 0.01176
+
+2022-11-10 10:28:10,831 INFO: Test_acc of task 5 on test 2 is 	 0.01176
+
+2022-11-10 10:28:11,088 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth.
+2022-11-10 10:28:11,139 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:28:11,142 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:28:11,148 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:28:11,168 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth
+Successfully saving the model of test 2 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_5.pth
+2022-11-10 10:28:38,917 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:28:48,105 INFO: Test_acc of task 6 on test 2 is 	 0.01111
+
+2022-11-10 10:28:57,361 INFO: Test_acc of task 6 on test 2 is 	 0.01111
+
+2022-11-10 10:28:57,611 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth.
+2022-11-10 10:28:57,674 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:28:57,677 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:28:57,686 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:28:57,705 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth
+Successfully saving the model of test 2 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_6.pth
+2022-11-10 10:29:24,692 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:29:34,982 INFO: Test_acc of task 7 on test 2 is 	 0.01053
+
+2022-11-10 10:29:44,795 INFO: Test_acc of task 7 on test 2 is 	 0.01053
+
+2022-11-10 10:29:45,047 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth.
+2022-11-10 10:29:45,102 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:29:45,104 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:29:45,110 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:29:45,130 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth
+Successfully saving the model of test 2 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_7.pth
+2022-11-10 10:30:12,603 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:30:24,267 INFO: Test_acc of task 8 on test 2 is 	 0.01000
+
+2022-11-10 10:30:34,771 INFO: Test_acc of task 8 on test 2 is 	 0.01000
+
+2022-11-10 10:30:35,015 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 10:30:35,061 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:30:35,120 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:30:35,133 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:30:54,962 INFO: Test_acc of task 0 on test 3 is 	 0.66050
+
+2022-11-10 10:31:27,228 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth.
+2022-11-10 10:31:27,282 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:31:27,284 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:31:27,290 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:31:27,303 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test2_session_8.pth
+Successfully saving the model of test 2 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth
+Successfully saving the model of test 3 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_0.pth
+2022-11-10 10:31:54,459 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:32:01,112 INFO: Test_acc of task 1 on test 3 is 	 0.01538
+
+2022-11-10 10:32:08,099 INFO: Test_acc of task 1 on test 3 is 	 0.01538
+
+2022-11-10 10:32:08,359 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth.
+2022-11-10 10:32:08,418 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:32:08,421 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:32:08,427 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:32:08,441 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth
+Successfully saving the model of test 3 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_1.pth
+2022-11-10 10:32:35,532 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:32:42,916 INFO: Test_acc of task 2 on test 3 is 	 0.01429
+
+2022-11-10 10:32:50,079 INFO: Test_acc of task 2 on test 3 is 	 0.01429
+
+2022-11-10 10:32:50,334 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth.
+2022-11-10 10:32:50,389 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:32:50,391 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:32:50,397 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:32:50,412 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth
+Successfully saving the model of test 3 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_2.pth
+2022-11-10 10:33:17,634 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:33:26,858 INFO: Test_acc of task 3 on test 3 is 	 0.01333
+
+2022-11-10 10:33:35,676 INFO: Test_acc of task 3 on test 3 is 	 0.01333
+
+2022-11-10 10:33:35,924 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth.
+2022-11-10 10:33:35,975 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:33:35,978 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:33:35,983 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:33:35,999 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth
+Successfully saving the model of test 3 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_3.pth
+2022-11-10 10:33:58,931 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:34:07,004 INFO: Test_acc of task 4 on test 3 is 	 0.01250
+
+2022-11-10 10:34:14,813 INFO: Test_acc of task 4 on test 3 is 	 0.01250
+
+2022-11-10 10:34:15,055 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth.
+2022-11-10 10:34:15,104 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:34:15,107 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:34:15,112 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:34:15,131 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth
+Successfully saving the model of test 3 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_4.pth
+2022-11-10 10:34:38,343 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:34:46,694 INFO: Test_acc of task 5 on test 3 is 	 0.01176
+
+2022-11-10 10:34:54,919 INFO: Test_acc of task 5 on test 3 is 	 0.01176
+
+2022-11-10 10:34:55,163 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth.
+2022-11-10 10:34:55,215 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:34:55,217 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:34:55,223 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:34:55,241 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth
+Successfully saving the model of test 3 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_5.pth
+2022-11-10 10:35:19,306 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:35:28,371 INFO: Test_acc of task 6 on test 3 is 	 0.01111
+
+2022-11-10 10:35:37,250 INFO: Test_acc of task 6 on test 3 is 	 0.01111
+
+2022-11-10 10:35:37,492 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth.
+2022-11-10 10:35:37,544 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:35:37,546 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:35:37,552 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:35:37,571 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth
+Successfully saving the model of test 3 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_6.pth
+2022-11-10 10:36:01,150 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:36:10,659 INFO: Test_acc of task 7 on test 3 is 	 0.01053
+
+2022-11-10 10:36:20,085 INFO: Test_acc of task 7 on test 3 is 	 0.01053
+
+2022-11-10 10:36:20,329 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth.
+2022-11-10 10:36:20,381 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:36:20,383 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:36:20,389 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:36:20,409 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth
+Successfully saving the model of test 3 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_7.pth
+2022-11-10 10:36:44,004 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:36:53,753 INFO: Test_acc of task 8 on test 3 is 	 0.01000
+
+2022-11-10 10:37:03,525 INFO: Test_acc of task 8 on test 3 is 	 0.01000
+
+2022-11-10 10:37:03,772 INFO: Loading Resnet18_softmax model from ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 10:37:03,816 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:37:03,873 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:37:03,885 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:37:22,987 INFO: Test_acc of task 0 on test 4 is 	 0.66050
+
+2022-11-10 10:37:52,498 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth.
+2022-11-10 10:37:52,556 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:37:52,558 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:37:52,563 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:37:52,577 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test3_session_8.pth
+Successfully saving the model of test 3 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/miniImageNet_bases60/FSIL_ICaRLModel_res18_miniImageNet_small_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth
+Successfully saving the model of test 4 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_0.pth
+2022-11-10 10:38:16,298 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:38:22,673 INFO: Test_acc of task 1 on test 4 is 	 0.01538
+
+2022-11-10 10:38:29,077 INFO: Test_acc of task 1 on test 4 is 	 0.01538
+
+2022-11-10 10:38:29,324 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth.
+2022-11-10 10:38:29,380 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:38:29,382 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:38:29,388 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:38:29,402 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth
+Successfully saving the model of test 4 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_1.pth
+2022-11-10 10:38:52,373 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:38:59,269 INFO: Test_acc of task 2 on test 4 is 	 0.01429
+
+2022-11-10 10:39:06,238 INFO: Test_acc of task 2 on test 4 is 	 0.01429
+
+2022-11-10 10:39:06,483 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth.
+2022-11-10 10:39:06,538 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:39:06,540 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:39:06,546 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:39:06,561 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth
+Successfully saving the model of test 4 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_2.pth
+2022-11-10 10:39:30,143 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:39:37,600 INFO: Test_acc of task 3 on test 4 is 	 0.01333
+
+2022-11-10 10:39:44,983 INFO: Test_acc of task 3 on test 4 is 	 0.01333
+
+2022-11-10 10:39:45,228 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth.
+2022-11-10 10:39:45,359 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:39:45,361 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:39:45,369 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:39:45,385 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth
+Successfully saving the model of test 4 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_3.pth
+2022-11-10 10:40:09,029 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:40:16,787 INFO: Test_acc of task 4 on test 4 is 	 0.01250
+
+2022-11-10 10:40:24,701 INFO: Test_acc of task 4 on test 4 is 	 0.01250
+
+2022-11-10 10:40:24,950 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth.
+2022-11-10 10:40:25,003 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:40:25,006 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:40:25,011 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:40:25,029 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth
+Successfully saving the model of test 4 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_4.pth
+2022-11-10 10:40:48,705 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:40:57,435 INFO: Test_acc of task 5 on test 4 is 	 0.01176
+
+2022-11-10 10:41:05,793 INFO: Test_acc of task 5 on test 4 is 	 0.01176
+
+2022-11-10 10:41:06,041 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth.
+2022-11-10 10:41:06,094 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:41:06,096 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:41:06,102 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:41:06,120 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth
+Successfully saving the model of test 4 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_5.pth
+2022-11-10 10:41:30,128 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:41:36,809 INFO: Test_acc of task 6 on test 4 is 	 0.01111
+
+2022-11-10 10:41:43,472 INFO: Test_acc of task 6 on test 4 is 	 0.01111
+
+2022-11-10 10:41:43,718 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth.
+2022-11-10 10:41:43,773 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:41:43,775 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:41:43,781 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:41:43,800 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth
+Successfully saving the model of test 4 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_6.pth
+2022-11-10 10:42:07,030 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:42:16,342 INFO: Test_acc of task 7 on test 4 is 	 0.01053
+
+2022-11-10 10:42:25,721 INFO: Test_acc of task 7 on test 4 is 	 0.01053
+
+2022-11-10 10:42:25,963 INFO: Loading Resnet18_softmax model from /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth.
+2022-11-10 10:42:26,015 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 10:42:26,018 INFO: Model [ICaRLModel] is created.
+2022-11-10 10:42:26,023 INFO: Dataset NormalDataset - miniImageNet is created.
+2022-11-10 10:42:26,043 INFO: Dataset NormalDataset - miniImageNet is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth
+Successfully saving the model of test 4 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_7.pth
+2022-11-10 10:42:49,980 INFO: Epoch 89, Iteration 0, Validation Step:
+
+2022-11-10 10:42:59,652 INFO: Test_acc of task 8 on test 4 is 	 0.01000
+
+2022-11-10 10:43:09,444 INFO: Test_acc of task 8 on test 4 is 	 0.01000
+
+2022-11-10 10:43:09,514 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-10 10:43:09,514 INFO: Session 1: 66.05+-0.00
+2022-11-10 10:43:09,514 INFO: Session 2: 1.54+-0.00
+2022-11-10 10:43:09,515 INFO: Session 3: 1.43+-0.00
+2022-11-10 10:43:09,515 INFO: Session 4: 1.33+-0.00
+2022-11-10 10:43:09,515 INFO: Session 5: 1.25+-0.00
+2022-11-10 10:43:09,515 INFO: Session 6: 1.18+-0.00
+2022-11-10 10:43:09,515 INFO: Session 7: 1.11+-0.00
+2022-11-10 10:43:09,515 INFO: Session 8: 1.05+-0.00
+2022-11-10 10:43:09,515 INFO: Session 9: 1.00+-0.00
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/miniImageNet_bases60/1S_ICaRL_res18_miniImageNet_1shot_60bases_wandb_debug/models/test4_session_8.pth
+Successfully saving the model of test 4 session 8
+finish!!
+finish

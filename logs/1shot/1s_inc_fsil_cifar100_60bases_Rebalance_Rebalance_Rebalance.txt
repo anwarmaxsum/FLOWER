@@ -1,0 +1,715 @@
+/opt/conda/lib/python3.8/site-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+2022-11-10 13:54:37,388 INFO: 
+Version Information: 
+	PyTorch: 1.9.0a0+df837d0
+	TorchVision: 0.9.0a0
+2022-11-10 13:54:37,388 INFO: 
+  name: 1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug
+  model_type: RebalanceModel
+  gpu: 1
+  manual_seed: 1997
+  use_cosine: False
+  Random: False
+  transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+  transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+  datasets:[
+    train:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/train
+      aug: True
+      pre_load: False
+      num_worker_per_gpu: 8
+      batch_size: 120
+      pin_memory: True
+      sampler:[
+        type: None
+      ]
+      phase: train
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+    val:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: val
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+    test:[
+      name: cifar-100
+      type: NormalDataset
+      total_classes: 100
+      dataroot: DataSet/cifar-100/test
+      aug: False
+      pre_load: False
+      num_worker_per_gpu: 8
+      sampler:[
+        type: None
+      ]
+      phase: test
+      transformer_agu: [OrderedDict([('type', 'RandomCrop'), ('size', 32), ('padding', 4)]), OrderedDict([('type', 'RandomHorizontalFlip')]), OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+      transformer: [OrderedDict([('type', 'ToTensor')]), OrderedDict([('type', 'Normalize'), ('mean', (0.5071, 0.4866, 0.4409)), ('std', (0.2009, 0.1984, 0.2023))])]
+    ]
+  ]
+  network_g:[
+    type: Resnet20_cifar_small
+    num_classes: 60
+    adopt_classifier: False
+    flatten: True
+  ]
+  path:[
+    pretrain_model_g: None
+    pretrain_prototypes: None
+    base_model: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+    base_model_cf: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_classifier_latest.pth
+    strict_load: False
+    root: /workspace/FLOWER/f2m
+    incremental_root: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug
+    training_states: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/training_states
+    log: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug
+    models: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models
+    prototypes: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/prototypes
+    feat_buffer: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/feat_buffer
+  ]
+  train:[
+    optim_g:[
+      type: SGD
+      lr: 0.1
+      weight_decay: 0.0005
+      momentum: 0.9
+    ]
+    scheduler:[
+      type: MultiStepLR
+      milestones: [50, 70]
+      gamma: 0.1
+    ]
+    loss: [OrderedDict([('type', 'CosineCrossEntropy')]), OrderedDict([('type', 'LessForget'), ('lambda_base', 4)]), OrderedDict([('type', 'InterClassSeparation'), ('K', 2), ('weight', 1), ('margin', 0.5)])]
+    random: True
+    Embed_dim: 64
+    fine_tune: True
+    buffer_size: 0
+    fine_tune_epoch: 90
+    fine_tune_batch: 120
+    warmup_iter: -1
+    bases: 60
+    tasks: 9
+    shots: 1
+    num_test: 5
+  ]
+  val:[
+    val_freq: 100
+    test_type: CNN
+    p_norm: None
+  ]
+  logger:[
+    print_freq: 1
+    use_tb_logger: True
+    wandb:[
+      project: FIL-Noise-Cifar-Incremental-Results
+      resume_id: None
+    ]
+  ]
+  is_train: False
+  is_incremental: True
+  rank: 0
+  world_size: 1
+
+2022-11-10 13:54:37,388 INFO: Random seed: 1997
+2022-11-10 13:54:38,991 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 13:54:39,011 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:54:39,011 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:54:39,069 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:54:39,083 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:54:51,950 INFO: Test_acc of task 0 on test 0 is 	 0.74567
+
+2022-11-10 13:54:51,977 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth.
+2022-11-10 13:54:51,995 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:54:51,997 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:54:51,997 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:54:52,003 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:54:52,015 INFO: Dataset NormalDataset - cifar-100 is created.
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth
+Successfully saving the model of test 0 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_0.pth
+2022-11-10 13:55:20,825 INFO: Test_acc of task 1 on test 0 is 	 0.68815
+
+2022-11-10 13:55:20,846 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth.
+2022-11-10 13:55:20,864 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:55:20,866 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:55:20,866 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:55:20,872 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:55:20,885 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth
+Successfully saving the model of test 0 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_1.pth
+2022-11-10 13:55:48,914 INFO: Test_acc of task 2 on test 0 is 	 0.63900
+
+2022-11-10 13:55:48,933 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth.
+2022-11-10 13:55:48,952 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:55:48,954 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:55:48,954 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:55:48,959 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:55:48,974 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth
+Successfully saving the model of test 0 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_2.pth
+2022-11-10 13:56:18,338 INFO: Test_acc of task 3 on test 0 is 	 0.59640
+
+2022-11-10 13:56:18,363 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth.
+2022-11-10 13:56:18,390 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:56:18,392 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:56:18,393 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:56:18,398 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:56:18,413 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth
+Successfully saving the model of test 0 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_3.pth
+2022-11-10 13:56:44,193 INFO: Test_acc of task 4 on test 0 is 	 0.55912
+
+2022-11-10 13:56:44,222 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth.
+2022-11-10 13:56:44,249 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:56:44,251 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:56:44,252 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:56:44,257 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:56:44,274 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth
+Successfully saving the model of test 0 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_4.pth
+2022-11-10 13:57:11,461 INFO: Test_acc of task 5 on test 0 is 	 0.52624
+
+2022-11-10 13:57:11,485 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth.
+2022-11-10 13:57:11,506 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:57:11,508 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:57:11,508 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:57:11,514 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:57:11,531 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth
+Successfully saving the model of test 0 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_5.pth
+2022-11-10 13:57:40,279 INFO: Test_acc of task 6 on test 0 is 	 0.49700
+
+2022-11-10 13:57:40,300 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth.
+2022-11-10 13:57:40,319 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:57:40,321 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:57:40,321 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:57:40,327 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:57:40,344 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth
+Successfully saving the model of test 0 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_6.pth
+2022-11-10 13:58:09,628 INFO: Test_acc of task 7 on test 0 is 	 0.47084
+
+2022-11-10 13:58:09,656 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth.
+2022-11-10 13:58:09,676 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:58:09,678 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:58:09,678 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:58:09,684 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:09,706 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth
+Successfully saving the model of test 0 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_7.pth
+2022-11-10 13:58:40,448 INFO: Test_acc of task 8 on test 0 is 	 0.44720
+
+2022-11-10 13:58:40,471 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 13:58:40,495 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:58:40,495 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:58:40,549 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:40,561 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:51,053 INFO: Test_acc of task 0 on test 1 is 	 0.74567
+
+2022-11-10 13:58:51,081 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth.
+2022-11-10 13:58:51,188 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:58:51,190 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:58:51,190 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:58:51,197 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:58:51,209 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test0_session_8.pth
+Successfully saving the model of test 0 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth
+Successfully saving the model of test 1 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_0.pth
+2022-11-10 13:59:19,249 INFO: Test_acc of task 1 on test 1 is 	 0.68831
+
+2022-11-10 13:59:19,271 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth.
+2022-11-10 13:59:19,297 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:59:19,299 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:59:19,299 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:59:19,305 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:59:19,319 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth
+Successfully saving the model of test 1 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_1.pth
+2022-11-10 13:59:47,811 INFO: Test_acc of task 2 on test 1 is 	 0.63914
+
+2022-11-10 13:59:47,836 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth.
+2022-11-10 13:59:47,861 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 13:59:47,863 WARNING: Params fc.former will not be optimized.
+2022-11-10 13:59:47,863 INFO: Model [RebalanceModel] is created.
+2022-11-10 13:59:47,869 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 13:59:47,883 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth
+Successfully saving the model of test 1 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_2.pth
+2022-11-10 14:00:17,029 INFO: Test_acc of task 3 on test 1 is 	 0.59653
+
+2022-11-10 14:00:17,054 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth.
+2022-11-10 14:00:17,079 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:00:17,081 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:00:17,081 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:00:17,087 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:00:17,102 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth
+Successfully saving the model of test 1 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_3.pth
+2022-11-10 14:00:47,010 INFO: Test_acc of task 4 on test 1 is 	 0.55925
+
+2022-11-10 14:00:47,030 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth.
+2022-11-10 14:00:47,050 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:00:47,052 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:00:47,052 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:00:47,058 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:00:47,074 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth
+Successfully saving the model of test 1 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_4.pth
+2022-11-10 14:01:16,702 INFO: Test_acc of task 5 on test 1 is 	 0.52624
+
+2022-11-10 14:01:16,726 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth.
+2022-11-10 14:01:16,749 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:01:16,751 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:01:16,752 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:01:16,759 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:01:16,777 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth
+Successfully saving the model of test 1 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_5.pth
+2022-11-10 14:01:44,743 INFO: Test_acc of task 6 on test 1 is 	 0.49700
+
+2022-11-10 14:01:44,767 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth.
+2022-11-10 14:01:44,793 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:01:44,795 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:01:44,795 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:01:44,801 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:01:44,818 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth
+Successfully saving the model of test 1 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_6.pth
+2022-11-10 14:02:11,185 INFO: Test_acc of task 7 on test 1 is 	 0.47084
+
+2022-11-10 14:02:11,207 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth.
+2022-11-10 14:02:11,231 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:02:11,233 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:02:11,233 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:02:11,239 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:11,260 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth
+Successfully saving the model of test 1 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_7.pth
+2022-11-10 14:02:41,015 INFO: Test_acc of task 8 on test 1 is 	 0.44730
+
+2022-11-10 14:02:41,039 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:02:41,058 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:02:41,058 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:02:41,116 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:41,127 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:50,568 INFO: Test_acc of task 0 on test 2 is 	 0.74567
+
+2022-11-10 14:02:50,593 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth.
+2022-11-10 14:02:50,614 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:02:50,616 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:02:50,616 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:02:50,622 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:02:50,634 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test1_session_8.pth
+Successfully saving the model of test 1 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth
+Successfully saving the model of test 2 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_0.pth
+2022-11-10 14:03:19,244 INFO: Test_acc of task 1 on test 2 is 	 0.68831
+
+2022-11-10 14:03:19,271 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth.
+2022-11-10 14:03:19,298 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:03:19,299 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:03:19,300 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:03:19,305 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:03:19,318 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth
+Successfully saving the model of test 2 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_1.pth
+2022-11-10 14:03:48,828 INFO: Test_acc of task 2 on test 2 is 	 0.63900
+
+2022-11-10 14:03:48,853 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth.
+2022-11-10 14:03:48,882 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:03:48,883 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:03:48,884 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:03:48,889 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:03:48,904 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth
+Successfully saving the model of test 2 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_2.pth
+2022-11-10 14:04:18,416 INFO: Test_acc of task 3 on test 2 is 	 0.59640
+
+2022-11-10 14:04:18,436 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth.
+2022-11-10 14:04:18,458 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:04:18,460 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:04:18,460 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:04:18,465 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:04:18,482 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth
+Successfully saving the model of test 2 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_3.pth
+2022-11-10 14:04:48,118 INFO: Test_acc of task 4 on test 2 is 	 0.55912
+
+2022-11-10 14:04:48,138 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth.
+2022-11-10 14:04:48,161 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:04:48,162 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:04:48,163 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:04:48,168 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:04:48,184 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth
+Successfully saving the model of test 2 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_4.pth
+2022-11-10 14:05:16,514 INFO: Test_acc of task 5 on test 2 is 	 0.52624
+
+2022-11-10 14:05:16,534 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth.
+2022-11-10 14:05:16,556 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:05:16,558 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:05:16,558 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:05:16,564 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:05:16,582 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth
+Successfully saving the model of test 2 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_5.pth
+2022-11-10 14:05:45,320 INFO: Test_acc of task 6 on test 2 is 	 0.49700
+
+2022-11-10 14:05:45,342 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth.
+2022-11-10 14:05:45,364 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:05:45,366 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:05:45,366 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:05:45,372 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:05:45,390 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth
+Successfully saving the model of test 2 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_6.pth
+2022-11-10 14:06:14,848 INFO: Test_acc of task 7 on test 2 is 	 0.47084
+
+2022-11-10 14:06:14,873 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth.
+2022-11-10 14:06:14,900 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:06:14,902 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:06:14,902 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:06:14,908 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:14,927 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth
+Successfully saving the model of test 2 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_7.pth
+2022-11-10 14:06:45,066 INFO: Test_acc of task 8 on test 2 is 	 0.44730
+
+2022-11-10 14:06:45,087 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:06:45,108 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:06:45,108 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:06:45,165 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:45,176 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:54,787 INFO: Test_acc of task 0 on test 3 is 	 0.74567
+
+2022-11-10 14:06:54,812 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth.
+2022-11-10 14:06:54,834 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:06:54,836 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:06:54,836 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:06:54,842 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:06:54,854 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test2_session_8.pth
+Successfully saving the model of test 2 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth
+Successfully saving the model of test 3 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_0.pth
+2022-11-10 14:07:20,634 INFO: Test_acc of task 1 on test 3 is 	 0.68831
+
+2022-11-10 14:07:20,661 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth.
+2022-11-10 14:07:20,689 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:07:20,691 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:07:20,691 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:07:20,697 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:07:20,710 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth
+Successfully saving the model of test 3 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_1.pth
+2022-11-10 14:07:49,630 INFO: Test_acc of task 2 on test 3 is 	 0.63900
+
+2022-11-10 14:07:49,652 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth.
+2022-11-10 14:07:49,677 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:07:49,678 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:07:49,679 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:07:49,684 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:07:49,699 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth
+Successfully saving the model of test 3 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_2.pth
+2022-11-10 14:08:18,171 INFO: Test_acc of task 3 on test 3 is 	 0.59640
+
+2022-11-10 14:08:18,192 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth.
+2022-11-10 14:08:18,217 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:08:18,219 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:08:18,219 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:08:18,225 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:08:18,240 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth
+Successfully saving the model of test 3 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_3.pth
+2022-11-10 14:08:47,301 INFO: Test_acc of task 4 on test 3 is 	 0.55912
+
+2022-11-10 14:08:47,321 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth.
+2022-11-10 14:08:47,343 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:08:47,345 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:08:47,345 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:08:47,351 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:08:47,393 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth
+Successfully saving the model of test 3 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_4.pth
+2022-11-10 14:09:16,431 INFO: Test_acc of task 5 on test 3 is 	 0.52612
+
+2022-11-10 14:09:16,453 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth.
+2022-11-10 14:09:16,475 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:09:16,477 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:09:16,478 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:09:16,483 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:09:16,502 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth
+Successfully saving the model of test 3 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_5.pth
+2022-11-10 14:09:45,262 INFO: Test_acc of task 6 on test 3 is 	 0.49689
+
+2022-11-10 14:09:45,282 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth.
+2022-11-10 14:09:45,304 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:09:45,306 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:09:45,306 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:09:45,312 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:09:45,330 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth
+Successfully saving the model of test 3 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_6.pth
+2022-11-10 14:10:15,238 INFO: Test_acc of task 7 on test 3 is 	 0.47074
+
+2022-11-10 14:10:15,263 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth.
+2022-11-10 14:10:15,293 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:10:15,296 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:10:15,296 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:10:15,302 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:15,320 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth
+Successfully saving the model of test 3 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_7.pth
+2022-11-10 14:10:44,890 INFO: Test_acc of task 8 on test 3 is 	 0.44720
+
+2022-11-10 14:10:44,912 INFO: Loading Resnet20_cifar_small model from ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth.
+2022-11-10 14:10:44,930 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:10:44,930 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:10:44,985 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:44,997 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:54,537 INFO: Test_acc of task 0 on test 4 is 	 0.74567
+
+2022-11-10 14:10:54,565 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth.
+2022-11-10 14:10:54,589 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:10:54,591 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:10:54,591 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:10:54,597 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:10:54,609 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test3_session_8.pth
+Successfully saving the model of test 3 session 8
+Beginning of task: 0
+Load NETWORK MODEL From: ./exp/cifar-100_bases60/NCMModel_FSIL_res18_small_cifar_60base_wandb_001/models/best_net_latest.pth
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth
+Successfully saving the model of test 4 session 0
+Beginning of task: 1
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_0.pth
+2022-11-10 14:11:24,047 INFO: Test_acc of task 1 on test 4 is 	 0.68831
+
+2022-11-10 14:11:24,073 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth.
+2022-11-10 14:11:24,101 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:11:24,103 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:11:24,103 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:11:24,109 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:11:24,122 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth
+Successfully saving the model of test 4 session 1
+Beginning of task: 2
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_1.pth
+2022-11-10 14:11:53,105 INFO: Test_acc of task 2 on test 4 is 	 0.63914
+
+2022-11-10 14:11:53,126 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth.
+2022-11-10 14:11:53,151 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:11:53,153 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:11:53,153 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:11:53,159 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:11:53,173 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth
+Successfully saving the model of test 4 session 2
+Beginning of task: 3
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_2.pth
+2022-11-10 14:12:19,780 INFO: Test_acc of task 3 on test 4 is 	 0.59653
+
+2022-11-10 14:12:19,801 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth.
+2022-11-10 14:12:19,825 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:12:19,826 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:12:19,827 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:12:19,832 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:12:19,851 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth
+Successfully saving the model of test 4 session 3
+Beginning of task: 4
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_3.pth
+2022-11-10 14:12:45,169 INFO: Test_acc of task 4 on test 4 is 	 0.55925
+
+2022-11-10 14:12:45,192 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth.
+2022-11-10 14:12:45,215 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:12:45,217 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:12:45,218 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:12:45,223 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:12:45,239 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth
+Successfully saving the model of test 4 session 4
+Beginning of task: 5
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_4.pth
+2022-11-10 14:13:14,649 INFO: Test_acc of task 5 on test 4 is 	 0.52635
+
+2022-11-10 14:13:14,674 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth.
+2022-11-10 14:13:14,702 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:13:14,704 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:13:14,704 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:13:14,710 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:13:14,726 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth
+Successfully saving the model of test 4 session 5
+Beginning of task: 6
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_5.pth
+2022-11-10 14:13:44,736 INFO: Test_acc of task 6 on test 4 is 	 0.49711
+
+2022-11-10 14:13:44,762 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth.
+2022-11-10 14:13:44,798 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:13:44,800 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:13:44,800 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:13:44,806 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:13:44,824 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth
+Successfully saving the model of test 4 session 6
+Beginning of task: 7
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_6.pth
+2022-11-10 14:14:15,090 INFO: Test_acc of task 7 on test 4 is 	 0.47074
+
+2022-11-10 14:14:15,113 INFO: Loading Resnet20_cifar_small model from /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth.
+2022-11-10 14:14:15,137 INFO: The size of buffer is 0.0 Mb, the number of images is 0
+2022-11-10 14:14:15,139 WARNING: Params fc.former will not be optimized.
+2022-11-10 14:14:15,139 INFO: Model [RebalanceModel] is created.
+2022-11-10 14:14:15,145 INFO: Dataset NormalDataset - cifar-100 is created.
+2022-11-10 14:14:15,163 INFO: Dataset NormalDataset - cifar-100 is created.
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth
+Successfully saving the model of test 4 session 7
+Beginning of task: 8
+Load NETWORK MODEL From: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_7.pth
+2022-11-10 14:14:48,052 INFO: Test_acc of task 8 on test 4 is 	 0.44720
+
+2022-11-10 14:14:48,064 INFO: --------------------------Final Avg Acc-------------------------
+2022-11-10 14:14:48,064 INFO: Session 1: 74.57+-0.00
+2022-11-10 14:14:48,064 INFO: Session 2: 68.83+-0.01
+2022-11-10 14:14:48,065 INFO: Session 3: 63.91+-0.01
+2022-11-10 14:14:48,065 INFO: Session 4: 59.65+-0.01
+2022-11-10 14:14:48,065 INFO: Session 5: 55.92+-0.01
+2022-11-10 14:14:48,065 INFO: Session 6: 52.62+-0.01
+2022-11-10 14:14:48,065 INFO: Session 7: 49.70+-0.01
+2022-11-10 14:14:48,065 INFO: Session 8: 47.08+-0.00
+2022-11-10 14:14:48,065 INFO: Session 9: 44.72+-0.00
+fine-tune procedure is finished!
+save network to: /workspace/FLOWER/f2m/increment/cifar-100_bases60/1S_FSIL_NCM_res18_cifar_1shot_60bases_wandb_debug/models/test4_session_8.pth
+Successfully saving the model of test 4 session 8
+finish!!
+finish
