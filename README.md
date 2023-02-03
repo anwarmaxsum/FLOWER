@@ -35,7 +35,7 @@ Those files are developed from F2MModel with necessary modifications.
 flower1 (FLOWER continual tasks learning), flower_no_psi (FLOWER without projection), flower_no_fm (FLOWER without flat minima), flower_no_ball (FLOWER without ball augmentation)   flower_no_mas (FLOWER without MAS weight importance), flower_no_pl (FLOWER without prototype loss)
 
 3. Incremental learning procedure without memory: incremental_procedure_nomem.py
-The file is developed from F2MModel with necessary modifications.
+The file is developed from incremental_procedure.py with necessary modifications.
 
 4. Minor modification:
 We modify incremental learning procedure script (incremental_procedure.py) for debugging purpose.
