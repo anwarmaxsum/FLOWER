@@ -22,10 +22,10 @@ This project is run by using the following  environment:
 We evaluate our system in the benchmark datasets, including ```CUB-200-2011, CIFAR100, miniImageNet```.
 Please download [CUB-200-2011](https://www.vision.caltech.edu/datasets/cub_200_2011/), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar.html) and [miniImageNet](https://github.com/yaoyao-liu/mini-imagenet-tools).
 
-#Example of Running Script:
+## Example of Running Script:
 Please see file example_running_script.txt in code directory
 
-## Contribution (please see code directories)
+## Contribution (please see code directory)
 The main contribution of our work is as follow:
 1. Base task learning (please see *_model.py methods directory):
 F2MJ (Flat minima + projection), F2MMAS (Flat minima + MAS weight importance)+ F2MMASJ (FLOWER base task learning), F2MMASJNOPL (FLOWER base task learning without prototype loss), F2MSI Flat minima + SI weight importance).
