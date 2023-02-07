@@ -20,7 +20,7 @@ This project is run by using the following  environment:
 
 ## Datasets
 We evaluate our system in the benchmark datasets, including ```CUB-200-2011, CIFAR100, miniImageNet```.
-Please download [CUB-200-2011](), [CIFAR100]() and [miniImageNet]().
+Please download [CUB-200-2011](https://www.vision.caltech.edu/datasets/cub_200_2011/), [CIFAR100](https://www.cs.toronto.edu/~kriz/cifar.html) and [miniImageNet](https://github.com/yaoyao-liu/mini-imagenet-tools).
 
 #Example of Running Script:
 Please see file example_running_script.txt in code directory
@@ -35,7 +35,7 @@ Those files are developed from F2MModel with necessary modifications.
 flower1 (FLOWER continual tasks learning), flower_no_psi (FLOWER without projection), flower_no_fm (FLOWER without flat minima), flower_no_ball (FLOWER without ball augmentation)   flower_no_mas (FLOWER without MAS weight importance), flower_no_pl (FLOWER without prototype loss)
 
 3. Incremental learning procedure without memory: incremental_procedure_nomem.py
-The file is developed from incremental_procedure.py with necessary modifications.
+The file is developed from F2MModel with necessary modifications.
 
 4. Minor modification:
 We modify incremental learning procedure script (incremental_procedure.py) for debugging purpose.
