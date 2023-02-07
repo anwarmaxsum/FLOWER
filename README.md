@@ -40,5 +40,5 @@ The file is developed from F2MModel with necessary modifications.
 4. Minor modification:
 We modify incremental learning procedure script (incremental_procedure.py) for debugging purpose.
 
-#LICENSE
+## LICENSE
 This FLOWER project is released under the Apache 2.0 license. Please see code/LICENSE directory.
